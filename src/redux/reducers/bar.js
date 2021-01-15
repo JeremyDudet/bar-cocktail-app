@@ -1,0 +1,1 @@
+// here we have global state for cocktail availability depending on what the bar has available.

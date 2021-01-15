@@ -1,0 +1,15 @@
+export const homeObjectOne = {
+  lightBg: false,
+  primary: true,
+  imgStart: false,
+  lightTopLine: true,
+  lightTextDesc: true,
+  buttonLabel: 'Explore Cocktails',
+  description: 'asdf',
+  headline: 'Discover what we can make with ingredients we have on hand',
+  lightText: true,
+  topLine: 'Search available cocktails',
+  img: require('../../images/svg-1.svg'),
+  alt: 'Image',
+  start: '',
+};
