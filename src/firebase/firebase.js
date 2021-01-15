@@ -15,17 +15,6 @@ const firebaseConfigDevelopmentApp = {
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
-// these are the production server keys for firebase
-const firebaseConfigProductionApp = {
-    apiKey: "AIzaSyAQ1nZDLMDtBa1s8tf6P1mmmdY-ueATRLY",
-    authDomain: "barley-production.firebaseapp.com",
-    projectId: "barley-production",
-    storageBucket: "barley-production.appspot.com",
-    messagingSenderId: "1017650556434",
-    appId: "1:1017650556434:web:708175acc18c1b768ef2cb",
-    measurementId: "G-7H9VCMTX10"
-  };
-
 // Initialize Firebase
 const app =  firebase.initializeApp(firebaseConfigDevelopmentApp);
 const database = firebase.database();
