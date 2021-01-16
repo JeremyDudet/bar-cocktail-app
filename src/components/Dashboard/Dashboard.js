@@ -1,7 +1,7 @@
 // this is where we'll display a set of 
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { useAuth } from '../../contexts/AuthContext';
+
 import {
   InfoSec, 
   AvailableIngredientPicker, 
@@ -33,7 +33,6 @@ import 'react-circular-progressbar/dist/styles.css';
 const Dashboard = (props) => {
 
   const [ error, setError ] = useState("");
-  const { currentUser } = useAuth();
 
   const availableCocktailsCount = props.availableCocktails.length;
   const allCocktailsCount = props.allCocktails.length;
