@@ -8,7 +8,7 @@ export const CocktailListGrid = styled.div`
   gap: 1em;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: masonry; 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1300px) {
     grid-template-columns: repeat(2, 1fr);
   } 
   @media screen and (max-width: 890px) {

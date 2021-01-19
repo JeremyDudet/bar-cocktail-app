@@ -134,7 +134,7 @@ const IngredientForm = (props) => {
         <br/>
         <label for="available">Ingredient currently Available?</label>
         <select id="available" name="available" value={available} onChange={handleAvailableChange}>
-          <option value='true' >Stocked</option>
+          <option value='true' selected>Stocked</option>
           <option value='false' >86</option>
         </select>
         <br/>

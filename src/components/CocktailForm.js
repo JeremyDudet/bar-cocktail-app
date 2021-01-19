@@ -173,7 +173,7 @@ const CocktailForm = (props) => {
           
         <br/>
                                                                                                                                                                                                                                                  
-        <label for="instructions">Instructions: </label>
+        <label for="instructions">Preparation: </label>
         <textarea
           value={instructions}
           onChange={handleInstructionsChange}
