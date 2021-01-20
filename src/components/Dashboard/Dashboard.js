@@ -88,9 +88,9 @@ const Dashboard = (props) => {
                 value={percentage}
                 text={`${availableCocktailsCount}`}
                 styles={buildStyles({
-                  textColor: "#5F5AA2",
-                  pathColor: "#5F5AA2",
-                  trailColor: "#BFC0C0"
+                  textColor: "rgb(88, 183, 146)",
+                  pathColor: "rgb(88, 183, 146)",
+                  trailColor: "#333"
                 })}
               />
             </CircularProgressBarContainer>

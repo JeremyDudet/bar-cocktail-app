@@ -2,7 +2,7 @@ import React from 'react'
 import { 
   FaFacebook, 
   FaInstagram, 
-  FaYoutube, 
+  FaGithub, 
   FaTwitter, 
   FaLinkedin 
 } from 'react-icons/fa'
@@ -43,8 +43,8 @@ const Footer = () => {
             <SocialIconLink href='/' target="_blank" aria-label="Instagram">
               <FaInstagram />
             </SocialIconLink>
-            <SocialIconLink href='/' target="_blank" aria-label="Youtube">
-              <FaYoutube />
+            <SocialIconLink href='/' target="_blank" aria-label="GitHub">
+              <FaGithub />
             </SocialIconLink>
             <SocialIconLink href='/' target="_blank" aria-label="Twitter">
               <FaTwitter />

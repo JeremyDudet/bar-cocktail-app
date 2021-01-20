@@ -2,7 +2,7 @@ import React from 'react'
 import { // we style and define the tags in the elements.js, then we arrange them here. 
   InfoSec, 
   InfoRow, 
-  InfoColumn, 
+  InfoColumn,
   CocktailListWrapper,
   FilterWrapper, 
   TopLine, 

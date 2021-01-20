@@ -2,9 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const SignUpSection = styled.div`
-  color: #0d0d0d;
   padding: 100px 0;
-  background: #0d0d0d;
 `;
 
 export const SignUpRow = styled.div`
@@ -46,6 +44,7 @@ export const Heading = styled.h1`
 `;
 
 export const SignUpForm = styled.form`
+  contain: content;
   display: grid;
   margin: 0 auto;
   max-width: 955px;
@@ -58,9 +57,10 @@ export const EmailInput = styled.input`
   padding: 0 5%;
   margin-bottom: 5%;
   font-size: 1rem;
-  border: 0;
+  outline: none;
+  border: none;
+  background-color: #3c3c3c;
   width: 100%;
-  background-color: #222;
   line-height: 2rem;
   border-radius: 7px;
 `;
@@ -68,22 +68,24 @@ export const EmailInput = styled.input`
 export const PasswordInput = styled.input`
   padding: 0 5%;
   margin-bottom: 5%;
-  font-size: 1rem;
-  border: 0;
+  font-size: 1em;
+  outline: none;
+  border: none;
+  background-color: #3c3c3c;
   width: 100%;
-  background-color: #222;
-  line-height: 2rem;
+  line-height: 2em;
   border-radius: 7px;
 `;
 
 export const ConfirmPasswordInput = styled.input`
   padding: 0 5%;
-  margin-bottom: 2rem;
-  font-size: 1rem;
-  border: 0;
+  margin-bottom: 2em;
+  font-size: 1em;
+  outline: none;
+  border: none;
+  background-color: #3c3c3c;
   width: 100%;
-  background-color: #222;
-  line-height: 2rem;
+  line-height: 2em;
   border-radius: 7px;
 `;
 

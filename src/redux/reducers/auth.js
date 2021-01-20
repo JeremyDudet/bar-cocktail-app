@@ -1,12 +1,16 @@
-export default (state = {}, action) => {
+const authReducerDefaultState = {
+  user: '',
+};
+
+export default (state = authReducerDefaultState, action) => {
   switch (action.type) {
     case 'LOGIN':
       return {
-        uid: action.uid
+        user: action.user
       };
     case 'LOGOUT':
       return {};
     default:
       return state;
   }
-}
+};

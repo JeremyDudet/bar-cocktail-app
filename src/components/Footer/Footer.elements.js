@@ -4,7 +4,6 @@ import Pacifico from '../../fonts/Pacifico-Regular.ttf'
 
 
 export const FooterContainer = styled.div`
-  background-color: #0d0d0d;
   padding: 3rem 0 2rem 0;
   display: flex;
   flex-direction: column;

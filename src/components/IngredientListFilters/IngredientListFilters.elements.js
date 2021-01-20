@@ -10,7 +10,7 @@ export const IngredientListFilter = styled.div`
 export const Label = styled.label`
   font-size: 16px;
   width: 100%;
-  color: #5F5AA2;
+  color: #fff;
 `;
 
 
@@ -20,7 +20,6 @@ export const NameInput = styled.input`
   border: 1px solid;
   border-radius: 0.25em;
   padding: 0.25em 0.5em;
-  margin-top: 0.8em;
   width: 100%;
   font-family: inherit;
   font-size: 1.15rem;

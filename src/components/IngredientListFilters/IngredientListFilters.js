@@ -17,6 +17,7 @@ const IngredientListFilters = (props) => {
 
   return (
     <IngredientListFilter>
+      <Label for="name">Name: </Label>
       <NameInput
         type="name"
         value={props.ingredientFilters.name} 

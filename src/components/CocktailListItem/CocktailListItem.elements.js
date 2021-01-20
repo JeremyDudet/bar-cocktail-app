@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {BsInfoCircle} from 'react-icons/bs';
+import { BsInfoCircle } from 'react-icons/bs';
 import Pacifico from '../../fonts/Pacifico-Regular.ttf';
 
 export const CocktailCard = styled.section`
@@ -8,15 +8,16 @@ export const CocktailCard = styled.section`
   max-width: 200px;
   border: 1px solid white;
   border-radius: 0.5em;
-  box-shadow: 5px 5px solid red;
+  box-shadow: 0px 0px #000;
   padding: 1em;
   display: flex;
   flex-direction: column;
   align-items: left;
   &:hover{
-    background: #5F5AA2;
-    transform: scale(1.025);
-    transition: all 0.8s ease;
+    background: #2f2f2f;
+    transform: scale(1.015);
+    transition: all 0.2s ease;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   }
 `;
 
@@ -106,7 +107,7 @@ export const InfoIcon = styled(BsInfoCircle)`
   color: rebeccapurple;
   cursor: pointer;
   &:hover{
-    transform: scale(1.25);
+    transform: scale(1.1);
     transition: all 0.8s ease;
   }
 `;
@@ -126,16 +127,18 @@ export const CocktailInfoCard = styled.div`
   height: 100vh;
   z-index: ${({displayInfo}) => ( displayInfo ? 1000 : -1 )};
   transition: all 0.8s ease;
-  background: #0D0D0D;
+  background: #222;
   opacity: 0.95;
 `;
 export const InfoContainer = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  align-self: center;
+  justify-self: center;
+  justify-content: center;
   align-items: left;
-  margin-top: 25%;
+  /* margin-top: 25%; */
   padding: 3em;
   @media screen and (max-width: 960px) {
     padding: 2em;
@@ -152,7 +155,7 @@ export const CocktailPreparation = styled.div`
   border: none;
 `;
 export const CocktailInfoLabel = styled.div`
-  color: #5F5AA2;
+  color: rgb(245, 163, 57);
   margin: none;
   margin-top: 1em;
   border: none;

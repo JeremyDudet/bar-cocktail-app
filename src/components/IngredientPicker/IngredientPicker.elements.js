@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const IngredientPickerContainer = styled.div`
   margin-top: 0.5rem;
   padding: 0.3rem;
-  border: 2px solid #EF8354;
+  border: 2px solid rgb(95, 99, 189);
   border-radius: 0.5rem;
 `;
 
@@ -36,6 +36,9 @@ export const FilterTypeRadio = styled.input`
   &:hover + label {
     cursor: pointer;
     border: 2px solid #5F5AA2;
+    transform: scale(1.01);
+    transition: all 0.2s ease;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   }
 `;
 

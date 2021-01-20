@@ -52,7 +52,7 @@ export const MakeableCocktailList = styled.div`
 export const CoktailName = styled.div`
   color: #fff;
   background-color: ${ ({selected}) => (selected === true ? "#5F5AA2" : "transparent")};
-  border: 1px solid #5F5AA2;
+  border: 1px solid rgb(88, 183, 146);
   border-radius: 5px;
   padding: 0.25em 0.5em;
   

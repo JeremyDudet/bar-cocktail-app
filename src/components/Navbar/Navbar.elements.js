@@ -13,10 +13,10 @@ export const Nav = styled.nav`
   position: sticky;
   top: 0px;
   z-index: 1;
-  /* outline: 0.2em solid violet; */
 `;
 
 export const NavbarContainer = styled(Container)`
+  background-color: #1f1f1f;
   display: flex;
   align-items: center;
   justify-content: space-between; 
@@ -31,6 +31,7 @@ export const NavLogo = styled(Link)`
   text-decoration: none;
   display: flex;
   align-items: baseline;
+  justify-items: center;
 `;
 
 export const Barley = styled.div`
@@ -90,13 +91,13 @@ export const NavMenu = styled.ul`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 90vh;
+    height: 95vh;
     position: absolute;
     top: 80px;
     left: ${({click}) => ( click ? 0 : '-100%' )};
     opacity: 0.95;
     transition: all 0.8s ease;
-    background: #0D0D0D;
+    background: #1e1e1e;
   }
 `;
 
@@ -106,7 +107,7 @@ export const NavItem = styled.li`
   border-bottom: 2px solid transparent;
 
   @media screen and (max-width: 960px) {
-    background: none;
+    background-color: none;
     width: 100% auto;
 
     &:hover {

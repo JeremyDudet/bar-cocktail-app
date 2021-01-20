@@ -21,8 +21,8 @@ export const FilterWrapper = styled.div`
 export const SearchByIngredientButton = styled.button`
   outline: none;
   appearance: none;
-  color: #EF8354;
-  background-color: transparent;
+  color: rgb(95, 99, 189);
+  background: transparent;
   border: 1px solid;
   border-radius: 0.25em;
   padding: 0.25em 0.5em;
@@ -45,18 +45,25 @@ export const SelectedIngredient = styled.button`
   outline: none;
   display: flex;
   justify-self: flex-start;
-  color: #EF8354;
-  background-color: transparent;
-  border: 1px solid;
+  color: #BFC0C0;
+  background: rgb(95, 99, 189);
+  border: 1px solid #5F5AA2;
   border-radius: 1.5em;
   padding: 0.25em 0.5em;
   margin: 0;
   font-family: inherit;
   font-size: 0.75rem;
   cursor: pointer;
+  &:hover {
+    transform: scale(1.01);
+    transition: all 0.2s ease;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  }
 `;
 
 export const SelectedIngredientDeleteIcon = styled(TiDeleteOutline)`
+  color: #BFC0C0;
+  background: transparent;
   margin-right: 0.2rem;
   padding: 0;
   min-width: 10px;
@@ -97,3 +104,8 @@ export const FormSelect = styled.select`
   cursor: pointer;
   line-height: 1.05;
 `;
+
+// rgb(88, 183, 146) green
+// rgb(245, 163, 57) orange
+// rgb(95, 99, 189) blue/purpleish
+// rgb(135, 206, 245) light blue

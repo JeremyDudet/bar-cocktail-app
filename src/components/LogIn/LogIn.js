@@ -1,64 +1,82 @@
-// import React, {useRef, useState } from 'react'
-// import { useHistory } from 'react-router-dom'
-// import { useAuth } from '../../contexts/AuthContext'
-// import {Container, Button} from '../../globalStyles'
-// import { 
-//   LogInSection,
-//   LogInRow,
-//   LogInColumn,
-//   TextWrapper,
-//   Heading,
-//   LogInForm,
-//   EmailInput,
-//   PasswordInput,
-//   SignUpText,
-//   SignUpLink,
-//   Error 
-// } from './LogIn.elements'
+import React, { useState } from 'react';
+import { auth } from '../../firebase/firebase';
+import { connect } from 'react-redux';
+import { login } from '../../redux/actions/auth'; 
+import { useHistory } from 'react-router-dom';
+import {Container, Button} from '../../globalStyles';
+import { 
+  LogInSection,
+  LogInRow,
+  LogInColumn,
+  TextWrapper,
+  Heading,
+  LogInForm,
+  EmailInput,
+  PasswordInput,
+  SignUpText,
+  SignUpLink,
+  Error 
+} from './LogIn.elements';
 
-// const LogIn = ({ heading, buttonLabel }) => {
+const LogIn = (props) => {
 
-//   const emailRef = useRef();
-//   const passwordRef = useRef();
-//   const { login } = useAuth();
-//   const [ error, setError ] = useState('');
-//   const [ loading, setLoading ] = useState(false);
-//   const history = useHistory();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [ error, setError ] = useState('');
+  const [ loading, setLoading ] = useState(false);
+  const history = useHistory();
 
-//   async function handleSubmit(e) {
-//     e.preventDefault();
+  function handleSetEmailChange(e){
+    const email = e.target.value;
+    setEmail(email);
+  };
+  function handleSetPasswordChange(e){
+    const password = e.target.value;
+    setPassword(password);
+  };
 
-//     try {
-//       setError('')
-//       setLoading(true)
-//       await login(emailRef.current.value, passwordRef.current.value)
-//       history.push('/dashboard')
-//     } catch {
-//       setError('Failed to log in')
-//     }
-//     setLoading(false)
-//   }
+  function logIn(email, password) {
+    return auth.signInWithEmailAndPassword(email, password).catch((error) => {
+      // Handle Errors here.
+      const errorMessage = error.message;
+      setError(errorMessage);
+    });
+  }
+
+  function loginEffect() {
+    return auth.onAuthStateChanged(user => props.dispatch(login(user)));
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+    await logIn(email, password);
+    loginEffect();
+    history.push("/dashboard");
+    setLoading(false);
+  };
   
-//   return (
-//     <LogInSection>
-//       <Container>
-//         <LogInRow>
-//           <LogInColumn>
-//             <TextWrapper>
-//               <LogInForm onSubmit={handleSubmit}>
-//                 <Heading>{heading}</Heading>
-//                 {error && <Error>{error}</Error>}
-//                 <EmailInput type="email" ref={emailRef} placeholder="Email" size="1" required/>
-//                 <PasswordInput type="password" ref={passwordRef} placeholder="Password" size="1" required />
-//                 <Button type="submit" disabled={loading} primary>{buttonLabel}</Button>
-//               </LogInForm>
-//               <SignUpText>Don't have an account?<SignUpLink to="/signup" disabled>Sign Up</SignUpLink></SignUpText>
-//             </TextWrapper>
-//           </LogInColumn>
-//         </LogInRow>
-//       </Container>
-//     </LogInSection>
-//   )
-// }
+  return (
+    <LogInSection>
+      <Container>
+        <LogInRow>
+          <LogInColumn>
+            <TextWrapper>
+              <LogInForm onSubmit={handleSubmit}>
+                <Heading>Log In</Heading>
+                {error && <Error>{error}</Error>}
+                <EmailInput value={email} onChange={handleSetEmailChange} type="email"  placeholder="Email" size="1" required/>
+                <PasswordInput value={password} onChange={handleSetPasswordChange} type="password"  placeholder="Password" size="1" required />
+                <Button type="submit" disabled={loading} primary>Log In</Button>
+              </LogInForm>
+              <SignUpText>Don't have an account?<SignUpLink to="/signup" disabled>Sign Up</SignUpLink></SignUpText>
+            </TextWrapper>
+          </LogInColumn>
+        </LogInRow>
+      </Container>
+    </LogInSection>
+  );
+};
 
-// export default LogIn
+export default connect()(LogIn);

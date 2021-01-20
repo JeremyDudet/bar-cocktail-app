@@ -35,7 +35,7 @@ const IngredientPickerList = (props) => {
             key={ingredient.id} 
             onClick={() => props.handleSelectedIngredient(ingredient)}
             disabled={handleDisabled(ingredient)}
-            style={{color: "#EF8354", border: "1px solid #EF8354"}}
+            style={{color: "rgb(95, 99, 189)", border: "1px solid rgb(95, 99, 189)"}}
           >{ingredient.name}</Ingredient>
         ))
       } 

@@ -5,7 +5,6 @@ export const InfoSec = styled.div`
   color: #0d0d0d;
   margin-top: 2rem;
   padding: 25px 0;
-  background: ${({ lightBg }) => (lightBg ? '#0d0d0d' : '#0d0d0d')};
 `;
 
 export const InfoRow = styled.div`
