@@ -1,6 +1,9 @@
 import  React, { useState } from 'react';
 import moment from 'moment';
-import CocktailFormIngredientList from './CocktailFormIngredientList'
+import CocktailFormIngredientList from '../CocktailFormIngredientList';
+
+
+import {Form, Label, NameInput, FormSelect, TextArea, MainButton} from './CocktailForm.elements';
 
 
 const CocktailForm = (props) => {
@@ -96,15 +99,15 @@ const CocktailForm = (props) => {
 
 
   return (
-    <div>
+    <>
       {error && <p>{error}</p>} {/* So...basically: "If state.error is not empty, display this html tag"  */}
       <p>Created: {createdAt.format("MMM Do YYYY")}</p>
       {lastEdited && <p>Last edited on {lastEdited.format("MMM Do YYYY")}</p>} {/* and same here.*/}
       
-      <form id="cocktail" onSubmit={onSubmit}>
+      <Form id="cocktail" onSubmit={onSubmit}>
       
-        <label for="cocktail_name">Choose Name: </label>
-        <input
+        <Label for="cocktail_name">Choose Name: </Label>
+        <NameInput
           type='text'
           id="cocktail_name"
           placeholder='+ Add name'
@@ -115,10 +118,8 @@ const CocktailForm = (props) => {
           onChange={handleNameChange}
         />
 
-        <br/>
-
-        <label for="cocktail_category">Category: </label>
-        <select value={category} id="cocktail_category" name="category" onChange={handleCategoryChange}>
+        <Label for="cocktail_category">Category: </Label>
+        <FormSelect value={category} id="cocktail_category" name="category" onChange={handleCategoryChange}>
           <option value=''>...pick category</option>
           <option value="Classic">Classic</option>
           <option value="Sours">Sours</option>
@@ -130,30 +131,27 @@ const CocktailForm = (props) => {
           <option value="Tropical-Style">Tropical-Style</option>
           <option value="Hot Drinks">Hot Drinks</option>
           <option value="Flips and Nogs">Flips and Nogs</option>
-        </select> 
+        </FormSelect> 
         
-        <br/>
 
-        <label for="iba">IBA recipe? </label>
-        <select value={iba} id="iba" onChange={handleIbaChange}>
+        <Label for="iba">IBA recipe? </Label>
+        <FormSelect value={iba} id="iba" onChange={handleIbaChange}>
           <option value=''></option>
           <option value='false'>No</option>
           <option value='true'>Yes</option>
-        </select>
+        </FormSelect>
 
-        <label for="timing">Timing: </label>
-        <select value={timing} id="timing" onChange={handleTimingChange}>
+        <Label for="timing">Timing: </Label>
+        <FormSelect value={timing} id="timing" onChange={handleTimingChange}>
           <option value=''></option>
           <option value="aperitivo">Aperitivo</option>
           <option value="digestivo">Digestivo</option>
           <option value="dessert">Dessert</option>
           <option value="anytime">Anytime</option>
-        </select>
+        </FormSelect>
 
-        <br/>
-
-        <label for="description">Description: </label>
-        <textarea
+        <Label for="description">Description: </Label>
+        <TextArea
           form="cocktail"
           type='text'
           placeholder='+ Add description'
@@ -161,44 +159,34 @@ const CocktailForm = (props) => {
           value={description}
           onChange={handleDescriptionChange}
         /> 
-
-        <br/>
-
+        <Label for="description">Recipe Ingredients: </Label>
         <CocktailFormIngredientList 
           setRecipeIngredients={props.setRecipeIngredients} 
           recipeIngredients={props.recipeIngredients}
           handleRemoveRecipeIngredient={props.handleRemoveRecipeIngredient}
         />
-          
-        <br/>
+
                                                                                                                                                                                                                                                  
-        <label for="instructions">Preparation: </label>
-        <textarea
+        <Label for="instructions">Preparation: </Label>
+        <TextArea
           value={instructions}
           onChange={handleInstructionsChange}
           id="instructions"
           placeholder="Explain process. Also, include glassware and garnish..."
         />
 
-        <br/>
 
-        <label for="note">Notes: </label>
-        <textarea 
+        <Label for="note">Notes: </Label>
+        <TextArea 
           value={note}
           onChange={handleNoteChange}
           placeholder="Add a note regarding the cocktail (optional)"
         />
-
-        <br/>
         
-        <button type='submit'>Submit</button>
+        <MainButton type='submit'>Submit</MainButton>
 
-      </form>
-
-      
-      <br/>
-        
-    </div>
+      </Form>
+    </>
   );
 };
 

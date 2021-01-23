@@ -92,7 +92,7 @@ export const NameInput = styled.input`
 
 export const FormSelect = styled.select`
   // A reset of styles, including removing the default dropdown arrow
-  appearance: none;
+  /* appearance: none; */
   background-color: transparent;
   border: 1px solid;
   border-radius: 0.25em;

@@ -31,31 +31,29 @@ const InfoSection = ({
   alt
  }) => {
   return (
-    <>
-      <InfoSec lightBg={lightBg}>
-        <Container>
-          <InfoRow imgStart={imgStart}>
-            <InfoColumn>
-              <TextWrapper>
-                <TopLine lightTopLine={lightTopLine}>{topLine}</TopLine>
-                <Heading lightText={lightText}>{headline}</Heading>
-                <Subtitle lightTextDesc={lightTextDesc}>{description}</Subtitle>
-                <Link to='/browse'>
-                  <MainButton big fontBig primary={primary}>
-                    {buttonLabel}
-                  </MainButton>
-                </Link>
-              </TextWrapper>
-            </InfoColumn>
-            <InfoColumn>
-              <ImgWrapper start={start}>
-                <Img src={img} alt={alt} />
-              </ImgWrapper>
-            </InfoColumn>  
-          </InfoRow>
-        </Container>
-      </InfoSec>
-    </>
+    <InfoSec lightBg={lightBg}>
+      <Container>
+        <InfoRow imgStart={imgStart}>
+          <InfoColumn>
+            <TextWrapper>
+              <TopLine lightTopLine={lightTopLine}>{topLine}</TopLine>
+              <Heading lightText={lightText}>{headline}</Heading>
+              <Subtitle lightTextDesc={lightTextDesc}>{description}</Subtitle>
+              <Link to='/browse'>
+                <MainButton big fontBig primary={primary}>
+                  {buttonLabel}
+                </MainButton>
+              </Link>
+            </TextWrapper>
+          </InfoColumn>
+          <InfoColumn>
+            <ImgWrapper start={start}>
+              <Img src={img} alt={alt} />
+            </ImgWrapper>
+          </InfoColumn>  
+        </InfoRow>
+      </Container>
+    </InfoSec>
   )
 }
 

@@ -1,7 +1,6 @@
 // this is where we'll display a set of 
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { IconContext } from "react-icons";
 import {
   InfoSec, 
   AvailableIngredientPicker, 
@@ -32,8 +31,6 @@ import 'react-circular-progressbar/dist/styles.css';
 
 const Dashboard = (props) => {
 
-  const [ error, setError ] = useState("");
-
   const availableCocktailsCount = props.availableCocktails.length;
   const allCocktailsCount = props.allCocktails.length;
   const percentage = Math.round((availableCocktailsCount / allCocktailsCount) * 100);
@@ -61,7 +58,6 @@ const Dashboard = (props) => {
   const appearancesOf = Object.fromEntries(ingredientAppearances);
 
   return (
-    <>
     <InfoSec>
       <Container>
         <AvailableIngredientPicker>
@@ -116,7 +112,6 @@ const Dashboard = (props) => {
         </InfoRow>
       </Container>
     </InfoSec>
-    </>
   );
 }
 
