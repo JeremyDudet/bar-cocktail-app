@@ -35,6 +35,15 @@ export const TextWrapper = styled.div`
     padding-bottom: 65px;
   } 
 `;
+
+export const SignUpForm = styled.form`
+  display: grid;
+  margin: 0 auto;
+  max-width: 955px;
+  height: 100%;
+  width: 100%;
+`;
+
 export const Heading = styled.h1`
   margin-bottom: 2rem;
   justify-content: center;
@@ -43,14 +52,6 @@ export const Heading = styled.h1`
   color: white;
 `;
 
-export const SignUpForm = styled.form`
-  contain: content;
-  display: grid;
-  margin: 0 auto;
-  max-width: 955px;
-  height: 100%;
-  width: 100%;
-`;
 
 
 export const EmailInput = styled.input`

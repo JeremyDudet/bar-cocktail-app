@@ -80,21 +80,13 @@ export const Img = styled.img`
 `;
 
 export const MainButton = styled(Button)`
-  @media screen and (max-width: 1366px) {
-    width: 100%;
-    background: linear-gradient(#5D7AE5, #9B5DE5, #E55DD5);
-    background-size: 600% 600%;
-    animation: AnimationName 5s ease infinite;
-    } 
-  &:hover {
-    color: black;
-    @keyframes AnimationName {
-      0%{background-position:0% 92%}
-      50%{background-position:100% 9%}
-      100%{background-position:0% 92%}
+  @keyframes Gradient {
+    0%{background-position:0% 92%}
+    50%{background-position:100% 9%}
+    100%{background-position:0% 92%}
   }
-    background: linear-gradient(#5D7AE5, #9B5DE5, #E55DD5);
-    background-size: 600% 600%;
-    animation: AnimationName 5s ease infinite;
-  }
+  width: 100%;
+  background: linear-gradient(#5D7AE5, #9B5DE5, #E55DD5);
+  background-size: 600% 600%;
+  animation: Gradient 5s ease infinite;
 `;

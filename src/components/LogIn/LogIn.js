@@ -20,40 +20,44 @@ import {
 
 const LogIn = (props) => {
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [ email, setEmail ] = useState('');
+  const [ password, setPassword ] = useState('');
   const [ error, setError ] = useState('');
   const [ loading, setLoading ] = useState(false);
   const history = useHistory();
 
-  function handleSetEmailChange(e){
+  // useEffect(() => {
+  //   const unsubscribe = auth.onAuthStateChanged(user => {
+  //     setLoading(false);
+  //     props.dispatch(login(user.uid));
+  //   });
+  //   return unsubscribe;
+  // }, []);
+
+  function handleSetEmail(e){
     const email = e.target.value;
     setEmail(email);
   };
-  function handleSetPasswordChange(e){
+  function handleSetPassword(e){
     const password = e.target.value;
     setPassword(password);
   };
 
   function logIn(email, password) {
-    return auth.signInWithEmailAndPassword(email, password).catch((error) => {
-      // Handle Errors here.
-      const errorMessage = error.message;
-      setError(errorMessage);
-    });
-  }
+    return auth.signInWithEmailAndPassword(email, password).catch((error) => (() => setError(error.message)));
+  };
 
-  function loginEffect() {
-    return auth.onAuthStateChanged(user => props.dispatch(login(user)));
-  }
+  function navigateToDashboard() {
+    return history.push('/dashboard'); 
+  };
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setError('');
     setLoading(true);
-    await logIn(email, password);
-    loginEffect();
-    history.push("/dashboard");
+    const user = await logIn(email, password);
+    props.dispatch(login(user.user.uid));
+    console.log(user.user);
+    navigateToDashboard();
     setLoading(false);
   };
   
@@ -66,8 +70,8 @@ const LogIn = (props) => {
               <LogInForm onSubmit={handleSubmit}>
                 <Heading>Log In</Heading>
                 {error && <Error>{error}</Error>}
-                <EmailInput value={email} onChange={handleSetEmailChange} type="email"  placeholder="Email" size="1" required/>
-                <PasswordInput value={password} onChange={handleSetPasswordChange} type="password"  placeholder="Password" size="1" required />
+                <EmailInput value={email} onChange={handleSetEmail} type="email" placeholder="Email"  required autoComplete="username" />
+                <PasswordInput value={password} onChange={handleSetPassword} type="password"  placeholder="Password" required autoComplete="current-password" />
                 <Button type="submit" disabled={loading} primary>Log In</Button>
               </LogInForm>
               <SignUpText>Don't have an account?<SignUpLink to="/signup" disabled>Sign Up</SignUpLink></SignUpText>

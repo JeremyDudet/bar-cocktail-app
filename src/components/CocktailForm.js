@@ -12,7 +12,6 @@ const CocktailForm = (props) => {
   const [ timing , setTiming ] = useState(props.cocktail ? props.cocktail.timing : '' );
   const [ iba , setIba ] = useState(props.cocktail ? props.cocktail.iba : false );
   const [ instructions , setInstrusctions ] = useState(props.cocktail ? props.cocktail.instructions : '' );
-  const [ glassware, setGlassware ] = useState(props.cocktail ? props.cocktail.glassware : '');
   const [ note , setNote ] = useState(props.cocktail ? props.cocktail.note : '' );
   const [ error , setError ] = useState('');
   const [ createdAt ] = useState(props.cocktail ? props.cocktail.createdAt : moment() ); // if you're editing this cocktail, createdAt state will be passed down as props.
@@ -180,26 +179,6 @@ const CocktailForm = (props) => {
           id="instructions"
           placeholder="Explain process. Also, include glassware and garnish..."
         />
-
-        <br/>
-
-        {/* <label for="glassware">Glassware: </label>
-        <select value={glassware} id="glassware" onChange={handleGlasswareChange}>
-          <option value=''></option>
-          <option value="rocks">Rocks</option>
-          <option value="martini">Martini</option>
-          <option value="coupe">Coupe</option>
-          <option value="highball">Highball/Collins</option>
-          <option value="tumbler">Tumbler</option>
-          <option value="snifter">Snifter</option>
-          <option value="flute">Flute</option>
-          <option value="wine">Wine</option>
-          <option value="port">Port/Cordial</option>
-          <option value="beer">Beer</option>
-          <option value="copper-mug">Copper-Mug</option>
-          <option value="copper-mug">Hot Drink Mug</option>
-          <option value="shot">Shot</option>
-        </select> */}
 
         <br/>
 

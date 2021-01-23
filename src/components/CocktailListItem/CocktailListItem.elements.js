@@ -8,7 +8,7 @@ export const CocktailCard = styled.section`
   max-width: 200px;
   border: 1px solid white;
   border-radius: 0.5em;
-  box-shadow: 0px 0px #000;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   padding: 1em;
   display: flex;
   flex-direction: column;

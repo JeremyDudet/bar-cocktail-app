@@ -52,7 +52,7 @@ export const setCocktails = (cocktails) => ({
   cocktails,
 });
 
-// will fetch the data, and then dispaatch setIngredients
+// will fetch the data, and then dispatch setCocktails
 export const startSetCocktails = () => {
   return (dispatch) => {
     return database.ref('cocktails').once('value').then((snapshot) => {

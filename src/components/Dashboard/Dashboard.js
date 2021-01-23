@@ -1,7 +1,7 @@
 // this is where we'll display a set of 
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-
+import { IconContext } from "react-icons";
 import {
   InfoSec, 
   AvailableIngredientPicker, 
@@ -76,7 +76,7 @@ const Dashboard = (props) => {
             <SectionSubheader>These are the cocktails you can make...</SectionSubheader>
             <MakeableCocktailList>
               {
-                props.availableCocktails.map( cocktail => (<CoktailName>{cocktail.name}</CoktailName>))
+                props.availableCocktails.map( cocktail => (<CoktailName key={cocktail.id}>{cocktail.name}</CoktailName>))
               }
             </MakeableCocktailList>
           </MakeableCocktails>
@@ -106,7 +106,7 @@ const Dashboard = (props) => {
                   ? <MissingIngredient>
                       <MissingIngredientName>{ingredient.name}</MissingIngredientName>
                       <MissingIngredientAppearances>{appearancesOf[ingredient.id]}</MissingIngredientAppearances> 
-                      <MissingIngredientAddIcon onClick={() => handleIngredientAvailability(ingredient)}>+</MissingIngredientAddIcon>
+                      <MissingIngredientAddIcon onClick={() => handleIngredientAvailability(ingredient)} />
                     </MissingIngredient>
                   : null 
                 ))

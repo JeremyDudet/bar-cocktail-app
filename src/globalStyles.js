@@ -45,10 +45,12 @@ export const Button = styled.button`
   border: none;
   cursor: pointer;
   border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   &:hover {
-    transition: all 0.3s ease-out;
-    background-color: ${({primary}) => (primary ? '#BB46F0' : '#4B59F7' ) };
+    transform: scale(1.01);
+    transition: all 0.2s ease;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   }
 
   @media screen and (max-width: 960px) {
@@ -56,3 +58,8 @@ export const Button = styled.button`
   } 
 `;
 export default GlobalStyle;
+
+// rgb(88, 183, 146) green
+// rgb(245, 163, 57) orange
+// rgb(95, 99, 189) blue/purpleish
+// rgb(135, 206, 245) light blue

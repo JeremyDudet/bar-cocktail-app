@@ -1,10 +1,11 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { Container } from '../../globalStyles'
 import Pacifico from '../../fonts/Pacifico-Regular.ttf'
 
 
 export const Nav = styled.nav`
+  background: #222;
   height: 80px;
   display: flex;
   justify-content: center;
@@ -16,7 +17,7 @@ export const Nav = styled.nav`
 `;
 
 export const NavbarContainer = styled(Container)`
-  background-color: #1f1f1f;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: space-between; 
@@ -25,7 +26,7 @@ export const NavbarContainer = styled(Container)`
 `;
 
 export const NavLogo = styled(Link)`
-  background: none;
+  background: transparent;
   justify-self: flex-start;
   cursor: pointer;
   text-decoration: none;
@@ -41,13 +42,14 @@ export const Barley = styled.div`
     font-weight: normal;
     font-style: normal;
   }
-  
+  background: transparent;
   font-family: 'Pacifico';
   font-size: 2.25rem;  
   display: flex;
 `;
 
 export const At = styled.div`
+  background: transparent;
   margin-left: 1rem;
   margin-right: 0.5rem;
   font-size: 1rem;
@@ -56,7 +58,7 @@ export const At = styled.div`
 `;
 
 export const CurrentRestaurant = styled.div`
-  background: none;
+  background: transparent;
   margin-right: 0.5rem;
   font-size: 1.25rem;
   display: flex;
@@ -68,8 +70,10 @@ export const CurrentRestaurant = styled.div`
 
 export const MobileIcon = styled.div`
   display : none;
+  background: transparent;
 
   @media screen and (max-width: 960px) {
+    background: transparent;
     display: block;
     position: absolute;
     top: 0;
@@ -81,7 +85,7 @@ export const MobileIcon = styled.div`
 `;
 
 export const NavMenu = styled.ul`
-  background: none;
+  background: transparent;
   display: flex;
   align-items: center;
   list-style: none;
@@ -95,19 +99,19 @@ export const NavMenu = styled.ul`
     position: absolute;
     top: 80px;
     left: ${({click}) => ( click ? 0 : '-100%' )};
-    opacity: 0.95;
-    transition: all 0.8s ease;
-    background: #1e1e1e;
+    opacity: 0.90;
+    transition: all 0.6s ease;
+    background: #222;
   }
 `;
 
 export const NavItem = styled.li`
-  background: none;
+  background: transparent;
   height: 80px;
   border-bottom: 2px solid transparent;
 
   @media screen and (max-width: 960px) {
-    background-color: none;
+    background: transparent;
     width: 100% auto;
 
     &:hover {
@@ -116,8 +120,10 @@ export const NavItem = styled.li`
   }
 `;
 
-export const NavLinks = styled(Link)`
-  background: none;
+export const NavLogOut = styled.button`
+  font-size: 1.2rem;
+  background: transparent;
+  border: none;
   color: #FFF;
   display: flex;
   align-items: center;
@@ -125,24 +131,42 @@ export const NavLinks = styled(Link)`
   padding: 0.5rem 1rem;
   height: 100%;
   &:hover {
-      color: #5F5AA2;
-      transition: all 0.3s ease;
-    }
-
+    color: #F66E73;
+    transition: all 0.3s ease;
+  }
   @media screen and (max-width: 960px) {
     text-align: center;
     padding: 2rem;
     width: 100%;
     display: table;
+  }
+`;
 
-    &:hover {
-      color: #5F5AA2;
-      transition: all 0.3s ease;
-    }
+export const NavLinks = styled(NavLink)`
+  background: transparent;
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  height: 100%;
+  &.active{
+    color: #F66E73;
+  }
+  &:hover {
+    color: #F66E73;
+    transition: all 0.3s ease;
+  }
+  @media screen and (max-width: 960px) {
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    display: table;
   }
 `;
 
 export const NavItemBtn = styled.li`
+  background: transparent;
   @media screen and (max-width: 960px) {
     display: flex;
     justify-content: center;
@@ -152,7 +176,8 @@ export const NavItemBtn = styled.li`
   } 
 `;  
 
-export const NavBtnLink = styled(Link)`
+export const NavBtnLink = styled(NavLink)`
+  background: transparent;
   display: flex;
   justify-content: center;
   align-items: center;

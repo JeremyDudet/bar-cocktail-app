@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { IoIosAddCircleOutline } from 'react-icons/io';
+import { AiOutlinePlusCircle } from 'react-icons/ai';
 
 export const InfoSec = styled.div`
   color: #fff;
@@ -51,14 +51,16 @@ export const MakeableCocktailList = styled.div`
 `;
 export const CoktailName = styled.div`
   color: #fff;
-  background-color: ${ ({selected}) => (selected === true ? "#5F5AA2" : "transparent")};
-  border: 1px solid rgb(88, 183, 146);
+  background-color: rgb(88, 183, 146);
+  border: 2px solid rgb(88, 183, 146);
   border-radius: 5px;
   padding: 0.25em 0.5em;
-  
   font-family: inherit;
   font-size: 0.75rem;
   text-align: center;
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 
@@ -67,10 +69,12 @@ export const CocktailGuage = styled.div`
 `;
 export const CircularProgressBarContainer = styled.div`
   max-width: 300px;
+  max-height: 300px;
+  display: flex;
+  flex-direction: column;
   padding: 0.5rem 2rem 2rem 2rem;
   height: auto;
-  justify-self: center;
-  align-self: center;
+  justify-items: flex-start;
 `;
 
 export const MissingPopularIngredients = styled.div``;
@@ -82,11 +86,13 @@ export const MissingIngredientsList = styled.div`
 `;
 export const MissingIngredient = styled.div`
   contain: content;
+  line-height: 1.6rem;
   border-bottom: 1px solid white;
   display: flex;
   flex-flow: row nowrap;
 `;
 export const MissingIngredientTableHeader = styled.div`
+margin-bottom: 5px;
 `;
 export const MissingIngredientName = styled.div`
   position: relative;
@@ -96,23 +102,30 @@ export const MissingIngredientName = styled.div`
   padding: none;
   border: none;
   font-family: inherit;
-  font-size: 0.75rem;
+  font-size: 1rem;
 `;
 export const MissingIngredientAppearances = styled.div`
   position: absolute;
-  right: 2rem;
+  right: 2.2rem;
   align-self: center;
   margin: none;
   padding: none;
   border: none;
   font-family: inherit;
-  font-size: 0.75rem;
+  font-size: 1rem;
 `;
-export const MissingIngredientAddIcon = styled(IoIosAddCircleOutline)`
+export const MissingIngredientAddIcon = styled(AiOutlinePlusCircle)`
   position: absolute;
   right: 5px;
-  color: inherit;
+  top: 0px;
+  width: 1.5rem;
+  height: auto;
+  border-radius: 50%;
   cursor: pointer;
+  &:hover{
+    background: rgb(95, 99, 189);
+    transform: scale(1.05);
+  }
 `;
 
 export const SectionHeader = styled.h2`

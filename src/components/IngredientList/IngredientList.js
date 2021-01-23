@@ -12,9 +12,9 @@ const IngredientList = (props) => {
 
   function handleDisabled(ingredient) {
     let status = false;
-    props.recipeIngredients.map( recipeIngredient => {
+    props.recipeIngredients.forEach( recipeIngredient => {
       if (recipeIngredient.id === ingredient.id) {
-        return status = true;
+        status = true;
       }
     });
     return status;

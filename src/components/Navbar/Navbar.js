@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { FaBars, FaTimes } from 'react-icons/fa' 
-import { IconContext } from 'react-icons/lib'
-import { Button } from '../../globalStyles'
+import { connect } from 'react-redux';
+import { startLogout } from '../../redux/actions/auth';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import { IconContext } from 'react-icons/lib';
 import { 
   Nav, 
   NavbarContainer, 
@@ -13,12 +14,11 @@ import {
   NavMenu, 
   NavItem, 
   NavLinks,
-  NavItemBtn,
-  NavBtnLink,
- } from './Navbar.elements'
+  NavLogOut,
+} from './Navbar.elements';
 
 
-const Navbar = () => {
+const Navbar = (props) => {
 
   const [ click, setClick ] = useState(false);
   const [ button, setButton ] = useState(true);
@@ -39,9 +39,9 @@ const Navbar = () => {
 
   window.addEventListener('resize', showButton);
 
+
   return (
-    <>
-    <IconContext.Provider value={{color: '#fff'}}>
+    <IconContext.Provider value={{background: '#111', color: 'red'}}>
       <Nav>
         <NavbarContainer>
           <NavLogo to="/">
@@ -53,18 +53,44 @@ const Navbar = () => {
             {click ? <FaTimes /> : <FaBars />}
           </MobileIcon>
           <NavMenu onClick={handleClick} click={click}>
+            {
+              props.isAuthenticated 
+              ? 
+                (
+                  <NavItem>
+                    <NavLinks activeClassName="active" to='/dashboard'>Dashboard</NavLinks>
+                  </NavItem>
+                )
+              : 
+                null
+            }
             <NavItem>
-              <NavLinks to='/browse'>Cocktails</NavLinks>
+              <NavLinks activeClassName="active" to='/browse'>Cocktails</NavLinks>
             </NavItem>
-            <NavItem>
-              <NavLinks to='/login'>LogIn</NavLinks>
-            </NavItem>
+            {
+              props.isAuthenticated 
+              ? 
+                (
+                  <NavItem>
+                    <NavLogOut onClick={() => props.dispatch(startLogout())}>Log Out</NavLogOut>
+                  </NavItem>
+                )
+              : 
+                (
+                  <NavItem>
+                    <NavLinks activeClassName="active" to='/login'>Log In</NavLinks>
+                  </NavItem>
+                )
+            }
           </NavMenu>
         </NavbarContainer>
       </Nav>
-      </IconContext.Provider>
-    </>
-  )
-}
+    </IconContext.Provider>
+  );
+};
 
-export default Navbar
+const mapStateToProps = (state) => ({
+  isAuthenticated: !!state.auth.user,
+});
+
+export default connect(mapStateToProps)(Navbar);

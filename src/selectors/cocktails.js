@@ -8,7 +8,7 @@ export const selectCocktails = (cocktails, { name, available, ingredients, filte
     function processAvailableCocktailsMatch(cocktail) {
       // the ids of the ingredients in the cocktails recipe
       const recipeIngredientsIds = []; 
-      cocktail.recipe.map(ingredient => { 
+      cocktail.recipe.forEach(ingredient => { 
         recipeIngredientsIds.push(ingredient.id);
       });
       // once we have the ids of the ingredients in this cocktail's recipe - we can match that id with the ingredient database
@@ -22,9 +22,9 @@ export const selectCocktails = (cocktails, { name, available, ingredients, filte
         );
       });
       let isCocktailAvailable = true;
-      ingredientAvailability.map( availability => {
+      ingredientAvailability.forEach( availability => {
         if (availability === 'false') {
-          isCocktailAvailable = false;
+          return isCocktailAvailable = false;
         }
       })
       return isCocktailAvailable;
@@ -33,13 +33,13 @@ export const selectCocktails = (cocktails, { name, available, ingredients, filte
     function processIngredientsMatch(cocktail, selectedIngredients) {
       // the ids of the ingredients in the cocktails recipe
       const recipeIngredientsIds = []; 
-      cocktail.recipe.map(ingredient => { 
+      cocktail.recipe.forEach(ingredient => { 
         recipeIngredientsIds.push(ingredient.id);
       });
       // once we have the ids of the ingredients in this cocktail's recipe - we can match that id with the filter ingredient's id
       const ingredientsMatch = []; // are selected ingredients in cocktail?
-      selectedIngredients.map(ingredient => {
-        recipeIngredientsIds.map(recipeIngredientId => {
+      selectedIngredients.forEach(ingredient => {
+        recipeIngredientsIds.forEach(recipeIngredientId => {
           if (ingredient.id === recipeIngredientId) {
             ingredientsMatch.push((ingredient.id));
           }
@@ -60,7 +60,7 @@ export const selectCocktails = (cocktails, { name, available, ingredients, filte
     const availableMatch = available ? processAvailableCocktailsMatch(cocktail) : true; // working
     const ingredientsMatch = (ingredients.length > 0) ? processIngredientsMatch(cocktail, ingredients) : true;
     const categoryMatch = category ? (category === cocktail.category) : true; // working
-    const ibaMatch = iba ? (iba == cocktail.iba) : true; // working
+    const ibaMatch = iba ? (iba === cocktail.iba) : true; // working
     const timingMatch = timing ? (timing === cocktail.timing) : true; // working
     const alcoholicMatch = alcoholic ? (alcoholic === cocktail.alcoholic) : true; // working
     const veganMatch = vegan ? (vegan === cocktail.vegan) : true; // working

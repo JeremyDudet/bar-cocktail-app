@@ -12,7 +12,7 @@ const IngredientPickerList = (props) => {
 
   function handleDisabled(ingredient) {
     let status = false;
-    props.cocktailFilters.ingredients.map( selectedIngredient => {
+    props.cocktailFilters.ingredients.forEach( selectedIngredient => {
       if (selectedIngredient.id === ingredient.id) {
         return status = true;
       }

@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 // COCKTAIL Filters Reducer
 
 const filtersReducerDefaultState = {

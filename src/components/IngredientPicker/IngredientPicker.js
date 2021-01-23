@@ -21,7 +21,7 @@ const IngredientPicker = (props) => {
     setFilterType(filterType);
   }
 
-  useEffect(() => {
+  useEffect((props) => {
     props.dispatch(setIngredientFilterType(filterType));
   }, [filterType])
 

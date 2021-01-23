@@ -1,3 +1,5 @@
+import { firebase } from '../../firebase/firebase';
+
 
 export const login = (user) => ({
   type: 'LOGIN',
@@ -5,12 +7,14 @@ export const login = (user) => ({
 });
 
 export const logout = () => ({
-  type: 'LOGOUT'
+  type: 'LOGOUT',
+  user: ''
 });
 
-// export const startLogout = () => {
-//   return () => {
-//     return firebase.auth().signOut();
-//   };
-// };
+export const startLogout = () => {
+  return (dispatch) => {
+    firebase.auth().signOut();
+    dispatch(logout());
+  };
+};
 
