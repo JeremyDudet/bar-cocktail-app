@@ -60,6 +60,6 @@ export const Button = styled.button`
 export default GlobalStyle;
 
 // rgb(88, 183, 146) green
-// rgb(245, 163, 57) orange
+// rgb(245, 163, 57) orange #F66E73
 // rgb(95, 99, 189) blue/purpleish
 // rgb(135, 206, 245) light blue

@@ -14,6 +14,7 @@ export const Ingredient = styled.button`
   font-size: 0.75rem;
   cursor: pointer;
   &:hover {
+    background: ${ ({selected}) => (selected === true ? "rgb(95, 99, 189)" : "#2f2f2f")};;
     transform: scale(1.05);
     transition: transform 0.2s;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;

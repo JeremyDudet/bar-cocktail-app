@@ -18,30 +18,35 @@ import {
   InfoContainer,
   CocktailDescription,
   CocktailPreparation,
-  CocktailInfoLabel
+  CocktailInfoLabel,
+  CocktailInfoButton
  } from './CocktailListItem.elements';
 
 const CocktailInfoComponent = (props) => (
-  <CocktailInfoCard displayInfo={props.displayInfo}>
-    <InfoContainer>
-      <CocktailCardHeader>
-        <CocktailName>{props.name}</CocktailName>
-        <CocktailSubHeading>{`${props.category}, ${props.timing}`}</CocktailSubHeading>
-      </CocktailCardHeader>
-      <CocktailCardBody>
-        <CocktailInfoLabel>Preparation:</CocktailInfoLabel>
-        <CocktailPreparation>{props.instructions}</CocktailPreparation>
-        <CocktailInfoLabel>About:</CocktailInfoLabel>
-        <CocktailDescription>{props.description}</CocktailDescription>
-      </CocktailCardBody>
-      <button onClick={props.handleSetDisplayInfo}>Close</button>
-    </InfoContainer>
-  </CocktailInfoCard>
+  <>
+  <CocktailInfoCard displayInfo={props.displayInfo}></CocktailInfoCard>
+  <InfoContainer>
+    <CocktailCardHeader>
+      <CocktailName>{props.name}</CocktailName>
+      <CocktailSubHeading>{`${props.category}, ${props.timing}`}</CocktailSubHeading>
+    </CocktailCardHeader>
+    <CocktailCardBody>
+      <CocktailInfoLabel>Ingredients:</CocktailInfoLabel>
+      <CocktailPreparation>{props.recipe.map(ingredient => {return (<span>{ingredient.name}</span>)})}</CocktailPreparation>
+      <CocktailInfoLabel>Method:</CocktailInfoLabel>
+      <CocktailPreparation>{props.instructions}</CocktailPreparation>
+      <CocktailInfoLabel>About the cocktail:</CocktailInfoLabel>
+      <CocktailDescription>{props.description}</CocktailDescription>
+    </CocktailCardBody>
+    <CocktailInfoButton onClick={props.handleSetDisplayInfo}>Close</CocktailInfoButton>
+  </InfoContainer>
+  </>
 );
 
-const CocktailListItem = ({id, description, name, timing, category, iba, recipe, instructions, alcoholic, vegan}) => {
+const CocktailListItem = ({ description, name, timing, category, iba, recipe, instructions, alcoholic, vegan}) => {
 
   const [ displayInfo, setDisplayInfo ] = useState(false);
+  const [ infoIconStatus, setInfoIconStatus ] = useState(false);
 
   function handleSetDisplayInfo() {
     displayInfo ? setDisplayInfo(false) : setDisplayInfo(true);
@@ -49,10 +54,14 @@ const CocktailListItem = ({id, description, name, timing, category, iba, recipe,
 
   return (
   <IconContext.Provider value={{ color: "red"}}>
-    {displayInfo && <CocktailInfoComponent displayInfo={displayInfo} handleSetDisplayInfo={handleSetDisplayInfo} name={name} description={description} category={category} timing={timing} instructions={instructions}  />}
-    <CocktailCard>
+    {displayInfo && <CocktailInfoComponent displayInfo={displayInfo} handleSetDisplayInfo={handleSetDisplayInfo} recipe={recipe} name={name} description={description} category={category} timing={timing} instructions={instructions}  />}
+    <CocktailCard
+      onClick={handleSetDisplayInfo} 
+      onMouseEnter={() => setInfoIconStatus(true)}
+      onMouseLeave={() => setInfoIconStatus(false)}
+    >
       <CocktailCardHeader>
-        <InfoIcon onClick={handleSetDisplayInfo}/>
+        <InfoIcon display={infoIconStatus} />
         <CocktailName>{name}</CocktailName>
         <CocktailSubHeading>{`${category}, ${timing}`}</CocktailSubHeading> {/* Category, timing */}
       </CocktailCardHeader>

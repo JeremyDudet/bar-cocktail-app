@@ -17,8 +17,9 @@ const IngredientListFilters = (props) => {
 
   return (
     <IngredientListFilter>
-      <Label for="name">Name: </Label>
+      <Label for="ingredientName">Name: </Label>
       <NameInput
+        id="ingredientName"
         type="name"
         value={props.ingredientFilters.name} 
         onChange={(e) => {
@@ -27,28 +28,33 @@ const IngredientListFilters = (props) => {
         placeholder="Search ingredient name..."
       />
       
-      <Label for="categoryFilter">Category: </Label>
+      <Label for="ingredientCategoryFilter">Category: </Label>
       <FormSelect 
-        id="categoryFilter"
-        name="categoryFilter"
+        id="ingredientCategoryFilter"
         value={props.ingredientFilters.category}
         onChange={(e) => {
           props.dispatch(setCategoryFilter(e.target.value));
         }} 
       >
-        <option value="">---</option>
-        <option value="Spirit">Spirit / Liquor</option>
-        <option value="Liqueur">Flavored Liqueur</option>
-        <option value="Wine">Wine</option>
-        <option value="Beer">Beer</option>
-        <option value="Mixer">Mixer</option>
+        <option value="">--choose category--</option>
+          <option value="Spirit">Spirit / Liquor</option>
+          <option value="Infused-Spirit">Infused Spirit</option>
+          <option value="Liqueur">Flavored Liqueur</option>
+          <option value="Wine/Vermouth">Wine/Vermouth</option>
+          <option value="Beer/Cider">Beer/Cider</option>
+          <option value="Egg&Dairy">Egg & Dairy</option>
+          <option value="Bitters">Bitters</option>
+          <option value="Syrup">Syrup</option>
+          <option value="Fruits, Vegies & Juice">Fruits, Vegies & Juice</option>
+          <option value="Tea">Tea</option>
+          <option value="Savory">Savory Products</option>
+          <option value="Mixer">Mixer</option>
       </FormSelect>
 
 
       <Label for="alcoholFilter">Alcoholic ingredient?</Label>
       <FormSelect 
         id="alcoholFilter"
-        name="alcoholFilter"
         value={props.ingredientFilters.alcoholic}
         onChange={(e) => {
           props.dispatch(setAlcoholFilter(e.target.value));
@@ -59,10 +65,9 @@ const IngredientListFilters = (props) => {
         <option value='false'>Non-Alcoholic</option>
       </FormSelect>
 
-      <Label for="veganFilter">Vegan ingredient?</Label>
+      <Label for="ingredientVeganFilter">Vegan ingredient?</Label>
       <FormSelect 
-        id="veganFilter"
-        name="veganFilter"
+        id="ingredientVeganFilter"
         value={props.ingredientFilters.vegan}
         onChange={(e) => {
           props.dispatch(setVeganFilter(e.target.value));

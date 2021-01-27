@@ -32,7 +32,7 @@ const SignUp = (props) => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       setLoading(false);
       console.log(user);
-      props.dispatch(login(user.uid));
+      props.dispatch(login(user?.uid));
     });
     return unsubscribe;
   }, []);

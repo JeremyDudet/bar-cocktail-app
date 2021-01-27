@@ -21,19 +21,20 @@ const IngredientList = (props) => {
   }
   
   return (
-    <div>
+    <>
       <IngredientsWrapper>
         {props.ingredients.map((ingredient) => { // for each ingredient that is passed down from redux/firebase - render an IngredientListItem
           return (
             <Ingredient 
-              onClick={() => props.handleAddRecipeIngredient(ingredient)}
+              onClick={() => props.handleSelectIngredient(ingredient)}
               key={ingredient.id}
-              disabled={handleDisabled(ingredient)}
+              disabled={(props.recipeIngredients ? handleDisabled(ingredient) : false)}
+              selected={(props.selectedIngredient?.id === ingredient.id ? true : false)}
             >{ingredient.name}</Ingredient>
           );
         })} 
       </IngredientsWrapper>
-    </div>
+    </>
   );
 };
 

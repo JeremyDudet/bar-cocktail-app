@@ -57,16 +57,28 @@ const Navbar = (props) => {
               props.isAuthenticated 
               ? 
                 (
-                  <NavItem>
-                    <NavLinks activeClassName="active" to='/dashboard'>Dashboard</NavLinks>
-                  </NavItem>
+                  <>
+                    <NavItem>
+                      <NavLinks activeClassName="active" to='/dashboard'>Dashboard</NavLinks>
+                    </NavItem>
+                    <NavItem>
+                      <NavLinks activeClassName="active" to='/addCocktail'>Add Cocktails</NavLinks>
+                    </NavItem>
+                    <NavItem>
+                      <NavLinks activeClassName="active" to="/editCocktails">Edit Cocktails</NavLinks>
+                    </NavItem>
+                    <NavItem>
+                      <NavLinks activeClassName="active" to="/editIngredients">Edit Ingredients</NavLinks>
+                    </NavItem>
+                    <NavItem>
+                      <NavLinks activeClassName="active" to='/browse'>Browse Cocktails</NavLinks>
+                    </NavItem>
+                  </>
                 )
               : 
                 null
             }
-            <NavItem>
-              <NavLinks activeClassName="active" to='/browse'>Cocktails</NavLinks>
-            </NavItem>
+            
             {
               props.isAuthenticated 
               ? 

@@ -20,10 +20,10 @@ const AppRouter = () => {
       <Route path="/" component={Home} exact/>
       <Route path="/login" component={AdminLogIn}/>
       <Route path="/signup" component={AdminSignUp}/>
-      <PrivateRoute path="/dashboard" component={AdminDashboard}/>
+      <Route path="/dashboard" component={AdminDashboard}/>
       <Route path="/addCocktail" component={AdminAddCocktail}/>
-      <Route path="/edit/:id" component={AdminEditCocktails}/>
-      <Route path="/editIngredients" component={AdminEditIngredients}/>
+      <Route path="/editCocktails/" component={AdminEditCocktails}/>
+      <Route path="/editIngredients/" component={AdminEditIngredients}/>
       <Route path="/browse" component={UserBrowseCocktails}/>
       <Route path="/help" component={Help}/>
       <Route component={NotFoundPage}/>

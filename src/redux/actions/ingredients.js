@@ -31,10 +31,18 @@ export const startAddIngredient = (ingredientData = {}) => {
   }; 
 }; 
 
-export const removeIngredient = ({id} = {}) => ({
-  type: 'REMOVE_INGREDIENT',
+export const removeIngredient = ({ id } = {}) => ({
+  type: 'REMOVE_EXPENSE',
   id
 });
+
+export const startRemoveIngredient = ({ id } = {}) => {
+  return (dispatch) => {
+    return database.ref(`/ingredients/${id}`).remove().then(() => {
+      dispatch(removeIngredient({ id }));
+    });
+  };
+};
 
 export const editIngredient = (id, updates) => ({
   type: 'EDIT_INGREDIENT',
@@ -43,7 +51,7 @@ export const editIngredient = (id, updates) => ({
 });
 
 export const startEditIngredient = (id, updates) => {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     // const uid = getState().auth.uid;
     return database.ref(`/ingredients/${id}`).update(updates).then(() => {
       dispatch(editIngredient(id, updates));

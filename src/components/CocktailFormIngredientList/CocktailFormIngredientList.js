@@ -1,20 +1,19 @@
 import React from 'react'
+import {SelectedIngredientsContainer, Ingredient, InnerContainer, IngredientName, IngredientAmount, IngredientUnits, RemoveButton} from './CocktailFormIgredientList.elements';
+import {FiDelete} from "react-icons/fi";
+
 
 const CocktailFormIngredientListItem = (props) => {
-
-  const styles = {
-
-  }
 
   function handleClick() {
     props.handleRemoveRecipeIngredient(props.ingredient)
   }
 
   return (
-    <div style={{display: "flex", padding: "0.5rem"}} key={props.ingredient.id}>
-        <span style={{fontSize: "1.25rem", color: "rgb(95, 99, 189)", margin: "0px 20px"}}>{props.ingredient.name}</span>
-        <input
-          style={{marginRight: "10px", outline: "none", border: "1px solid rgb(95, 99, 189)", borderRadius: "8px", paddingLeft: "5px", maxWidth: "5rem"}}
+    <Ingredient key={props.ingredient.id}>
+      <IngredientName>{props.ingredient.name}</IngredientName>
+      <InnerContainer>
+        <IngredientAmount
           value={props.ingredient.amount}
           onChange={e => {
             const amount = e.target.value;
@@ -33,8 +32,7 @@ const CocktailFormIngredientListItem = (props) => {
           type="number"   
           className="amount" 
         />
-        <select 
-          style={{marginRight: "20px", outline: "none", border: "1px solid rgb(95, 99, 189)", borderRadius: "8px", paddingLeft: "5px", maxWidth: "5rem"}}
+        <IngredientUnits 
           value={props.ingredient.units}  
           onChange={e => {
             const units = e.target.value;
@@ -54,25 +52,33 @@ const CocktailFormIngredientListItem = (props) => {
           <option value="ml">ml</option>
           <option value="splash">splash</option>
           <option value="dashes">dashes</option>
-        </select>
-        <button 
-          style={{ 
-            width: "auto",
-            height: "auto",
-            background: "#F66E73",
-            color: "#000",
-            fontSize: "1em",
-            fontWeight: "bolder",
-            padding: "0px 4px",
-            outline: "none",
-            border: "1px solid #F66E73",
-            borderRadius: "8px",
-            cursor: "pointer",
-            boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-          }}
-          onClick={handleClick}>remove</button>
-      </div>
+        </IngredientUnits>
+
+        <RemoveButton onClick={handleClick}>X</RemoveButton>
+      </InnerContainer>
+    </Ingredient>
   );
 }
 
-export default CocktailFormIngredientListItem;
+const CocktailFormIngredientList = (props) => {
+
+  const styles = {
+    display: 'grid',
+    justifyItems: 'left',
+    alignItems: "left",
+    margin: '10px 0 0 0',
+    gap: "0.5rem",
+  }
+  
+  return (
+    <SelectedIngredientsContainer style={styles}>
+      {props.recipeIngredients.map((ingredient) => {
+        return <CocktailFormIngredientListItem ingredient={ingredient} setRecipe={props.setRecipeIngredients} handleRemoveRecipeIngredient={props.handleRemoveRecipeIngredient}/>
+      })}
+    </SelectedIngredientsContainer>
+  );
+};
+
+
+export default CocktailFormIngredientList;
+

@@ -4,7 +4,10 @@ import { Button } from '../../globalStyles'
 export const InfoSec = styled.div`
   color: #0d0d0d;
   margin-top: 2rem;
-  padding: 25px 0;
+  padding: 120px 0;
+  @media screen and (max-width: 758px) {
+    padding: 25px 0;
+  }
 `;
 
 export const InfoRow = styled.div`

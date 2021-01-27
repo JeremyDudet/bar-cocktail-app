@@ -11,26 +11,26 @@ export const Label = styled.label`
   width: 100%;
 `;
 
-export const NameInput = styled.input`
+export const Input = styled.input`
   background-color: transparent;
   border: 1px solid;
-  border-radius: 0.25rem;
+  border-radius: 0.25em;
   padding: 0.25rem 0.5rem;
-  margin-bottom: 0.7rem;
+  margin: 0;
   width: 100%;
   font-family: inherit;
   font-size: 1.15rem;
   cursor: pointer;
-  line-height: 1.05;
+  line-height: 1.2;
 `;
 
 export const FormSelect = styled.select`
   // A reset of styles, including removing the default dropdown arrow
   background-color: transparent;
   border: 1px solid;
-  border-radius: 0.25rem;
+  border-radius: 0.25em;
   padding: 0.25rem 0.5rem;
-  margin-bottom: 0.7rem;
+  margin: 0;
   width: 100%;
   font-family: inherit;
   font-size: 1.15rem;
@@ -40,14 +40,17 @@ export const FormSelect = styled.select`
 
 export const TextArea = styled.textarea`
   outline: none;
-  border-radius: 0.25rem;
   padding: 0.5rem;
-  margin-bottom: 0.7rem;
   max-width: 100%;
+  border-radius: 0.25em;
 `;
 
 export const MainButton = styled(Button)`
   margin-top: 0.7rem;
   width: 100%;
-  background: rgb(88, 183, 146);
+  background: #5F5AA2;
+  color: white;
+  &:hover {
+    background: #6e6aac;
+  }
 `;

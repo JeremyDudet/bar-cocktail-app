@@ -29,16 +29,17 @@ export const IngredientsWrapper = styled.div`
 
 export const FilterTypeRadio = styled.input`
   display: none;
-  &:checked + label {
-    color: #0D0D0D;
-    background-color: #5F5AA2;
-  }
   &:hover + label {
     cursor: pointer;
+    background: #2f2f2f;
     border: 2px solid #5F5AA2;
     transform: scale(1.01);
     transition: all 0.2s ease;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  }
+  &:checked + label {
+    color: #0D0D0D;
+    background-color: #5F5AA2;
   }
 `;
 

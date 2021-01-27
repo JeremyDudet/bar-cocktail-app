@@ -1,10 +1,9 @@
 import React from 'react'
+import { EditIngredientPage } from '../../components';
 
 const AdminEditIngredients = () => {
   return (
-    <div>
-      <h1>hello</h1>
-    </div>
+    <EditIngredientPage />
   )
 }
 

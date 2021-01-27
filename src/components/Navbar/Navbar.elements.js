@@ -99,13 +99,14 @@ export const NavMenu = styled.ul`
     position: absolute;
     top: 80px;
     left: ${({click}) => ( click ? 0 : '-100%' )};
-    opacity: 0.90;
+    opacity: 0.98;
     transition: all 0.6s ease;
     background: #222;
   }
 `;
 
 export const NavItem = styled.li`
+  font-size: 0.9rem;
   background: transparent;
   height: 80px;
   border-bottom: 2px solid transparent;
@@ -113,6 +114,7 @@ export const NavItem = styled.li`
   @media screen and (max-width: 960px) {
     background: transparent;
     width: 100% auto;
+    font-size: 1.4rem;
 
     &:hover {
       border: none;
@@ -121,7 +123,7 @@ export const NavItem = styled.li`
 `;
 
 export const NavLogOut = styled.button`
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   background: transparent;
   border: none;
   color: #FFF;
@@ -139,6 +141,7 @@ export const NavLogOut = styled.button`
     padding: 2rem;
     width: 100%;
     display: table;
+    font-size: 1.2rem;
   }
 `;
 

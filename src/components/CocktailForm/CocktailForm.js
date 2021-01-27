@@ -1,6 +1,5 @@
 import  React, { useState } from 'react';
-import moment from 'moment';
-import CocktailFormIngredientList from '../CocktailFormIngredientList';
+import CocktailFormIngredientList from '../CocktailFormIngredientList/CocktailFormIngredientList';
 
 
 import {Form, Label, NameInput, FormSelect, TextArea, MainButton} from './CocktailForm.elements';
@@ -17,7 +16,7 @@ const CocktailForm = (props) => {
   const [ instructions , setInstrusctions ] = useState(props.cocktail ? props.cocktail.instructions : '' );
   const [ note , setNote ] = useState(props.cocktail ? props.cocktail.note : '' );
   const [ error , setError ] = useState('');
-  const [ createdAt ] = useState(props.cocktail ? props.cocktail.createdAt : moment() ); // if you're editing this cocktail, createdAt state will be passed down as props.
+  const [ createdAt ] = useState(props.cocktail ? props.cocktail.createdAt : Date.now() ); // if you're editing this cocktail, createdAt state will be passed down as props.
   const [ lastEdited ] = useState(props.cocktail ? props.cocktail.lastEdited : '');
   
 
@@ -90,8 +89,8 @@ const CocktailForm = (props) => {
         note,
         alcoholic: determineAlcoholicStatus(props.recipeIngredients),
         vegan: determineVeganStatus(props.recipeIngredients),
-        createdAt: createdAt.valueOf(), // moment.js -> valueOf simply outputs the number of milliseconds since the Unix Epoch 
-        lastEdited: moment().valueOf(), 
+        createdAt: createdAt, // moment.js -> valueOf simply outputs the number of milliseconds since the Unix Epoch 
+        lastEdited: Date.now(), 
       });
     }
   };
@@ -100,10 +99,6 @@ const CocktailForm = (props) => {
 
   return (
     <>
-      {error && <p>{error}</p>} {/* So...basically: "If state.error is not empty, display this html tag"  */}
-      <p>Created: {createdAt.format("MMM Do YYYY")}</p>
-      {lastEdited && <p>Last edited on {lastEdited.format("MMM Do YYYY")}</p>} {/* and same here.*/}
-      
       <Form id="cocktail" onSubmit={onSubmit}>
       
         <Label for="cocktail_name">Choose Name: </Label>
@@ -116,10 +111,11 @@ const CocktailForm = (props) => {
           autoFocus
           value={name}
           onChange={handleNameChange}
+          required
         />
 
         <Label for="cocktail_category">Category: </Label>
-        <FormSelect value={category} id="cocktail_category" name="category" onChange={handleCategoryChange}>
+        <FormSelect value={category} id="cocktail_category" name="category" onChange={handleCategoryChange} required>
           <option value=''>...pick category</option>
           <option value="Classic">Classic</option>
           <option value="Sours">Sours</option>
@@ -135,14 +131,14 @@ const CocktailForm = (props) => {
         
 
         <Label for="iba">IBA recipe? </Label>
-        <FormSelect value={iba} id="iba" onChange={handleIbaChange}>
+        <FormSelect value={iba} id="iba" onChange={handleIbaChange} required>
           <option value=''></option>
           <option value='false'>No</option>
           <option value='true'>Yes</option>
         </FormSelect>
 
         <Label for="timing">Timing: </Label>
-        <FormSelect value={timing} id="timing" onChange={handleTimingChange}>
+        <FormSelect value={timing} id="timing" onChange={handleTimingChange} required>
           <option value=''></option>
           <option value="aperitivo">Aperitivo</option>
           <option value="digestivo">Digestivo</option>
@@ -158,21 +154,24 @@ const CocktailForm = (props) => {
           name="description"
           value={description}
           onChange={handleDescriptionChange}
+          required
         /> 
         <Label for="description">Recipe Ingredients: </Label>
         <CocktailFormIngredientList 
           setRecipeIngredients={props.setRecipeIngredients} 
           recipeIngredients={props.recipeIngredients}
           handleRemoveRecipeIngredient={props.handleRemoveRecipeIngredient}
+          required
         />
 
                                                                                                                                                                                                                                                  
-        <Label for="instructions">Preparation: </Label>
+        <Label for="instructions">Preparation Method: </Label>
         <TextArea
           value={instructions}
           onChange={handleInstructionsChange}
           id="instructions"
           placeholder="Explain process. Also, include glassware and garnish..."
+          required
         />
 
 
@@ -180,7 +179,7 @@ const CocktailForm = (props) => {
         <TextArea 
           value={note}
           onChange={handleNoteChange}
-          placeholder="Add a note regarding the cocktail (optional)"
+          placeholder="(optional)"
         />
         
         <MainButton type='submit'>Submit</MainButton>

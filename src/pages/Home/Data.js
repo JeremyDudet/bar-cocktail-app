@@ -4,7 +4,7 @@ export const homeObjectOne = {
   imgStart: false,
   lightTopLine: true,
   lightTextDesc: false,
-  buttonLabel: 'Explore Cocktails',
+  buttonLabel: 'Browse Cocktails',
   description: '',
   headline: 'Discover what we can make with ingredients we have on hand',
   lightText: true,

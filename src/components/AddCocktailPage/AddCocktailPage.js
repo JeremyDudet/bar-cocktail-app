@@ -9,13 +9,13 @@ import { startAddCocktail } from '../../redux/actions/cocktails';
 
 // components
 import CocktailForm from '../CocktailForm/CocktailForm';
-import IngredientForm from '../IngredientForm';
+import { IngredientForm } from '../../components';
 import IngredientList from '../IngredientList/IngredientList';
 import IngredientListFilters from '../IngredientListFilters/IngredientListFilters';
 
 // styles
 import { Container } from '../../globalStyles';
-import { InfoSec, CocktailFormColumn, InfoColumn, InfoRow, InfoInnerRow, } from "./AddCocktailPage.elements";
+import { InfoSec, CocktailFormColumn, InfoColumn, InfoRow, InnerInfoColumn, } from "./AddCocktailPage.elements";
 
 const AddCocktailPage = (props) => {
   
@@ -44,9 +44,10 @@ const AddCocktailPage = (props) => {
   return (
     <InfoSec>
       <Container>
-        <h1>Add New Cocktail</h1>
         <InfoRow>
           <CocktailFormColumn>
+            <h1>Add New Cocktail</h1>
+            <br/>
             <CocktailForm
               onSubmit={(cocktail) => {
                 props.dispatch(startAddCocktail(cocktail));
@@ -58,22 +59,25 @@ const AddCocktailPage = (props) => {
             />
           </CocktailFormColumn>
           <InfoColumn>
-            <InfoInnerRow>
+            <InnerInfoColumn>
+              <h1> Add ingredients to recipe </h1>
+              <br/>
               <IngredientListFilters/>
               <IngredientList 
-                handleAddRecipeIngredient={handleAddRecipeIngredient}
+                handleSelectIngredient={handleAddRecipeIngredient}
                 recipeIngredients={recipeIngredients}
               /> {/* pass down handler that updates this function's state */}
-            </InfoInnerRow>
-            <InfoInnerRow>
-              <h4>Can't find ingredient? </h4>
-              <h5>Add new ingredient to your bar's database...</h5>
+            </InnerInfoColumn>
+            <InnerInfoColumn>
+              <h1>Can't find ingredient? </h1>
+              <h4>Add new ingredient to your bar's database...</h4>
+              <br/>
               <IngredientForm 
                 onSubmit={(ingredient) => {
                   props.dispatch(startAddIngredient(ingredient));
                 }}
               />
-            </InfoInnerRow>
+            </InnerInfoColumn>
           </InfoColumn>
         </InfoRow>
       </Container>

@@ -3,9 +3,7 @@ import { AddCocktailPage } from '../../components'
 
 const AdminAddCocktail = () => {
   return (
-    <div>
       <AddCocktailPage/>
-    </div>
   )
 }
 

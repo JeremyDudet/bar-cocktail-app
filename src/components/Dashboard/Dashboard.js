@@ -60,12 +60,10 @@ const Dashboard = (props) => {
   return (
     <InfoSec>
       <Container>
-        <AvailableIngredientPicker>
-          <SectionHeader style={{fontSize: "2rem", lineHeight: "1.9rem"}}>Select ingredients available in your bar:</SectionHeader>
-          <IngredientsWrapper>
-            <IngredientPickerList handleSelectedIngredient={handleIngredientAvailability} allIngredients={props.allIngredients} />
-          </IngredientsWrapper>
-        </AvailableIngredientPicker>
+        <SectionHeader style={{fontSize: "2rem", lineHeight: "1.9rem"}}>Select ingredients available in your bar:</SectionHeader>
+        <IngredientsWrapper>
+          <IngredientPickerList handleSelectedIngredient={handleIngredientAvailability} allIngredients={props.allIngredients} />
+        </IngredientsWrapper>
         <InfoRow>
           <MakeableCocktails>
             <SectionHeader>Makeable cocktails</SectionHeader>

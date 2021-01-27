@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { TiDeleteOutline } from 'react-icons/ti';
+import { Button } from '../../globalStyles'
 
 
 export const CocktailListFilter = styled.div`
@@ -18,7 +19,7 @@ export const FilterWrapper = styled.div`
   } 
 `;
 
-export const SearchByIngredientButton = styled.button`
+export const SearchByIngredientButton = styled(Button)`
   outline: none;
   appearance: none;
   color: rgb(95, 99, 189);

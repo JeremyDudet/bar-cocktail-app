@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import { Button } from '../../globalStyles';
 import { BsInfoCircle } from 'react-icons/bs';
 import Pacifico from '../../fonts/Pacifico-Regular.ttf';
 
 export const CocktailCard = styled.section`
   contain: content;
-  min-width: 200px;
+  min-width: 100px;
   max-width: 200px;
   border: 1px solid white;
   border-radius: 0.5em;
@@ -99,6 +100,7 @@ export const Img = styled.img`
   max-height: 40px;
 `;
 export const InfoIcon = styled(BsInfoCircle)`
+  display: ${({display}) => ( display ? 'block' : 'none' )};
   position: absolute;
   background: transparent;
   width: 1em;
@@ -117,8 +119,6 @@ export const CocktailInfoCard = styled.div`
   /* contain: content; */
   position: fixed;
   display: flex;
-  justify-content: center;
-  align-content: center;
   top: 0;
   bottom: 0;
   left: 0;
@@ -128,17 +128,25 @@ export const CocktailInfoCard = styled.div`
   z-index: ${({displayInfo}) => ( displayInfo ? 1000 : -1 )};
   transition: all 0.8s ease;
   background: #222;
-  opacity: 0.95;
+  opacity: 0.90;
+  z-index: 100;
 `;
 export const InfoContainer = styled.div`
+  /* Center vertically and horizontally */
   position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: auto;
+  margin: -25% 0 0 -25%;
+  z-index: 1000;
+  opacity: 1;
+  border: 1px solid white;
+  border-radius: 0.5em;
   display: flex;
   flex-direction: column;
-  align-self: center;
-  justify-self: center;
   justify-content: center;
-  align-items: left;
-  /* margin-top: 25%; */
+  align-items: center;
   padding: 3em;
   @media screen and (max-width: 960px) {
     padding: 2em;
@@ -160,16 +168,11 @@ export const CocktailInfoLabel = styled.div`
   margin-top: 1em;
   border: none;
 `;
-export const CocktailInfoButton = styled.button`
-  font-weight: bolder;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  border-radius: 8px;
-  &:hover {
-    transition: all 0.3s ease-out;
-    background-color: ${({primary}) => (primary ? '#BB46F0' : '#4B59F7' ) };
-  }
+export const CocktailInfoButton = styled(Button)`
+  max-width: 100px;
+  background-color: rgb(245, 163, 57);
+  opacity: 1;
+
 `;
 
 
