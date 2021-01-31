@@ -1,4 +1,7 @@
+// core
 import React, { useState, useEffect } from 'react';
+
+// global state management
 import { connect  } from "react-redux";
 import { 
   setNameFilter, 
@@ -9,6 +12,11 @@ import {
   setAlcoholicFilter,
   setVeganFilter, 
 } from '../../redux/actions/cocktailFilters';
+
+// functional components
+import { IngredientPicker } from '../../components';
+
+// styled components
 import { 
   CocktailListFilter,
   NameInput,
@@ -19,7 +27,8 @@ import {
   SelectedIngredient,
   SelectedIngredientDeleteIcon,
 } from './CocktailListFilters.elements';
-import IngredientPicker from '../IngredientPicker/IngredientPicker';
+
+
 
 
 const RenderSelectedIngredient = (props) => {
@@ -38,7 +47,7 @@ const RenderSelectedIngredient = (props) => {
 
 const CocktailListFilters = (props) => {
   const [ displayIngredientPicker, setDisplayIngredientPicker ] = useState(false); 
-  const [ searchIngredientButtonText, setSearchIngredientButtonText ] = useState('Search by ingredient(s)')
+  const [ searchIngredientButtonText, setSearchIngredientButtonText ] = useState('Search by ingredient')
   const [ selectedIngredients, setSelectedIngredients ] = useState([]);
 
   useEffect(()=>{
@@ -52,7 +61,7 @@ const CocktailListFilters = (props) => {
       setSearchIngredientButtonText('CLOSE');
     } else { 
       currentState = false;
-      setSearchIngredientButtonText('Select Ingredient(s)');
+      setSearchIngredientButtonText('Search by ingredient');
     };
     setDisplayIngredientPicker(currentState);
   };

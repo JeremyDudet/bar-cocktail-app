@@ -141,7 +141,8 @@ export const WebsiteRights = styled.small`
 
 export const SocialIcons = styled.div`
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  justify-content: center;
   align-items: center;
   width:  240px;
 `;

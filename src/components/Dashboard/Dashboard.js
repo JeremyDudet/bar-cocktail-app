@@ -1,9 +1,25 @@
-// this is where we'll display a set of 
+// core
 import React from 'react';
+
+// date formater
+import { format } from 'date-fns';
+
+// global state management
 import { connect } from 'react-redux';
-import {
-  InfoSec, 
-  AvailableIngredientPicker, 
+import { startEditIngredient } from '../../redux/actions/ingredients';
+
+// logic 
+import { selectCocktails } from '../../selectors/cocktails'; // cocktail filter 
+import { appearancesOf } from '../../cocktailAppearances';
+
+// functional components
+import { IngredientPickerList } from '../../components';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+
+// styled components
+import {InfoSec, Container, PageTitle, SectionHeader, SectionSubheader} from '../../globalStyles';
+import { 
   InfoRow,
   IngredientsWrapper,
   MakeableCocktails,
@@ -17,16 +33,8 @@ import {
   MissingIngredientName,
   MissingIngredientAppearances,
   MissingIngredientAddIcon,
-  SectionHeader,
-  SectionSubheader,
   CircularProgressBarContainer
 } from './Dashboard.elements';
-import {Container} from '../../globalStyles';
-import IngredientPickerList from '../IngredientPickerList/IngredientPickerList';
-import { startEditIngredient } from '../../redux/actions/ingredients';
-import { selectCocktails } from '../../selectors/cocktails';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
 
 
 const Dashboard = (props) => {
@@ -34,33 +42,17 @@ const Dashboard = (props) => {
   const availableCocktailsCount = props.availableCocktails.length;
   const allCocktailsCount = props.allCocktails.length;
   const percentage = Math.round((availableCocktailsCount / allCocktailsCount) * 100);
-  
+
   function handleIngredientAvailability(ingredient) {
     let newState = '';
     (ingredient.available === "true") ? newState = 'false' : newState = 'true';
     props.dispatch(startEditIngredient(ingredient.id,{ available: newState }));
   }
 
-  
-  const ingredientsIDs = props.allIngredients.map( ingredient => (ingredient.id));
-  const ingredientAppearances = ingredientsIDs.map(id => {
-    const nestedArr = [id];
-    let count = 0;
-    props.allCocktails.forEach(cocktail => {
-      cocktail.recipe.forEach(ingredient => {
-        if (ingredient.id === id) {count++};
-      });
-    });
-
-    nestedArr.push(count);
-    return nestedArr;
-  });
-  const appearancesOf = Object.fromEntries(ingredientAppearances);
-
   return (
     <InfoSec>
       <Container>
-        <SectionHeader style={{fontSize: "2rem", lineHeight: "1.9rem"}}>Select ingredients available in your bar:</SectionHeader>
+        <PageTitle>Select ingredients available in your bar</PageTitle>
         <IngredientsWrapper>
           <IngredientPickerList handleSelectedIngredient={handleIngredientAvailability} allIngredients={props.allIngredients} />
         </IngredientsWrapper>
@@ -99,7 +91,7 @@ const Dashboard = (props) => {
                   (ingredient.available === "false") 
                   ? <MissingIngredient>
                       <MissingIngredientName>{ingredient.name}</MissingIngredientName>
-                      <MissingIngredientAppearances>{appearancesOf[ingredient.id]}</MissingIngredientAppearances> 
+                      <MissingIngredientAppearances>{props.appearancesOf[ingredient.id]}</MissingIngredientAppearances> 
                       <MissingIngredientAddIcon onClick={() => handleIngredientAvailability(ingredient)} />
                     </MissingIngredient>
                   : null 
@@ -116,8 +108,9 @@ const Dashboard = (props) => {
 const mapStateToProps = (state) => {
   return {
     allIngredients: state.ingredients,
+    allCocktails: state.cocktails,
     availableCocktails: selectCocktails(state.cocktails, state.cocktailFilters, state.ingredients),
-    allCocktails: state.cocktails
+    appearancesOf: appearancesOf(state.ingredients, state.cocktails),
   };
 };
 

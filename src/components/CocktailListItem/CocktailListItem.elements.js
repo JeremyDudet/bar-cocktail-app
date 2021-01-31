@@ -4,19 +4,23 @@ import { BsInfoCircle } from 'react-icons/bs';
 import Pacifico from '../../fonts/Pacifico-Regular.ttf';
 
 export const CocktailCard = styled.section`
-  contain: content;
   min-width: 100px;
-  max-width: 200px;
-  border: 1px solid white;
-  border-radius: 0.5em;
+  max-width: 300px;
+  border-radius: 0.5rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  padding: 1em;
+  padding: 0.5rem;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   align-items: left;
+  background: #2a2a2a;
+  contain: content;
   &:hover{
-    background: #2f2f2f;
-    transform: scale(1.015);
+    .ingredients {
+      box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px inset, rgba(0, 0, 0, 0.23) 0px 6px 6px inset;
+    }
+    background: #2e2e2e;
+    /* transform: scale(1.05); */
     transition: all 0.2s ease;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   }
@@ -26,42 +30,43 @@ export const CocktailCardHeader = styled.div`
   display: flex;
   flex-direction: column;
   background: transparent;
-  line-height: 1.1em;
 `;
 export const CocktailName = styled.div`
   background: transparent;
-  @font-face {
-    font-family: Pacifico;
-    src: url(${Pacifico}) format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
-  
-  font-family: 'Pacifico';
-  font-size: 1.25em;
-  line-height: 1.2em;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  margin-right: 1.2rem;
 `;
 export const CocktailSubHeading = styled.div`
   background: transparent;
   font-weight: normal;
-  font-size: 0.7em;
+  font-size: 0.9rem;
   color: #BFC0C0;
 `;
 
 
 export const CocktailCardBody = styled.div`
   background: transparent;
-  margin: none;
-  border: none;
 `;
 export const CocktailRecipeIngredients = styled.ul`
   background: transparent;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
   list-style-type: none;
+  background-color: #2a2a2a;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px inset;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 5px;
+  line-height: 0.95rem;
 `;
+
 export const CocktailRecipeIngredient = styled.li`
   background: transparent;
-  font-size: 0.9em;
-  line-height: 0.9em;
+  font-size: 1rem;
+  text-shadow: 0px 3px 7px rgba(0,0,0,0.66);
 `;
 
 
@@ -106,12 +111,7 @@ export const InfoIcon = styled(BsInfoCircle)`
   width: 1em;
   right: 5px;
   top: 5px;
-  color: rebeccapurple;
   cursor: pointer;
-  &:hover{
-    transform: scale(1.1);
-    transition: all 0.8s ease;
-  }
 `;
 
 
@@ -141,7 +141,6 @@ export const InfoContainer = styled.div`
   margin: -25% 0 0 -25%;
   z-index: 1000;
   opacity: 1;
-  border: 1px solid white;
   border-radius: 0.5em;
   display: flex;
   flex-direction: column;

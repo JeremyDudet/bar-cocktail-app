@@ -66,7 +66,7 @@ const CocktailListItem = ({ description, name, timing, category, iba, recipe, in
         <CocktailSubHeading>{`${category}, ${timing}`}</CocktailSubHeading> {/* Category, timing */}
       </CocktailCardHeader>
       <CocktailCardBody>
-        <CocktailRecipeIngredients>{recipe.map(ingredient => (<CocktailRecipeIngredient key={ingredient.id} >{ingredient.name}</CocktailRecipeIngredient>))}</CocktailRecipeIngredients>
+        <CocktailRecipeIngredients className="ingredients">{recipe.map(ingredient => (<CocktailRecipeIngredient key={ingredient.id} >{ingredient.name}</CocktailRecipeIngredient>))}</CocktailRecipeIngredients>
       </CocktailCardBody>
       <CocktailCardFooter>
         {(iba === "true") ? <IbaIcon><Img src={require('../../images/iba-logo.png')} alt="Image"/></IbaIcon> : null}

@@ -29,7 +29,7 @@ const IngredientList = (props) => {
               onClick={() => props.handleSelectIngredient(ingredient)}
               key={ingredient.id}
               disabled={(props.recipeIngredients ? handleDisabled(ingredient) : false)}
-              selected={(props.selectedIngredient?.id === ingredient.id ? true : false)}
+              selected={(props.selectedIngredient?.id === ingredient.id)}
             >{ingredient.name}</Ingredient>
           );
         })} 

@@ -1,69 +1,56 @@
 import styled from "styled-components";
+import { RiDeleteBack2Line } from 'react-icons/ri';
 
 
 export const SelectedIngredientsContainer = styled.div`
-  display: flex;
-  flex-direction: column; 
-  padding-bottom: 1rem;
-  min-width: 300px;
-  flex-wrap: wrap;
+  background-color: #2a2a2a;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px inset, rgba(0, 0, 0, 0.23) 0px 6px 6px inset;
+  display: grid;
+  padding: 1rem;
+  gap: 0.6rem;
 `;
 export const Ingredient = styled.div`
+  background: #2e2e2e;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  padding: 0.3rem 0.5rem;
+  width: 100%;
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 0.5rem; 
-  align-items: center;
-  max-width: 100%;
-  border-bottom: 1px solid rgb(95, 99, 189);
 `;
 export const IngredientName = styled.div`
-  justify-self: flex-start;
+  background-color: transparent;
   align-self: center;
-  color: rgb(95, 99, 189);
-  font-size: 1.2rem;
-  line-height: 1.2rem;
 `;
 export const InnerContainer = styled.div`
+  background-color: transparent;
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  margin: none;
-  border: none;
-  padding: none;
+  justify-content: space-between;
+  align-items: center;
 `;
 export const IngredientAmount = styled.input`
   background-color: transparent;
   border: 1px solid #333;
   border-radius: 0.25rem;
   max-width: 6rem;
-  padding: 0.25rem 0.5rem;
-  margin-right: 0.5rem;
   cursor: pointer;
 `;
 export const IngredientUnits = styled.select`
-  align-self: center;
   background-color: transparent;
   border: 1px solid #333;
   border-radius: 0.25rem;
-  padding: 0.25rem 0.5rem;
-  margin-right: 0.5rem;
   cursor: pointer;
 `;
 
-export const RemoveButton = styled.button`
-  align-self: center;
+export const RemoveButton = styled(RiDeleteBack2Line)`
   border: none;
-  font-size: 1.4rem;
-  background: none;
-  color: #F66E73;
-  width: 3rem;
-  height: 100%;
+  background: transparent;
+  color: red;
+  width: 2.5rem;
+  transform: scale(1.2); 
   &:hover {
-    transform: scale(1.1); 
-  }
-  @media screen and (max-width: 960px) {
-    background: transparent;
-    flex-basis: 10%;
+    transform: scale(1.3); 
   }
 `;

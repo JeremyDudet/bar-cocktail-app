@@ -1,5 +1,6 @@
-import  React, { useState } from 'react';
+import  React, { useState, useEffect } from 'react';
 import CocktailFormIngredientList from '../CocktailFormIngredientList/CocktailFormIngredientList';
+import { format } from "date-fns";
 
 
 import {Form, Label, NameInput, FormSelect, TextArea, MainButton} from './CocktailForm.elements';
@@ -13,13 +14,22 @@ const CocktailForm = (props) => {
   const [ description , setDescription ] = useState(props.cocktail ? props.cocktail.description : '' );
   const [ timing , setTiming ] = useState(props.cocktail ? props.cocktail.timing : '' );
   const [ iba , setIba ] = useState(props.cocktail ? props.cocktail.iba : false );
-  const [ instructions , setInstrusctions ] = useState(props.cocktail ? props.cocktail.instructions : '' );
+  const [ instructions , setInstructions ] = useState(props.cocktail ? props.cocktail.instructions : '' );
   const [ note , setNote ] = useState(props.cocktail ? props.cocktail.note : '' );
   const [ error , setError ] = useState('');
   const [ createdAt ] = useState(props.cocktail ? props.cocktail.createdAt : Date.now() ); // if you're editing this cocktail, createdAt state will be passed down as props.
-  const [ lastEdited ] = useState(props.cocktail ? props.cocktail.lastEdited : '');
+  const [ lastEdited, setLastEdited ] = useState(props.cocktail ? props.cocktail.lastEdited : '');
   
-
+  useEffect(() => {
+    setName(props.cocktail?.name);
+    setCategory(props.cocktail?.category);
+    setDescription(props.cocktail?.description);
+    setTiming(props.cocktail?.timing);
+    setIba(props.cocktail?.iba);
+    setInstructions(props.cocktail?.instructions);
+    setNote(props.cocktail?.note);
+    setLastEdited(props.cocktail?.lastEdited);
+  }, [props.cocktail]);
 
   function handleNameChange(e) {
     const newName = e.target.value;
@@ -48,7 +58,7 @@ const CocktailForm = (props) => {
 
   function handleInstructionsChange(e) {
     const instructions = e.target.value;
-    setInstrusctions(instructions);
+    setInstructions(instructions);
   }
 
   function handleNoteChange(e) {
@@ -95,17 +105,22 @@ const CocktailForm = (props) => {
     }
   };
   
-
-
   return (
     <>
+      { props.cocktail && 
+      <>
+        <div style={{color: '#bbb'}}>{`Last Edited: ${format(lastEdited, 'MM/dd/yyy')}`}</div>
+        {/* <button onClick={() => props.handleSetSelectedCocktail()}>Cancel Edit</button> */}
+      </>
+      
+      }
       <Form id="cocktail" onSubmit={onSubmit}>
       
-        <Label for="cocktail_name">Choose Name: </Label>
+        <Label for="cocktail_name">Name: </Label>
         <NameInput
           type='text'
           id="cocktail_name"
-          placeholder='+ Add name'
+          placeholder='Cocktail name...'
           name='cocktail_name'
           autoComplete="off"
           autoFocus
@@ -116,7 +131,7 @@ const CocktailForm = (props) => {
 
         <Label for="cocktail_category">Category: </Label>
         <FormSelect value={category} id="cocktail_category" name="category" onChange={handleCategoryChange} required>
-          <option value=''>...pick category</option>
+          <option value=''>...select cocktail category</option>
           <option value="Classic">Classic</option>
           <option value="Sours">Sours</option>
           <option value="Spirit-Forward">Spirit-Forward</option>
@@ -132,14 +147,14 @@ const CocktailForm = (props) => {
 
         <Label for="iba">IBA recipe? </Label>
         <FormSelect value={iba} id="iba" onChange={handleIbaChange} required>
-          <option value=''></option>
+          <option value=''>---</option>
           <option value='false'>No</option>
           <option value='true'>Yes</option>
         </FormSelect>
 
         <Label for="timing">Timing: </Label>
         <FormSelect value={timing} id="timing" onChange={handleTimingChange} required>
-          <option value=''></option>
+          <option value=''>---</option>
           <option value="aperitivo">Aperitivo</option>
           <option value="digestivo">Digestivo</option>
           <option value="dessert">Dessert</option>
@@ -182,7 +197,7 @@ const CocktailForm = (props) => {
           placeholder="(optional)"
         />
         
-        <MainButton type='submit'>Submit</MainButton>
+        <MainButton type='submit'>{props.cocktail ? 'Submit Edit' : 'Submit New Cocktail'}</MainButton>
 
       </Form>
     </>

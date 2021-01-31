@@ -22,12 +22,12 @@ export const FilterWrapper = styled.div`
 export const SearchByIngredientButton = styled(Button)`
   outline: none;
   appearance: none;
-  color: rgb(95, 99, 189);
+  color: #BB46F0;
   background: transparent;
   border: 1px solid;
   border-radius: 0.25em;
   padding: 0.25em 0.5em;
-  margin-top: 1rem;
+  margin: 1rem 0;
   width: 100%;
   font-family: inherit;
   font-size: 1.15rem;
@@ -36,10 +36,10 @@ export const SearchByIngredientButton = styled(Button)`
 `;
 
 export const SelectedIngredientsWrapper = styled.div`
-  margin: 0.25rem 0 0.75rem 0;
+  margin: 0.5rem;
   display: flex;
   flex-wrap: wrap;
-  padding: 0;
+  gap: 0.3rem;
 `;
 
 export const SelectedIngredient = styled.button`
@@ -92,8 +92,6 @@ export const NameInput = styled.input`
 `;
 
 export const FormSelect = styled.select`
-  // A reset of styles, including removing the default dropdown arrow
-  /* appearance: none; */
   background-color: transparent;
   border: 1px solid;
   border-radius: 0.25em;
@@ -105,8 +103,3 @@ export const FormSelect = styled.select`
   cursor: pointer;
   line-height: 1.05;
 `;
-
-// rgb(88, 183, 146) green
-// rgb(245, 163, 57) orange
-// rgb(95, 99, 189) blue/purpleish
-// rgb(135, 206, 245) light blue

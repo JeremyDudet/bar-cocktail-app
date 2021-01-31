@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 export const IngredientsWrapper = styled.div`
-  margin: 0.25rem 0 0.75rem 0;
+  background-color: transparent;
+  margin: 0;
   display: flex;
   flex-wrap: wrap;
   padding: 0;
@@ -9,14 +10,6 @@ export const IngredientsWrapper = styled.div`
 `;
 
 export const Ingredient = styled.button`
-  &:hover {
-    cursor: pointer;
-    background: #2f2f2f;
-    border: 1px solid #5F5AA2;
-    transform: scale(1.01);
-    transition: all 0.2s ease;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-  }
   display: flex;
   justify-self: flex-start;
   color: ${ ({selected}) => (selected ? "#fff" : "rgb(95, 99, 189)")};
@@ -31,5 +24,13 @@ export const Ingredient = styled.button`
   cursor: pointer;
   :disabled{
     display: none;
+  }
+  &:hover {
+    cursor: pointer;
+    background: ${ ({selected}) => (selected ? "rgb(95, 99, 189)" : "#2f2f2f")};
+    border: 1px solid #5F5AA2;
+    transform: scale(1.01);
+    transition: all 0.2s ease;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   }
 `;

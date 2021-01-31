@@ -33,25 +33,25 @@ const Footer = () => {
       <SocialMedia>
         <SocialMediaWrap>
           <SocialLogo to='/'>
-            barley
+            crafted
           </SocialLogo>
           <WebsiteRights>jeremy dudet - developer © 2021</WebsiteRights>
           <SocialIcons>
-            <SocialIconLink href='/' target="_blank" aria-label="Facebook">
+            {/* <SocialIconLink href='/' target="_blank" aria-label="Facebook">
               <FaFacebook />
-            </SocialIconLink>
-            <SocialIconLink href='/' target="_blank" aria-label="Instagram">
+            </SocialIconLink> */}
+            {/* <SocialIconLink href='/' target="_blank" aria-label="Instagram">
               <FaInstagram />
-            </SocialIconLink>
-            <SocialIconLink href='/' target="_blank" aria-label="GitHub">
+            </SocialIconLink> */}
+            <SocialIconLink href='https://github.com/JeremyDudet' target="_blank" aria-label="GitHub">
               <FaGithub />
             </SocialIconLink>
-            <SocialIconLink href='/' target="_blank" aria-label="Twitter">
+            {/* <SocialIconLink href='/' target="_blank" aria-label="Twitter">
               <FaTwitter />
-            </SocialIconLink>
-            <SocialIconLink href='/' target="_blank" aria-label="Linkedin">
+            </SocialIconLink> */}
+            {/* <SocialIconLink href='/' target="_blank" aria-label="Linkedin">
               <FaLinkedin />
-            </SocialIconLink>
+            </SocialIconLink> */}
           </SocialIcons>
         </SocialMediaWrap>
       </SocialMedia>

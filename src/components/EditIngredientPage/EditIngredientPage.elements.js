@@ -2,11 +2,8 @@ import styled from 'styled-components';
 import { Button } from '../../globalStyles';
 
 export const InfoSec = styled.div`
-  color: #fff;
-  padding: 100px 0;
-  @media screen and (max-width: 890px) {
-    padding: 30px 0 0 0;
-    }
+  margin-top: 4rem;
+  padding: 25px 0;
 `;
 
 export const InfoRow = styled.div`
@@ -33,22 +30,29 @@ export const InfoColumn = styled.div`
   }
 `;
 
+export const InnerInfoColumn = styled.div`
+  background: #2a2a2a;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  padding: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 15px;
+  @media screen and (max-width: 758px) {
+    max-width: 100%;
+    flex-basis: 100%;
+    display: flex;
+    padding: none;
+  }
+`;
+
 export const IngredientsWrapper = styled.div`
   margin: 0.25rem 0 0.75rem 0;
   display: flex;
   flex-wrap: wrap;
 `;
 
-export const SectionHeader = styled.h2`
-  text-align: left;
-  font-size: 2rem; 
-  line-height: 1.9rem;
-  margin-bottom: 10px;
-`;
-export const SectionSubheader = styled.h6`
-  text-align: left;
-  word-wrap: break-word;
-`;
 
 export const CancelButton = styled(Button)`
   color: white; 
@@ -61,11 +65,14 @@ export const CancelButton = styled(Button)`
 `;
 
 export const DeleteButton = styled(Button)`
-  background: transparent;
+  background: #F66E73;
   color: white;
   margin-top: 5rem;
-  &:hover {
-    background: #F66E73; 
+  &:hover { 
+    background: #FF4d51; 
+  }
+  @media screen and (max-width: 960px) {
+    width: 5.5rem; 
   }
 `;
 
@@ -98,12 +105,12 @@ export const DeleteConfirmationCard = styled.div`
   border: 1px solid white;
   border-radius: 0.5em;
   display: flex;
-  gap: 1rem;
   flex-direction: column;
+  gap: 1rem;
   justify-content: center;
   align-items: center;
   padding: 3em;
-  @media screen and (max-width: 960px) {
+  @media screen and (max-width: 760px) {
     padding: 1em;
     width: 80%;
     left: 35%;
@@ -125,7 +132,7 @@ export const CancelDeleteButton = styled(Button)`
   }
 `;
 export const ConfirmDeleteButton = styled(Button)`
-  background: #F66E73;
+  background: #FF4d51;
   color: white;
   width: 80%;
   &:hover {

@@ -1,4 +1,5 @@
 import React from 'react'
+import { format } from 'date-fns';
 import { // we style and define the tags in the elements.js, then we arrange them here. 
   InfoSec, 
   InfoRow, 
@@ -30,9 +31,9 @@ const BrowseAvailableCocktails = ({
               </FilterWrapper>
             </InfoColumn>
             <InfoColumn>
-              <CocktailListWrapper>
+              <>
                 <CocktailList />
-              </CocktailListWrapper>
+              </>
             </InfoColumn>  
           </InfoRow>
         </Container>

@@ -1,11 +1,5 @@
 import styled from 'styled-components';
 
-
-export const InfoSec = styled.div`
-  margin-top: 2rem;
-  padding: 25px 0;
-`;
-
 export const InfoRow = styled.div`
   display: flex;
   margin: 0 -15px -15px -15px;
@@ -42,11 +36,13 @@ export const InfoColumn = styled.div`
   }
 `;
 export const InnerInfoColumn = styled.div`
-  border: 1px solid #5F5AA2;
+  background: #2a2a2a;
   border-radius: 0.5rem;
-  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  padding: 0.6rem;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
   margin-bottom: 15px;
   @media screen and (max-width: 758px) {
     max-width: 100%;

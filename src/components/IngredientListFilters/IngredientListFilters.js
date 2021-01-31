@@ -25,7 +25,7 @@ const IngredientListFilters = (props) => {
         onChange={(e) => {
           props.dispatch(setNameFilter(e.target.value));
         }}
-        placeholder="Search ingredient name..."
+        placeholder="Search..."
       />
       
       <Label for="ingredientCategoryFilter">Category: </Label>
@@ -36,7 +36,7 @@ const IngredientListFilters = (props) => {
           props.dispatch(setCategoryFilter(e.target.value));
         }} 
       >
-        <option value="">--choose category--</option>
+        <option value="">---</option>
           <option value="Spirit">Spirit / Liquor</option>
           <option value="Infused-Spirit">Infused Spirit</option>
           <option value="Liqueur">Flavored Liqueur</option>

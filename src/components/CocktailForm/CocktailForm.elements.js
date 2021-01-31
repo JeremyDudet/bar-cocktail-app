@@ -2,11 +2,12 @@ import styled from 'styled-components';
 import { Button } from '../../globalStyles';
 
 export const Form = styled.form`
-  padding: 0;
+  background-color: transparent;
   display: grid;
 `;
 
 export const Label = styled.label`
+  background-color: transparent;
   font-size: 1rem;
   width: 100%;
 `;
@@ -39,6 +40,7 @@ export const FormSelect = styled.select`
 `;
 
 export const TextArea = styled.textarea`
+  background-color: transparent;
   outline: none;
   border-radius: 0.25rem;
   padding: 0.5rem;

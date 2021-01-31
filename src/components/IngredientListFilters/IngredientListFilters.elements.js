@@ -1,16 +1,14 @@
 import styled from 'styled-components'
 
 export const IngredientListFilter = styled.div`
-  padding: 0;
-  margin: 0;
+  background-color: transparent;  
   display: grid;
-  color: #fff;
 `;
 
 export const Label = styled.label`
-  font-size: 16px;
+  background-color: transparent; 
+  font-size: 1rem;
   width: 100%;
-  color: #fff;
 `;
 
 
@@ -29,7 +27,6 @@ export const NameInput = styled.input`
 
 export const FormSelect = styled.select`
   // A reset of styles, including removing the default dropdown arrow
-  appearance: none;
   background-color: transparent;
   border: 1px solid;
   border-radius: 0.25em;

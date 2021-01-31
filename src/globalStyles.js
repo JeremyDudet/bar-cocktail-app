@@ -8,15 +8,25 @@ const GlobalStyle = createGlobalStyle`
     font-weight: normal;
     font-style: normal;
   }
+  
+  html{
+    background: #222;
+  }
 
   * {
-    background: #222;
+    background: transparent;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Poppins';
     color: #FFFFFF;
   }
+`;
+
+
+export const InfoSec = styled.div`
+  margin-top: 4rem;
+  padding: 25px 0;
 `;
 
 export const Container = styled.div`
@@ -34,6 +44,13 @@ export const Container = styled.div`
   }
 `;
 
+export const InfoRow = styled.div`
+  display: flex;
+  margin: 0 -15px -15px -15px;
+  flex-wrap: wrap;
+  flex-direction: row;
+`;
+
 export const Button = styled.button`
   background: ${({primary}) => (primary ? '#BB46F0' : '#4B59F7' ) };
   white-space: nowrap;
@@ -48,7 +65,7 @@ export const Button = styled.button`
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   &:hover {
-    transform: scale(1.01);
+    transform: scale(1.005);
     transition: all 0.2s ease;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   }
@@ -57,6 +74,21 @@ export const Button = styled.button`
     width: 100%;
   } 
 `;
+
+export const PageTitle = styled.h1`
+  text-align: left;
+  background-color: transparent;
+`;
+export const SectionHeader = styled.h3`
+  text-align: left;
+  background-color: transparent;
+`;
+export const SectionSubheader = styled.h5`
+  text-align: left;
+  word-wrap: break-word;
+  background-color: transparent;
+`;
+
 export default GlobalStyle;
 
 // rgb(88, 183, 146) green

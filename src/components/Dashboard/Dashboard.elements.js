@@ -2,11 +2,8 @@ import styled from 'styled-components';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 
 export const InfoSec = styled.div`
-  color: #fff;
-  padding: 100px 0;
-  @media screen and (max-width: 890px) {
-    padding: 30px 0 0 0;
-    }
+  margin-top: 4rem;
+  padding: 25px 0;
 `;
 
 export const InfoRow = styled.div`
@@ -22,15 +19,16 @@ export const InfoRow = styled.div`
 `;
 
 
-export const AvailableIngredientPicker = styled.div``;
 export const IngredientsWrapper = styled.div`
   margin: 0.25rem 0 0.75rem 0;
   display: flex;
   flex-wrap: wrap;
+  gap: 0.3rem;
 `;
 
 
-export const MakeableCocktails = styled.div``;
+export const MakeableCocktails = styled.div`
+`;
 export const MakeableCocktailList = styled.div`
   display: grid;
   gap: 0.5rem;
@@ -66,15 +64,17 @@ export const CoktailName = styled.div`
 
 export const CocktailGuage = styled.div`
   display: grid;
+  max-height: 330px;
 `;
 export const CircularProgressBarContainer = styled.div`
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 100%;
+  max-height: 100%;
   display: flex;
   flex-direction: column;
   padding: 0.5rem 2rem 2rem 2rem;
   height: auto;
   justify-items: flex-start;
+  margin-bottom: 0.5rem;
 `;
 
 export const MissingPopularIngredients = styled.div``;
@@ -126,12 +126,4 @@ export const MissingIngredientAddIcon = styled(AiOutlinePlusCircle)`
     background: rgb(95, 99, 189);
     transform: scale(1.05);
   }
-`;
-
-export const SectionHeader = styled.h2`
-  text-align: left;
-`;
-export const SectionSubheader = styled.h6`
-  text-align: left;
-  word-wrap: break-word;
 `;

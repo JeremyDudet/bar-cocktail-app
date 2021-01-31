@@ -57,7 +57,7 @@ export const selectCocktails = (cocktails, { name, available, ingredients, filte
     };
 
     const nameMatch = name ? (cocktail.name.toLowerCase().includes(name.toLowerCase())) : true; // working
-    const availableMatch = available ? processAvailableCocktailsMatch(cocktail) : true; // working
+    const availableMatch = available ? (allIngredients ? (processAvailableCocktailsMatch(cocktail)) : true) : true; // working
     const ingredientsMatch = (ingredients.length > 0) ? processIngredientsMatch(cocktail, ingredients) : true;
     const categoryMatch = category ? (category === cocktail.category) : true; // working
     const ibaMatch = iba ? (iba === cocktail.iba) : true; // working
@@ -69,7 +69,5 @@ export const selectCocktails = (cocktails, { name, available, ingredients, filte
     return nameMatch && availableMatch && ingredientsMatch && categoryMatch && ibaMatch && timingMatch && alcoholicMatch && veganMatch; 
   }).sort()
 }; 
-
-
 
 

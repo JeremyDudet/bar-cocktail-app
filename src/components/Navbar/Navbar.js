@@ -7,7 +7,7 @@ import {
   Nav, 
   NavbarContainer, 
   NavLogo,
-  Barley,
+  Crafted,
   At, 
   CurrentRestaurant, 
   MobileIcon, 
@@ -45,7 +45,7 @@ const Navbar = (props) => {
       <Nav>
         <NavbarContainer>
           <NavLogo to="/">
-            <Barley>crafted</Barley>
+            <Crafted>crafted</Crafted>
             <At>at</At>
             <CurrentRestaurant>Oak&Violet</CurrentRestaurant>
           </NavLogo>
@@ -62,10 +62,7 @@ const Navbar = (props) => {
                       <NavLinks activeClassName="active" to='/dashboard'>Dashboard</NavLinks>
                     </NavItem>
                     <NavItem>
-                      <NavLinks activeClassName="active" to='/addCocktail'>Add Cocktails</NavLinks>
-                    </NavItem>
-                    <NavItem>
-                      <NavLinks activeClassName="active" to="/editCocktails">Edit Cocktails</NavLinks>
+                      <NavLinks activeClassName="active" to='/myCocktails'>My Cocktails</NavLinks>
                     </NavItem>
                     <NavItem>
                       <NavLinks activeClassName="active" to="/editIngredients">Edit Ingredients</NavLinks>

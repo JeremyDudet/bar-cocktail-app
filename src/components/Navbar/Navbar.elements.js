@@ -5,67 +5,64 @@ import Pacifico from '../../fonts/Pacifico-Regular.ttf'
 
 
 export const Nav = styled.nav`
-  background: #222;
-  height: 80px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  font-size: 1.2rem;
   position: sticky;
   top: 0px;
+  height: 80px;
+  /* margin: 0 0.7rem; */
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  border-radius: 0.5rem;
+  background: #222;
   z-index: 1;
 `;
 
 export const NavbarContainer = styled(Container)`
-  background: transparent;
   display: flex;
-  align-items: center;
   justify-content: space-between; 
-  height: 80px;
-  ${Container}
+  align-items: center;
+  background: transparent;
+  height: 100%;
 `;
 
 export const NavLogo = styled(Link)`
+  /* display: flex;
+  justify-content: space-between;
+  align-items: center; */
+  width: 250px;
+  height: 100%;
   background: transparent;
-  justify-self: flex-start;
-  cursor: pointer;
   text-decoration: none;
-  display: flex;
-  align-items: baseline;
-  justify-items: center;
+  display: table-cell;
+  vertical-align: middle;
+  cursor: pointer;
 `;
 
-export const Barley = styled.div`
+export const Crafted = styled.span`
   @font-face {
     font-family: Pacifico;
     src: url(${Pacifico}) format('truetype');
     font-weight: normal;
     font-style: normal;
-  }
+  } 
   background: transparent;
   font-family: 'Pacifico';
-  font-size: 2.25rem;  
-  display: flex;
+  font-size: 2.25rem;
 `;
 
-export const At = styled.div`
+export const At = styled.span`
   background: transparent;
-  margin-left: 1rem;
-  margin-right: 0.5rem;
   font-size: 1rem;
-  display: flex;
-  align-items: baseline;
+  margin-left: 5px;
+  margin-right: 5px;
 `;
 
-export const CurrentRestaurant = styled.div`
+export const CurrentRestaurant = styled.span`
   background: transparent;
-  margin-right: 0.5rem;
   font-size: 1.25rem;
-  display: flex;
   color: #BB46F0;
-  line-height: 9vw;
   text-shadow: 0 0 4vw #F40A35;
-  align-items: baseline;
 `;
 
 export const MobileIcon = styled.div`

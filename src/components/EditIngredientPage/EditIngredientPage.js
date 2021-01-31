@@ -1,16 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+// core
+import React, { useState } from 'react';
+
+// global state management
 import { connect } from 'react-redux';
-import { IngredientForm, IngredientListFilters, IngredientList } from '../../components';
-import { Container } from '../../globalStyles';
 import { startRemoveIngredient, startEditIngredient } from '../../redux/actions/ingredients';
+
+// functional components
+import { IngredientForm, IngredientListFilters, IngredientList } from '../../components';
+
+// styled components
+import {Container, PageTitle, SectionHeader, SectionSubheader} from '../../globalStyles';
 import { 
   InfoSec, 
   InfoRow,
   InfoColumn,
+  InnerInfoColumn,
   IngredientsWrapper,
-  SectionHeader,
-  SectionSubheader,
   CancelButton,
   DeleteButton,
   DeleteConfirmation,
@@ -24,7 +29,7 @@ const DeleteConfirmationComponent = (props) => (
   <>
     <DeleteConfirmation displayInfo={props.displayInfo}></DeleteConfirmation>
     <DeleteConfirmationCard>
-      <WarningDescription >{`Deleting ${JSON.stringify(props.selectedIngredient.name)} will affect all the cocktails that have this ingredient in their recipe.`}</WarningDescription>
+      <WarningDescription >{`By deleting ${JSON.stringify(props.selectedIngredient.name)}, you will affect all the cocktails that have this ingredient in their recipe.`}</WarningDescription>
       <WarningDescription style={{color: "#F66E73"}}>Are you sure you want to DELETE?</WarningDescription>
       <CancelDeleteButton onClick={props.handleSetDisplayDeleteConfirmation}>Don't Delete</CancelDeleteButton>
       <ConfirmDeleteButton onClick={props.handleDeleteIngredient}>Yes, Delete.</ConfirmDeleteButton>
@@ -63,49 +68,46 @@ const EditIngredientPage = (props) => {
   }
 
   return (
-    <>
-      <InfoSec>
-        <Container>
-          <InfoRow>
-            { displayDeleteConfirmation && 
-              <DeleteConfirmationComponent 
-                selectedIngredient={selectedIngredient}
-                displayInfo={displayDeleteConfirmation} 
-                handleSetDisplayDeleteConfirmation={handleSetDisplayDeleteConfirmation} 
-                handleDeleteIngredient={handleDeleteIngredient}
-              /> 
+    <InfoSec>
+      <Container>
+        <InfoRow>
+          { displayDeleteConfirmation && 
+            <DeleteConfirmationComponent 
+              selectedIngredient={selectedIngredient}
+              displayInfo={displayDeleteConfirmation} 
+              handleSetDisplayDeleteConfirmation={handleSetDisplayDeleteConfirmation} 
+              handleDeleteIngredient={handleDeleteIngredient}
+            /> 
+          }
+          <InfoColumn>
+            <PageTitle>Select ingredient you want to edit</PageTitle>
+            <IngredientListFilters/>
+            <IngredientsWrapper>
+              <IngredientList handleSelectIngredient={handleSetSelectIngredient} selectedIngredient={selectedIngredient} />
+            </IngredientsWrapper>
+          </InfoColumn>
+          <InfoColumn>
+            { selectedIngredient ? 
+              (
+                <InnerInfoColumn>
+                  <CancelButton onClick={() => setSelectedIngredient()}>CANCEL EDIT</CancelButton>
+                  <IngredientForm 
+                    ingredient={selectedIngredient}
+                    onSubmit={onSubmit}
+                  />
+                  <DeleteButton onClick={handleSetDisplayDeleteConfirmation}>delete</DeleteButton>
+                </InnerInfoColumn>
+              ) : 
+              (
+                <>
+                  <div style={{color: "#555"}}>...select ingredient to edit</div>
+                </>
+              )
             }
-            <InfoColumn>
-              <SectionHeader>Select ingredient you want to edit</SectionHeader>
-              <IngredientListFilters/>
-              <IngredientsWrapper>
-                <IngredientList handleSelectIngredient={handleSetSelectIngredient} selectedIngredient={selectedIngredient} />
-              </IngredientsWrapper>
-            </InfoColumn>
-            <InfoColumn>
-              { selectedIngredient ? 
-                (
-                  <>
-                    <CancelButton onClick={() => setSelectedIngredient()}>CANCEL EDIT</CancelButton>
-                    <IngredientForm 
-                      ingredient={selectedIngredient}
-                      onSubmit={onSubmit}
-                    />
-                    <DeleteButton onClick={handleSetDisplayDeleteConfirmation}>delete</DeleteButton>
-                  </>
-                ) : 
-                (
-                  <>
-                    <SectionHeader>Selected Ingredient</SectionHeader>
-                    <div style={{color: "#555"}}>...select ingredient to edit</div>
-                  </>
-                )
-              }
-            </InfoColumn>
-          </InfoRow>
-        </Container>
-      </InfoSec>
-    </>
+          </InfoColumn>
+        </InfoRow>
+      </Container>
+    </InfoSec>
   );
 }
 

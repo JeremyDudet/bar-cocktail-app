@@ -83,29 +83,29 @@ const IngredientForm = (props) => {
     <>
     {error && <p>{error}</p>}
       <Form onSubmit={onSubmit}>
-        <Label for="name">Name :</Label>
+        <Label for="name">Name:</Label>
         <Input 
           type="text" 
           id="name" 
           name="name"
           value={name} 
           onChange={handleNameChange} 
-          placeholder="name"
+          placeholder="Ingredient name..."
           autoComplete="off"
           required
         />
-        <Label for="description">Description :</Label>
+        <Label for="description">Description:</Label>
         <TextArea  
           id="description" 
           name="description" 
           value={description} 
           onChange={handleDescriptionChange} 
-          placeholder="Description (optional)"
+          placeholder="Ingredient description (optional)"
           autoComplete="off"
         />
         <Label for="ingredient_category">Category:</Label>
         <FormSelect id="ingredient_category" name="category" value={category} onChange={handleCategoryChange} size="1" required>
-          <option value="">--choose category--</option>
+          <option value="">---</option>
           <option value="Spirit">Spirit / Liquor</option>
           <option value="Infused-Spirit">Infused Spirit</option>
           <option value="Liqueur">Flavored Liqueur</option>
@@ -119,7 +119,7 @@ const IngredientForm = (props) => {
           <option value="Savory">Savory Products</option>
           <option value="Mixer">Mixer</option>
         </FormSelect>
-        <Label for="abv">ABV (alcohol %: )</Label>
+        <Label for="abv">{"ABV (alcohol percentage)"}</Label>
         <Input 
           type="number" 
           id="abv" 
@@ -140,7 +140,7 @@ const IngredientForm = (props) => {
           <option value='true' selected>Stocked</option>
           <option value='false' >86</option>
         </FormSelect>
-        <MainButton type="submit">SUBMIT</MainButton>
+        <MainButton type="submit">Submit Ingredient</MainButton>
       </Form>
     </>
   );

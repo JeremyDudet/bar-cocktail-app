@@ -3,15 +3,16 @@ import React from 'react'
 const Help = () => {
   return (
     <div>
-      <h2>Help Page</h2>
-      <h3> Legend:</h3>
+      <h3> Legend & Definitions</h3>
       <h5>Cocktail Categories</h5> - Birds of a feather - categories borrowed from Regan's "The Joy of Mixology"
       <ul>
-        <li><strong>The Unforgettables</strong> - these are among the original, early 19th century-style cocktails</li>
-        <li><strong>Contemporary Classics</strong> - citrus juice in a starring role.</li>
-        <li><strong>New Era Drinks</strong> Cocktails</li>
-        <li><strong>French-Italian</strong></li>
-        <li><strong>Duos and Trios</strong> - Duos call for two ingredients, usually a spirit and a liqueur; trios call for cream or a cream liqueur to be added to a Duo to make a whole new drink.</li>
+        <li><strong>The Unforgettables - IBA</strong> - these are among the original, early 19th century-style cocktails</li>
+        <li><strong>Contemporary Classics - IBA</strong> - citrus juice in a starring role.</li>
+        <li><strong>New Era Drinks - IBA</strong> Cocktails</li>
+        <li><strong>French-Italian</strong> all contain vermouths, either sweet, dry or both, or sometimes brand name products such as Lillet, an aperitif wine closely related to vermouth.</li>
+        <li><strong>Duos and Trios</strong> - Duos call for two ingredients, usually a spirit and a liqueur; Trios call for cream or a cream liqueur to be added to a Duo to make a whole new drink.</li>
+        <li><strong>Old-Fashioneds</strong></li>
+        <li><strong>Sours</strong></li> contain a base spirit, citrus juice, and a sweetening agent.
         <li><strong>Champagne Cocktails</strong></li>
         <li><strong>Highballs</strong></li>
         <li><strong>Juleps and Smashes</strong></li>

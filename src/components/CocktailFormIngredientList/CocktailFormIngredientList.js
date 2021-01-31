@@ -51,7 +51,12 @@ const CocktailFormIngredientListItem = (props) => {
           <option value="oz" selected>oz</option>
           <option value="ml">ml</option>
           <option value="splash">splash</option>
-          <option value="dashes">dashes</option>
+          <option value="dashes">dashe(s)</option>
+          <option value="barspoon">barspoon(s)</option>
+          <option value="sprig">sprig</option>
+          <option value="pinch">pinch</option>
+          <option value="piece">piece(s)</option>
+          <option value="">each</option>
         </IngredientUnits>
 
         <RemoveButton onClick={handleClick}>X</RemoveButton>
@@ -72,7 +77,7 @@ const CocktailFormIngredientList = (props) => {
   
   return (
     <SelectedIngredientsContainer style={styles}>
-      {props.recipeIngredients.map((ingredient) => {
+      {props.recipeIngredients?.map((ingredient) => {
         return <CocktailFormIngredientListItem ingredient={ingredient} setRecipe={props.setRecipeIngredients} handleRemoveRecipeIngredient={props.handleRemoveRecipeIngredient}/>
       })}
     </SelectedIngredientsContainer>

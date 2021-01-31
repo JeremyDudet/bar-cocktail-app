@@ -5,8 +5,7 @@ import Home from '../pages/Home/Home';
 import AdminLogIn from '../pages/AdminLogIn/AdminLogIn';
 import AdminSignUp from '../pages/AdminSignUp/AdminSignUp';
 import AdminDashboard from '../pages/AdminDashboard/AdminDashboard';
-import AdminAddCocktail from '../pages/AdminAddCocktail/AdminAddCocktail';
-import AdminEditCocktails from '../pages/AdminEditCocktails/AdminEditCocktails';
+import AdminMyCocktails from '../pages/AdminMyCocktails/AdminMyCocktails';
 import AdminEditIngredients from '../pages/AdminEditIngredients/AdminEditIngredients';
 import UserBrowseCocktails from '../pages/UserBrowseCocktails/UserBrowseCoktails';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
@@ -21,8 +20,7 @@ const AppRouter = () => {
       <Route path="/login" component={AdminLogIn}/>
       <Route path="/signup" component={AdminSignUp}/>
       <Route path="/dashboard" component={AdminDashboard}/>
-      <Route path="/addCocktail" component={AdminAddCocktail}/>
-      <Route path="/editCocktails/" component={AdminEditCocktails}/>
+      <Route path="/myCocktails" component={AdminMyCocktails}/>
       <Route path="/editIngredients/" component={AdminEditIngredients}/>
       <Route path="/browse" component={UserBrowseCocktails}/>
       <Route path="/help" component={Help}/>

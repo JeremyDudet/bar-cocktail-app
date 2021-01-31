@@ -1,26 +1,25 @@
 import styled from 'styled-components'
 
 export const InfoSec = styled.div`
-  color: #fff;
-  padding: 100px 0;
-  @media screen and (max-width: 890px) {
-    padding: 30px 0 0 0;
-    }
+  margin-top: 4rem;
+  padding: 25px 0;
 `;
 
 export const InfoRow = styled.div`
   display: flex;
   margin: 0 -15px -15px -15px;
   flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 1rem;
   align-items: top;
   flex-direction: ${({ imgStart }) => (imgStart ? 'row-reverse' : 'row') };
 `;
 
 export const InfoColumn = styled.div`
   margin-bottom: 15px;
-  max-width: 50%;
-  flex-basis: 50%;
-  @media screen and (max-width: 890px) {
+  max-width: 65%;
+  /* min-width: 40%; */
+  @media screen and (max-width: 790px) {
     max-width: 100%;
     flex-basis: 100%;
     display: flex;
@@ -28,19 +27,12 @@ export const InfoColumn = styled.div`
   }
 `;
 
-export const CocktailListWrapper = styled.div`
-  /* padding-top: 3.5rem; */
-  padding-bottom: 60px;
-
-  @media screen and (max-width: 890px) {
-    padding-bottom: 0;
-    padding-top: 1rem;
-  } 
-`;
-
 export const FilterWrapper = styled.div`
   max-width: 350px;
-  padding-top: 0;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  border-radius: 0.5rem;
+  background: #2a2a2a;
 `;
 
 export const TopLine = styled.div`
@@ -70,7 +62,7 @@ export const CocktailList = styled.ul`
   padding-right: 0;
   border: 0;
   max-width: 100%;
-  vertical-align: middle;
-  display: inline-block;
+  /* vertical-align: middle;
+  display: inline-block; */
   max-height: 500px;
 `;
