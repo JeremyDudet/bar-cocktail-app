@@ -1,16 +1,16 @@
 // core
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 // global state management
 import { connect } from 'react-redux';
-import { startRemoveCocktail, startEditCocktail } from '../../redux/actions/cocktails';
 import { setNameFilter } from '../../redux/actions/cocktailFilters';
+import { startRemoveCocktail } from '../../redux/actions/cocktails';
 
 // logic
 import { selectCocktails } from '../../selectors/cocktails';
 
 // functional components
-import { AddCocktailPage } from '../../components';
+import { AddCocktailPage, DeleteConfirmation } from '../../components';
 
 // styled components
 import { InfoRow, SectionHeader, } from '../../globalStyles';
@@ -19,22 +19,46 @@ import {
   Cocktail,
   CocktailsWrapper,
   Form,
-  NameInput,
+  NameInput
 } from "./EditCocktailPage.elements";
+import { FaLastfmSquare } from 'react-icons/fa';
 
 const EditCocktailPage = (props) => {
 
   const [ selectedCocktail, setSelectedCocktail ] = useState();
+  const [ displayDeleteConfirmation, setDisplayDeleteConfirmation ] = useState(false);
+
+  function setDefaultState() {
+    setDisplayDeleteConfirmation(false);
+    setSelectedCocktail();
+  }
 
   async function handleSetSelectedCocktail(cocktail) {
     await setSelectedCocktail();
     setSelectedCocktail(cocktail);
   }
 
+  function handleDeleteCocktail(id) {
+    props.dispatch(startRemoveCocktail({id: selectedCocktail.id}));
+    setDefaultState();
+  }
+
+  function handleSetDisplayDeleteConfirmation() {
+    displayDeleteConfirmation ? setDisplayDeleteConfirmation(false) : setDisplayDeleteConfirmation(true);
+  }
+
   return (
     <>
       <InfoRow>
-        <InfoColumn>
+        <InfoColumn style={{maxWidth: "100%", flexBasis: "100%"}}>
+          { displayDeleteConfirmation && 
+            <DeleteConfirmation 
+              selectedItem={selectedCocktail}
+              displayInfo={displayDeleteConfirmation} 
+              handleSetDisplayDeleteConfirmation={handleSetDisplayDeleteConfirmation} 
+              handleDeleteItem={handleDeleteCocktail}
+            /> 
+          }
           <Form>
           <SectionHeader>Select cocktail to edit... </SectionHeader>
           <NameInput
@@ -63,7 +87,7 @@ const EditCocktailPage = (props) => {
           </CocktailsWrapper>
         </InfoColumn>
       </InfoRow>
-      { selectedCocktail && <AddCocktailPage selectedCocktail={selectedCocktail} />}
+      { selectedCocktail && <AddCocktailPage selectedCocktail={selectedCocktail} setSelectedCocktail={setSelectedCocktail} handleSetDisplayDeleteConfirmation={handleSetDisplayDeleteConfirmation} />}
     </>
   )
 }

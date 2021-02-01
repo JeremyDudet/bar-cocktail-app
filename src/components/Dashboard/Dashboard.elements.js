@@ -127,3 +127,27 @@ export const MissingIngredientAddIcon = styled(AiOutlinePlusCircle)`
     transform: scale(1.05);
   }
 `;
+
+export const Form = styled.form`
+  background-color: transparent;
+  display: grid;
+`;
+
+export const NameInput = styled.input`
+  background-color: transparent;
+  border: 1px solid;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 0.7rem;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1.15rem;
+  cursor: pointer;
+  line-height: 1.05;
+  min-width: 422p;
+  max-width: 422px;
+  @media screen and (max-width: 480px) {
+    min-width: none;
+    max-width: none;
+  } 
+`;

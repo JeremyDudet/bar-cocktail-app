@@ -1,35 +1,33 @@
-import  React, { useState, useEffect } from 'react';
+import  React, { useState } from 'react';
 import CocktailFormIngredientList from '../CocktailFormIngredientList/CocktailFormIngredientList';
 import { format } from "date-fns";
 
 
-import {Form, Label, NameInput, FormSelect, TextArea, MainButton} from './CocktailForm.elements';
+import {Form, Label, NameInput, FormSelect, TextArea, MainButton, CancelButton, DeleteButton} from './CocktailForm.elements';
 
 
 const CocktailForm = (props) => {
-
-  // looking good here.  
-  const [ name , setName ] = useState(props.cocktail ? props.cocktail.name : '' ); // this ternary operator is for when we use this same form for editing cocktails. 
-  const [ category , setCategory ] = useState(props.cocktail ? props.cocktail.category : '' );
-  const [ description , setDescription ] = useState(props.cocktail ? props.cocktail.description : '' );
-  const [ timing , setTiming ] = useState(props.cocktail ? props.cocktail.timing : '' );
-  const [ iba , setIba ] = useState(props.cocktail ? props.cocktail.iba : false );
-  const [ instructions , setInstructions ] = useState(props.cocktail ? props.cocktail.instructions : '' );
-  const [ note , setNote ] = useState(props.cocktail ? props.cocktail.note : '' );
+ 
+  const [ name , setName ] = useState(props.selectedCocktail ? props.selectedCocktail.name : '' ); 
+  const [ category , setCategory ] = useState(props.selectedCocktail ? props.selectedCocktail.category : '' );
+  const [ description , setDescription ] = useState(props.selectedCocktail ? props.selectedCocktail.description : '' );
+  const [ timing , setTiming ] = useState(props.selectedCocktail ? props.selectedCocktail.timing : '' );
+  const [ iba , setIba ] = useState(props.selectedCocktail ? props.selectedCocktail.iba : false );
+  const [ instructions , setInstructions ] = useState(props.selectedCocktail ? props.selectedCocktail.instructions : '' );
+  const [ note , setNote ] = useState(props.selectedCocktail ? props.selectedCocktail.note : '' );
   const [ error , setError ] = useState('');
-  const [ createdAt ] = useState(props.cocktail ? props.cocktail.createdAt : Date.now() ); // if you're editing this cocktail, createdAt state will be passed down as props.
-  const [ lastEdited, setLastEdited ] = useState(props.cocktail ? props.cocktail.lastEdited : '');
+  const [ createdAt ] = useState(props.selectedCocktail ? props.selectedCocktail.createdAt : Date.now() ); // if you're editing this cocktail, createdAt state will be passed down as props.
+  const [ lastEdited, setLastEdited ] = useState(props.selectedCocktail ? props.selectedCocktail.lastEdited : '');
   
-  useEffect(() => {
-    setName(props.cocktail?.name);
-    setCategory(props.cocktail?.category);
-    setDescription(props.cocktail?.description);
-    setTiming(props.cocktail?.timing);
-    setIba(props.cocktail?.iba);
-    setInstructions(props.cocktail?.instructions);
-    setNote(props.cocktail?.note);
-    setLastEdited(props.cocktail?.lastEdited);
-  }, [props.cocktail]);
+  function setDefaultState() {
+    setName('');
+    setCategory('');
+    setDescription('');
+    setTiming('');
+    setIba('');
+    setInstructions('');
+    setNote('');
+  };
 
   function handleNameChange(e) {
     const newName = e.target.value;
@@ -84,10 +82,23 @@ const CocktailForm = (props) => {
   
   function onSubmit(e) { 
     e.preventDefault(); // this prevents the browser window from refreshing when user clicks submit button
-    if (!description || !category) { // if description is empty or amount is empty, set error state to:
-      setError('Error: Please provide name, ingredients and instructions.');
-    }else {
-      setError('');
+    if (props.selectedCocktail) {
+      props.handleEditCocktail( props.selectedCocktail.id, {
+        name,
+        description,
+        timing,
+        category,
+        recipe: props.recipeIngredients,
+        instructions,
+        iba,
+        note,
+        alcoholic: determineAlcoholicStatus(props.recipeIngredients),
+        vegan: determineVeganStatus(props.recipeIngredients),
+        createdAt: createdAt, // moment.js -> valueOf simply outputs the number of milliseconds since the Unix Epoch 
+        lastEdited: Date.now(),
+      });
+
+    } else {
       props.onSubmit({
         name,
         description,
@@ -102,15 +113,17 @@ const CocktailForm = (props) => {
         createdAt: createdAt, // moment.js -> valueOf simply outputs the number of milliseconds since the Unix Epoch 
         lastEdited: Date.now(), 
       });
+      setDefaultState();
     }
   };
   
   return (
     <>
-      { props.cocktail && 
+      { props.selectedCocktail && 
       <>
         <div style={{color: '#bbb'}}>{`Last Edited: ${format(lastEdited, 'MM/dd/yyy')}`}</div>
-        {/* <button onClick={() => props.handleSetSelectedCocktail()}>Cancel Edit</button> */}
+        <CancelButton onClick={() => props.setSelectedCocktail()}>Cancel Edit</CancelButton>
+        <DeleteButton onClick={props.handleSetDisplayDeleteConfirmation}>Delete Cocktail</DeleteButton>
       </>
       
       }
@@ -119,7 +132,7 @@ const CocktailForm = (props) => {
         <Label for="cocktail_name">Name: </Label>
         <NameInput
           type='text'
-          id="cocktail_name"
+          id="cocktail_name"s
           placeholder='Cocktail name...'
           name='cocktail_name'
           autoComplete="off"
@@ -176,7 +189,6 @@ const CocktailForm = (props) => {
           setRecipeIngredients={props.setRecipeIngredients} 
           recipeIngredients={props.recipeIngredients}
           handleRemoveRecipeIngredient={props.handleRemoveRecipeIngredient}
-          required
         />
 
                                                                                                                                                                                                                                                  
@@ -197,7 +209,7 @@ const CocktailForm = (props) => {
           placeholder="(optional)"
         />
         
-        <MainButton type='submit'>{props.cocktail ? 'Submit Edit' : 'Submit New Cocktail'}</MainButton>
+        <MainButton type='submit'>{props.selectedCocktail ? 'Submit Edit' : 'Submit New Cocktail'}</MainButton>
 
       </Form>
     </>

@@ -6,10 +6,10 @@ import { connect } from 'react-redux';
 import { startRemoveIngredient, startEditIngredient } from '../../redux/actions/ingredients';
 
 // functional components
-import { IngredientForm, IngredientListFilters, IngredientList } from '../../components';
+import { IngredientForm, IngredientListFilters, IngredientList, DeleteConfirmation } from '../../components';
 
 // styled components
-import {Container, PageTitle, SectionHeader, SectionSubheader} from '../../globalStyles';
+import { Container, PageTitle } from '../../globalStyles';
 import { 
   InfoSec, 
   InfoRow,
@@ -18,24 +18,7 @@ import {
   IngredientsWrapper,
   CancelButton,
   DeleteButton,
-  DeleteConfirmation,
-  DeleteConfirmationCard,
-  WarningDescription,
-  CancelDeleteButton,
-  ConfirmDeleteButton
 } from './EditIngredientPage.elements';
-
-const DeleteConfirmationComponent = (props) => (
-  <>
-    <DeleteConfirmation displayInfo={props.displayInfo}></DeleteConfirmation>
-    <DeleteConfirmationCard>
-      <WarningDescription >{`By deleting ${JSON.stringify(props.selectedIngredient.name)}, you will affect all the cocktails that have this ingredient in their recipe.`}</WarningDescription>
-      <WarningDescription style={{color: "#F66E73"}}>Are you sure you want to DELETE?</WarningDescription>
-      <CancelDeleteButton onClick={props.handleSetDisplayDeleteConfirmation}>Don't Delete</CancelDeleteButton>
-      <ConfirmDeleteButton onClick={props.handleDeleteIngredient}>Yes, Delete.</ConfirmDeleteButton>
-    </DeleteConfirmationCard>
-  </>
-);
 
 
 const EditIngredientPage = (props) => {
@@ -72,11 +55,11 @@ const EditIngredientPage = (props) => {
       <Container>
         <InfoRow>
           { displayDeleteConfirmation && 
-            <DeleteConfirmationComponent 
-              selectedIngredient={selectedIngredient}
+            <DeleteConfirmation 
+              selectedItem={selectedIngredient}
               displayInfo={displayDeleteConfirmation} 
               handleSetDisplayDeleteConfirmation={handleSetDisplayDeleteConfirmation} 
-              handleDeleteIngredient={handleDeleteIngredient}
+              handleDeleteItem={handleDeleteIngredient}
             /> 
           }
           <InfoColumn>
@@ -91,11 +74,11 @@ const EditIngredientPage = (props) => {
               (
                 <InnerInfoColumn>
                   <CancelButton onClick={() => setSelectedIngredient()}>CANCEL EDIT</CancelButton>
+                  <DeleteButton onClick={handleSetDisplayDeleteConfirmation}>Delete Ingredient</DeleteButton>
                   <IngredientForm 
                     ingredient={selectedIngredient}
                     onSubmit={onSubmit}
                   />
-                  <DeleteButton onClick={handleSetDisplayDeleteConfirmation}>delete</DeleteButton>
                 </InnerInfoColumn>
               ) : 
               (

@@ -42,7 +42,6 @@ export const FormSelect = styled.select`
 
 export const TextArea = styled.textarea`
   background-color: transparent;
-  outline: none;
   padding: 0.5rem;
   max-width: 100%;
   border-radius: 0.25em;

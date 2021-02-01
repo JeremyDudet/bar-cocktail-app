@@ -38,12 +38,28 @@ export const removeCocktail = ({id} = {}) => ({
   id
 });
 
+export const startRemoveCocktail = ({ id } = {}) => {
+  return (dispatch) => {
+    return database.ref(`/cocktails/${id}`).remove().then(() => {
+      dispatch(removeCocktail({ id }));
+    });
+  };
+};
+
 // EDIT_COCKTAIL action generator/creator
 export const editCocktail = (id, updates) => ({
   type: 'EDIT_COCKTAIL',
   id,
   updates
 });
+
+export const startEditCocktail = (id, updates) => {
+  return (dispatch) => {
+    return database.ref(`/cocktails/${id}`).update(updates).then(() => {
+      dispatch(editCocktail(id, updates));
+    });
+  };
+};
 
 // SET_COCKTAILS
 // this is going to allow us to completely set that array value, we get the array back from firebase, we set it, and done.

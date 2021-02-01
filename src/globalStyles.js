@@ -42,6 +42,10 @@ export const Container = styled.div`
     padding-right: 30px;
     padding-left: 30px;
   }
+  @media screen and (max-width: 380px) {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
 `;
 
 export const InfoRow = styled.div`
@@ -58,7 +62,6 @@ export const Button = styled.button`
   color: #000;
   font-size: ${({fontBig}) => (fontBig ? '20px' : '16px')};
   font-weight: bolder;
-  outline: none;
   border: none;
   cursor: pointer;
   border-radius: 8px;

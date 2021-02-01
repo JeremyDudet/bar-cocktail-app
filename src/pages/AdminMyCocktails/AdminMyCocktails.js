@@ -26,14 +26,29 @@ const AdminMyCocktails = () => {
 
     }
     text-align: center;
+    min-width: 200px;
+    @media screen and (max-width: 480px) {
+      min-width: none;
+    } 
+  `;
+  const ButtonContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    @media screen and (max-width: 480px) {
+      justify-content: center;
+    }
   `;
 
   return (
     <InfoSec>
       <Container>
-        <div style={{display: "flex", flexWrap: "wrap", gap: "1.5rem", justifyContent: "flex-start"}}>
-          <ActionButton selected={(selectedAction === "new")} onClick={()=> setSelectedAction("new")}>Add New Cocktail</ActionButton><ActionButton selected={(selectedAction === "edit")} onClick={()=> setSelectedAction("edit")}>Edit Cocktail</ActionButton>
-        </div>
+        <ButtonContainer>
+          <ActionButton selected={(selectedAction === "new")} onClick={()=> setSelectedAction("new")}>Add New Cocktail</ActionButton>
+          <ActionButton selected={(selectedAction === "edit")} onClick={()=> setSelectedAction("edit")}>Edit Cocktail</ActionButton>
+        </ButtonContainer>
         { (selectedAction === "new") ? <AddCocktailPage/> : <EditCocktailPage/> }
       </Container>
     </InfoSec>

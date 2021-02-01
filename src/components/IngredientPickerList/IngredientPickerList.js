@@ -22,8 +22,8 @@ const IngredientPickerList = (props) => {
    
   return (
     <>
-      { props.allIngredients 
-        ? props.allIngredients.map(ingredient => (// for each ingredient that is passed down from redux/firebase - render an IngredientListItem
+      { props.ingredients 
+        ? props.ingredients.map(ingredient => (// for each ingredient that is passed down from redux/firebase - render an IngredientListItem
           <Ingredient
             key={ingredient.id} 
             onClick={() => props.handleSelectedIngredient(ingredient)}

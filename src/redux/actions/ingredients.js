@@ -31,8 +31,9 @@ export const startAddIngredient = (ingredientData = {}) => {
   }; 
 }; 
 
+//
 export const removeIngredient = ({ id } = {}) => ({
-  type: 'REMOVE_EXPENSE',
+  type: 'REMOVE_INGREDIENT',
   id
 });
 
@@ -44,15 +45,14 @@ export const startRemoveIngredient = ({ id } = {}) => {
   };
 };
 
+// EDIT INGREDIENTS
 export const editIngredient = (id, updates) => ({
   type: 'EDIT_INGREDIENT',
   id,
   updates
 });
-
 export const startEditIngredient = (id, updates) => {
   return (dispatch) => {
-    // const uid = getState().auth.uid;
     return database.ref(`/ingredients/${id}`).update(updates).then(() => {
       dispatch(editIngredient(id, updates));
     });

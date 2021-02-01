@@ -21,10 +21,10 @@ export const InfoColumn = styled.div`
   /* min-width: 40%; */
   @media screen and (max-width: 790px) {
     max-width: 100%;
-    flex-basis: 100%;
+    flex-basis: 80%;
     display: flex;
     justify-content: center;
-  }
+  } 
 `;
 
 export const FilterWrapper = styled.div`

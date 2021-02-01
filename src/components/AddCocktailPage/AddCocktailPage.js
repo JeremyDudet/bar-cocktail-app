@@ -1,11 +1,11 @@
 // core imports
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 
 // global state management
 import { connect } from "react-redux";
 import { startAddIngredient } from '../../redux/actions/ingredients';
-import { startAddCocktail } from '../../redux/actions/cocktails';
+import { startAddCocktail, startEditCocktail } from '../../redux/actions/cocktails';
 
 // functional components
 import { 
@@ -27,19 +27,15 @@ import {
 
 const AddCocktailPage = (props) => {
 
-  const [ recipeIngredients , setRecipeIngredients ] = useState([]); // array of objects
+  const [ recipeIngredients , setRecipeIngredients ] = useState(props.selectedCocktail ? props.selectedCocktail.recipe : []); // array of objects
   const history = useHistory();
   
-  useEffect(() => {
-    setRecipeIngredients(props.selectedCocktail?.recipe.map((ingredient)=>(adjustRecipeIngredientFormat(ingredient))));
-  }, [props.selectedCocktail]);
-  
-  function adjustRecipeIngredientFormat({ id, name, amount = '', units = 'oz', alcoholic, vegan, available }) {
+  function adjustToRecipeFormat({ id, name, amount = '', units = 'oz', alcoholic, vegan, available }) {
     return ({id, name, amount, units, alcoholic, vegan, available});
   }
   
   function handleAddRecipeIngredient(ingredient) {
-    const newIngredient = adjustRecipeIngredientFormat(ingredient);
+    const newIngredient = adjustToRecipeFormat(ingredient);
     const newList = [...recipeIngredients];
     newList.push(newIngredient);
     setRecipeIngredients(newList);
@@ -50,11 +46,17 @@ const AddCocktailPage = (props) => {
     const newList = recipeIngredients.filter(ingredient => ingredient.id !== removedIngredient.id);
     setRecipeIngredients(newList);
   }
+
+  
+
+  async function handleEditCocktail(id, cocktail) {
+    await props.dispatch(startEditCocktail(id, cocktail));
+    props.setSelectedCocktail();
+  }
   
   function handleSubmit(cocktail) {
-    // props.cocktail ?
     props.dispatch(startAddCocktail(cocktail));
-    history.push('/'); // it's like someone clicked a link, so we can use the back button.
+    history.push('/myCocktails'); // it's like someone clicked a link, so we can use the back button.
   }
   
   return (
@@ -62,10 +64,14 @@ const AddCocktailPage = (props) => {
       <CocktailFormColumn>
         <InnerInfoColumn style={{backgroundColor: "#2e2e2e"}}>
           <CocktailForm
-            cocktail={props.selectedCocktail}
-            onSubmit={handleSubmit}
+            selectedCocktail={props.selectedCocktail}
             recipeIngredients={recipeIngredients}
+            setRecipeIngredients={setRecipeIngredients}
             handleRemoveRecipeIngredient={handleRemoveRecipeIngredient}
+            setSelectedCocktail={props.setSelectedCocktail}
+            handleSetDisplayDeleteConfirmation={props.handleSetDisplayDeleteConfirmation}
+            handleEditCocktail={handleEditCocktail}
+            onSubmit={handleSubmit}
             />
         </InnerInfoColumn>
       </CocktailFormColumn>

@@ -16,7 +16,7 @@ export const Ingredient = styled.button`
   background: ${ ({selected}) => (selected ? "rgb(95, 99, 189)" : "transparent")};
   border: ${ ({selected}) => (selected ? "1px solid rgb(95, 99, 189)" : "1px solid rgb(95, 99, 189)")};
   border-radius: 1.5em;
-  outline: none;
+  /* outline: none; */
   padding: 0.25em 0.5em;
   margin: 0;
   font-family: inherit;

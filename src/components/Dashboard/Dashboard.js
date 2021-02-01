@@ -7,10 +7,12 @@ import { format } from 'date-fns';
 // global state management
 import { connect } from 'react-redux';
 import { startEditIngredient } from '../../redux/actions/ingredients';
+import { setNameFilter } from '../../redux/actions/ingredientFilters';
 
 // logic 
-import { selectCocktails } from '../../selectors/cocktails'; // cocktail filter 
-import { appearancesOf } from '../../cocktailAppearances';
+import { selectCocktails } from '../../selectors/cocktails'; // returns filtered cocktail list 
+import { selectIngredients } from '../../selectors/ingredients'; // returns filtered ingredient list 
+import { appearancesOf } from '../../cocktailAppearances'; // calculates every ingredient's number of apperances in all cocktails
 
 // functional components
 import { IngredientPickerList } from '../../components';
@@ -33,7 +35,9 @@ import {
   MissingIngredientName,
   MissingIngredientAppearances,
   MissingIngredientAddIcon,
-  CircularProgressBarContainer
+  CircularProgressBarContainer,
+  Form,
+  NameInput
 } from './Dashboard.elements';
 
 
@@ -52,9 +56,21 @@ const Dashboard = (props) => {
   return (
     <InfoSec>
       <Container>
-        <PageTitle>Select ingredients available in your bar</PageTitle>
+        <PageTitle style={{lineHeight: "1.9rem", marginBottom: "15px"}}>Select ingredients available in your bar</PageTitle>
+        {/* TODO - integrate name search */}
+        {/* <Form>
+          <NameInput
+            id="ingredientName"
+            type="name"
+            value={props.ingredientFilters.name} 
+            onChange={(e) => {
+              props.dispatch(setNameFilter(e.target.value));
+            }}
+            placeholder="Search..."
+          />
+          </Form> */}
         <IngredientsWrapper>
-          <IngredientPickerList handleSelectedIngredient={handleIngredientAvailability} allIngredients={props.allIngredients} />
+          <IngredientPickerList handleSelectedIngredient={handleIngredientAvailability} ingredients={props.ingredients} />
         </IngredientsWrapper>
         <InfoRow>
           <MakeableCocktails>
@@ -87,7 +103,7 @@ const Dashboard = (props) => {
             <MissingIngredientsList>
               <MissingIngredientTableHeader><strong>Ingredient</strong> <span style={{position: 'absolute', right: '5px'}}>Appearances</span></MissingIngredientTableHeader>
               {
-                props.allIngredients.map(ingredient => (
+                props.ingredients.map(ingredient => (
                   (ingredient.available === "false") 
                   ? <MissingIngredient>
                       <MissingIngredientName>{ingredient.name}</MissingIngredientName>
@@ -107,7 +123,8 @@ const Dashboard = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    allIngredients: state.ingredients,
+    ingredientFilters: state.ingredientFilters,
+    ingredients: state.ingredients,
     allCocktails: state.cocktails,
     availableCocktails: selectCocktails(state.cocktails, state.cocktailFilters, state.ingredients),
     appearancesOf: appearancesOf(state.ingredients, state.cocktails),

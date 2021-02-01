@@ -11,7 +11,6 @@ export const Nav = styled.nav`
   position: sticky;
   top: 0px;
   height: 80px;
-  /* margin: 0 0.7rem; */
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   border-radius: 0.5rem;
   background: #222;
@@ -37,6 +36,13 @@ export const NavLogo = styled(Link)`
   display: table-cell;
   vertical-align: middle;
   cursor: pointer;
+  @media screen and (max-width: 380px) {
+    padding-left: 1rem;
+  }
+  @media screen and (max-width: 320px) {
+    padding-left: 0;
+  }
+  
 `;
 
 export const Crafted = styled.span`
@@ -112,7 +118,6 @@ export const NavItem = styled.li`
     background: transparent;
     width: 100% auto;
     font-size: 1.4rem;
-
     &:hover {
       border: none;
     }
@@ -163,6 +168,9 @@ export const NavLinks = styled(NavLink)`
     width: 100%;
     display: table;
   }
+  @media screen and (max-width: 380px) {
+    padding: 0;
+  }
 `;
 
 export const NavItemBtn = styled.li`
@@ -186,5 +194,4 @@ export const NavBtnLink = styled(NavLink)`
   height: 100%;
   width: 100%;
   border: none;
-  outline: none;
 `;

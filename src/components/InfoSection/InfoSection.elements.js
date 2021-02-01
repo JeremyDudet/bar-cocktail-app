@@ -8,6 +8,10 @@ export const InfoSec = styled.div`
   @media screen and (max-width: 758px) {
     padding: 25px 0;
   }
+  @media screen and (max-width: 321px) {
+    padding-bottom: 10px;
+    margin-top: 1rem;
+  }
 `;
 
 export const InfoRow = styled.div`
@@ -42,6 +46,9 @@ export const TextWrapper = styled.div`
   @media screen and (max-width: 768px) {
     padding-bottom: 65px;
   } 
+  @media screen and (max-width: 321px) {
+    padding-bottom: 10px;
+  }
 `;
 
 export const TopLine = styled.div`
@@ -50,6 +57,9 @@ export const TopLine = styled.div`
   line-height: 16px;
   letter-spacing: 1.4px;
   margin-bottom: 16px;
+  @media screen and (max-width: 321px) {
+    margin-bottom: 5px;
+  }
 `;
 
 export const Heading = styled.h1`
@@ -57,6 +67,9 @@ export const Heading = styled.h1`
   font-size: 48px;
   line-height: 1.1;
   color: ${({ lightText }) =>(lightText ? '#f7f8fa' : '#1c2237')};
+  @media screen and (max-width: 321px) {
+    line-height: 0.9;
+  }
 `;
 
 export const Subtitle = styled.p`

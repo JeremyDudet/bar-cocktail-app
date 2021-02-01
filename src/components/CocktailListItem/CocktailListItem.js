@@ -1,5 +1,8 @@
 import React, {useState} from 'react';
 import { IconContext } from "react-icons";
+
+
+import { InfoColumn } from '../../globalStyles';
 import { 
   CocktailCard, 
   CocktailCardHeader,
@@ -15,31 +18,47 @@ import {
   Img,
   InfoIcon,
   CocktailInfoCard,
+  TransparentContainer,
   InfoContainer,
   CocktailDescription,
-  CocktailPreparation,
+  CocktailIngredients,
+  Ingredient,
+  CocktailMethod,
   CocktailInfoLabel,
-  CocktailInfoButton
+  CocktailInfoButton,
  } from './CocktailListItem.elements';
 
 const CocktailInfoComponent = (props) => (
   <>
   <CocktailInfoCard displayInfo={props.displayInfo}></CocktailInfoCard>
-  <InfoContainer>
-    <CocktailCardHeader>
-      <CocktailName>{props.name}</CocktailName>
-      <CocktailSubHeading>{`${props.category}, ${props.timing}`}</CocktailSubHeading>
-    </CocktailCardHeader>
-    <CocktailCardBody>
-      <CocktailInfoLabel>Ingredients:</CocktailInfoLabel>
-      <CocktailPreparation>{props.recipe.map(ingredient => {return (<span>{ingredient.name}</span>)})}</CocktailPreparation>
-      <CocktailInfoLabel>Method:</CocktailInfoLabel>
-      <CocktailPreparation>{props.instructions}</CocktailPreparation>
-      <CocktailInfoLabel>About the cocktail:</CocktailInfoLabel>
-      <CocktailDescription>{props.description}</CocktailDescription>
-    </CocktailCardBody>
-    <CocktailInfoButton onClick={props.handleSetDisplayInfo}>Close</CocktailInfoButton>
-  </InfoContainer>
+  <TransparentContainer>
+    <InfoContainer>
+        <CocktailName>{props.name}</CocktailName>
+        <CocktailSubHeading>{`${props.category}, ${props.timing}`}</CocktailSubHeading>
+        <>
+          <CocktailInfoLabel>Ingredients:</CocktailInfoLabel>
+          <CocktailIngredients style={{display: "grid"}}>{props.recipe.map(ingredient => {
+            return (
+              <Ingredient>
+                <span>{`${ingredient.amount} ${ingredient.units}`}</span>
+                <span>{`${ingredient.name}`}</span>
+              </Ingredient>
+            )
+            })}
+          </CocktailIngredients>
+          <CocktailInfoLabel>Method:</CocktailInfoLabel>
+          <CocktailMethod>{props.instructions}</CocktailMethod>
+          <CocktailInfoLabel>About the cocktail:</CocktailInfoLabel>
+        <>
+          {(props.iba === "true") ? <IbaIcon><Img src={require('../../images/iba-logo.png')} alt="Image"/></IbaIcon> : null}
+          {(props.alcoholic === "false") ? <NAIcon><Img src={require('../../images/no-alcohol.png')} alt="Image"/></NAIcon> : null}
+          {(props.vegan === "false") ? <NonVeganIcon><Img src={require('../../images/non-vegan.png')} alt="Image"/></NonVeganIcon> : null}
+        </>
+          <CocktailDescription>{props.description}</CocktailDescription>
+        </>
+        <CocktailInfoButton onClick={props.handleSetDisplayInfo}>Close</CocktailInfoButton>
+    </InfoContainer>
+  </TransparentContainer>
   </>
 );
 

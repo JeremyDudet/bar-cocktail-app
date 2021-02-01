@@ -1,13 +1,15 @@
 import React from 'react'
-import {SelectedIngredientsContainer, Ingredient, InnerContainer, IngredientName, IngredientAmount, IngredientUnits, RemoveButton} from './CocktailFormIgredientList.elements';
-import {FiDelete} from "react-icons/fi";
-
+import {
+  SelectedIngredientsContainer, 
+  Ingredient, 
+  InnerContainer, 
+  IngredientName, 
+  IngredientAmount, 
+  IngredientUnits, 
+  RemoveButton
+} from './CocktailFormIgredientList.elements';
 
 const CocktailFormIngredientListItem = (props) => {
-
-  function handleClick() {
-    props.handleRemoveRecipeIngredient(props.ingredient)
-  }
 
   return (
     <Ingredient key={props.ingredient.id}>
@@ -17,37 +19,24 @@ const CocktailFormIngredientListItem = (props) => {
           value={props.ingredient.amount}
           onChange={e => {
             const amount = e.target.value;
-            props.setRecipe(currentIngredient => 
-              currentIngredient.map(x => 
-                x.id === props.ingredient.id 
-                ? {
-                    ...x,
-                    amount
-                  } 
-                : x 
-              )
-            ); 
+            props.setRecipe( currentIngredient => currentIngredient.map( x => 
+                x.id === props.ingredient.id ? {...x, amount} : x )); 
           }}
           placeholder='amount'
           type="number"   
           className="amount" 
+          required
         />
         <IngredientUnits 
           value={props.ingredient.units}  
           onChange={e => {
             const units = e.target.value;
-            props.setRecipe(currentIngredient =>
-              currentIngredient.map(x => 
-                x.id === props.ingredient.id
-                ? {
-                  ...x,
-                  units
-                  }
-                : x
-              )
-            );
-          }
-        }>
+            props.setRecipe( currentIngredient => currentIngredient.map( x => 
+              x.id === props.ingredient.id ? {...x, units} : x
+            ));
+          }}
+          required
+          >
           <option value="oz" selected>oz</option>
           <option value="ml">ml</option>
           <option value="splash">splash</option>
@@ -59,7 +48,7 @@ const CocktailFormIngredientListItem = (props) => {
           <option value="">each</option>
         </IngredientUnits>
 
-        <RemoveButton onClick={handleClick}>X</RemoveButton>
+        <RemoveButton onClick={() => props.handleRemoveRecipeIngredient(props.ingredient)}>X</RemoveButton>
       </InnerContainer>
     </Ingredient>
   );
@@ -77,7 +66,7 @@ const CocktailFormIngredientList = (props) => {
   
   return (
     <SelectedIngredientsContainer style={styles}>
-      {props.recipeIngredients?.map((ingredient) => {
+      {props.recipeIngredients.map((ingredient) => {
         return <CocktailFormIngredientListItem ingredient={ingredient} setRecipe={props.setRecipeIngredients} handleRemoveRecipeIngredient={props.handleRemoveRecipeIngredient}/>
       })}
     </SelectedIngredientsContainer>

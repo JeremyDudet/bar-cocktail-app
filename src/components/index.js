@@ -14,4 +14,5 @@ export { default as IngredientListFilters } from './IngredientListFilters/Ingred
 export { default as IngredientPicker } from './IngredientPicker/IngredientPicker'
 export { default as IngredientPickerList } from './IngredientPickerList/IngredientPickerList'
 export { default as CocktailForm } from './CocktailForm/CocktailForm'
+export { default as DeleteConfirmation } from './DeleteConfirmation/DeleteConfirmation'
 // this is to neatly export all the nested files that are in the components folder.

@@ -1,0 +1,30 @@
+[debug] [2021-02-01T12:10:42.035Z] ----------------------------------------------------------------------
+[debug] [2021-02-01T12:10:42.038Z] Command:       /Users/jedu/.nvm/versions/node/v14.7.0/bin/node /Users/jedu/.nvm/versions/node/v14.7.0/bin/firebase init
+[debug] [2021-02-01T12:10:42.038Z] CLI Version:   8.11.2
+[debug] [2021-02-01T12:10:42.038Z] Platform:      darwin
+[debug] [2021-02-01T12:10:42.038Z] Node Version:  v14.7.0
+[debug] [2021-02-01T12:10:42.039Z] Time:          Mon Feb 01 2021 04:10:42 GMT-0800 (Pacific Standard Time)
+[debug] [2021-02-01T12:10:42.039Z] ----------------------------------------------------------------------
+[debug] [2021-02-01T12:10:42.039Z] 
+[debug] [2021-02-01T12:10:42.045Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-02-01T12:10:42.045Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/jedu/dev/bar-app
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2021-02-01T12:12:25.895Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects?pageSize=100  
+ 

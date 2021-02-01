@@ -44,7 +44,7 @@ const LogIn = (props) => {
   };
 
   function logIn(email, password) {
-    return auth.signInWithEmailAndPassword(email, password).catch((error) => (() => setError(error.message)));
+    return auth.signInWithEmailAndPassword(email, password).catch((error) => (setError(error.message)));
   };
 
   function navigateToDashboard() {
@@ -54,10 +54,14 @@ const LogIn = (props) => {
   async function handleSubmit(e) {
     e.preventDefault();
     setLoading(true);
-    const user = await logIn(email, password);
-    props.dispatch(login(user.user.uid));
-    console.log(user.user);
-    navigateToDashboard();
+    try {
+      const user = await logIn(email, password);
+      props.dispatch(login(user.user.uid));
+      console.log(user.user);
+      navigateToDashboard();
+    } catch {
+      alert(`something went wrong`);
+    }
     setLoading(false);
   };
   

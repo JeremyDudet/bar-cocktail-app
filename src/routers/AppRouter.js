@@ -17,12 +17,12 @@ const AppRouter = () => {
   return (
     <Switch>
       <Route path="/" component={Home} exact/>
+      <Route path="/browse" component={UserBrowseCocktails}/>
       <Route path="/login" component={AdminLogIn}/>
       <Route path="/signup" component={AdminSignUp}/>
-      <Route path="/dashboard" component={AdminDashboard}/>
-      <Route path="/myCocktails" component={AdminMyCocktails}/>
-      <Route path="/editIngredients/" component={AdminEditIngredients}/>
-      <Route path="/browse" component={UserBrowseCocktails}/>
+      <PrivateRoute path="/dashboard" component={AdminDashboard}/>
+      <PrivateRoute path="/myCocktails" component={AdminMyCocktails}/>
+      <PrivateRoute path="/editIngredients/" component={AdminEditIngredients}/>
       <Route path="/help" component={Help}/>
       <Route component={NotFoundPage}/>
     </Switch>

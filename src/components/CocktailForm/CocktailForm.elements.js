@@ -53,3 +53,20 @@ export const MainButton = styled(Button)`
   width: 100%;
   background: rgb(88, 183, 146);
 `;
+
+export const DeleteButton = styled(Button)`
+  background: #F66E73;
+  color: white;
+  &:hover { 
+    background: #FF4d51; 
+  }
+`;
+
+export const CancelButton = styled(Button)`
+  color: white; 
+  width: 100%;
+  background: #333;
+  &:hover {
+    background: #444;
+  }
+`;
