@@ -3,7 +3,7 @@
 // Get visible ingredients
 
 
-export const selectIngredients = (ingredients, { name, available, category, alcoholic, vegan }) => {
+export const selectIngredients = (ingredients, { name, available, category, alcoholic, vegan }, allIngredients) => {
 
   // filter() method creates a new array with all the elements that pass the test implemented by the function
   return ingredients.filter((ingredient) => { 
@@ -11,7 +11,7 @@ export const selectIngredients = (ingredients, { name, available, category, alco
     
 
     const nameMatch = name ? ingredient.name.toLowerCase().includes(name.toLowerCase()) : true;
-    const availalbeMatch = available ? (available === ingredient.available) : true;
+    const availalbeMatch = allIngredients ? true : (available ? (available === ingredient.available) : true);
     const categoryMatch = category ? (category === ingredient.category) : true;
     const alcoholicMatch = alcoholic ? ( alcoholic === ingredient.alcoholic ) : true;  
     const veganMatch = vegan ? ( vegan === ingredient.vegan ) : true; 

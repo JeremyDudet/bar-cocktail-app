@@ -1,16 +1,18 @@
 import React from 'react'
-import { format } from 'date-fns';
-import { // we style and define the tags in the elements.js, then we arrange them here. 
+
+// functional components
+import  CocktailList  from '../CocktailList/CocktailList'
+import CocktailListFilter from '../CocktailListFilters/CocktailListFilters'
+
+// styled components
+import { Container } from '../../globalStyles'
+import {  
   InfoSec, 
   InfoRow, 
   InfoColumn,
-  CocktailListWrapper,
   FilterWrapper, 
   TopLine, 
 } from './BrowseAvailableCocktails.elements'
-import  CocktailList  from '../CocktailList/CocktailList'
-import CocktailListFilter from '../CocktailListFilters/CocktailListFilters'
-import { Container } from '../../globalStyles'
 
 const BrowseAvailableCocktails = ({ 
   lightBg,
@@ -31,9 +33,7 @@ const BrowseAvailableCocktails = ({
               </FilterWrapper>
             </InfoColumn>
             <InfoColumn>
-              <>
-                <CocktailList />
-              </>
+              <CocktailList />
             </InfoColumn>  
           </InfoRow>
         </Container>

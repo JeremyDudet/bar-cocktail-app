@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { RiDeleteBack2Line } from 'react-icons/ri';
 
 
 export const SelectedIngredientsContainer = styled.div`
@@ -34,7 +33,7 @@ export const IngredientAmount = styled.input`
   background-color: transparent;
   border: 1px solid #333;
   border-radius: 0.25rem;
-  max-width: 6rem;
+  width: 70px;
   cursor: pointer;
 `;
 export const IngredientUnits = styled.select`
@@ -42,12 +41,13 @@ export const IngredientUnits = styled.select`
   border: 1px solid #333;
   border-radius: 0.25rem;
   cursor: pointer;
+  width: auto;
 `;
 
-export const RemoveButton = styled(RiDeleteBack2Line)`
-  border: none;
-  background: transparent;
-  color: red;
+export const RemoveButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 2.5rem;
   transform: scale(1.2); 
   &:hover {

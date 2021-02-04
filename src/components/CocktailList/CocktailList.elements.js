@@ -15,13 +15,14 @@ export const CocktailListGrid = styled.div`
     gap: 1rem;
     grid-template-columns: repeat(2, 1fr);
   }
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 600px) {
     display: grid;
-    justify-content: center;
+    justify-content: space-evenly;
     gap: 1rem;
     grid-template-columns: repeat(2, 1fr);
   }
-  @media screen and (max-width: 380px) {
+  @media screen and (max-width: 550px) {
+    justify-content: middle;
     grid-template-columns: repeat(1, 1fr);
   }
 `;

@@ -10,15 +10,18 @@ import './firebase/firebase'; // allows the file to be run
 
 const store = configureStore(); // gives us access to: store.dispatch store.getState store.subscribe
 
-ReactDOM.render(<p>Loading...</p> ,document.getElementById('root'));
+async function startApp() {
+  ReactDOM.render(<p>Loading...</p> ,document.getElementById('root'));
+  try {
+    await store.dispatch(startSetCocktails());
+    await store.dispatch(startSetIngredients()); 
+  } catch {
+    alert("Couldn't connect to server")
+  }
+  ReactDOM.render(<Provider store={store}><App /></Provider>,document.getElementById('root'));
+}
+
+startApp();
 
 
-store.dispatch(startSetCocktails());
-store.dispatch(startSetIngredients()).then(() => {
-  ReactDOM.render(
-    <Provider store={store}>
-      <App />
-    </Provider>,
-    document.getElementById('root'));
-});
    

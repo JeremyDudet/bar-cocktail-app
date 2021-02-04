@@ -6,12 +6,12 @@ import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { startAddIngredient } from '../../redux/actions/ingredients';
 import { startAddCocktail, startEditCocktail } from '../../redux/actions/cocktails';
+import { selectIngredients } from '../../selectors/ingredients';
 
 // functional components
 import { 
   CocktailForm, 
   IngredientForm, 
-  IngredientList, 
   IngredientListFilters 
 } from '../../components';
 
@@ -21,8 +21,38 @@ import {
   CocktailFormColumn, 
   InfoColumn, 
   InfoRow, 
-  InnerInfoColumn, 
+  InnerInfoColumn,
+  IngredientsWrapper,
+  Ingredient,
 } from "./AddCocktailPage.elements";
+
+const IngredientList = (props) => {
+
+  function handleDisabled(ingredient) {
+    let status = false;
+    props.recipeIngredients.forEach( recipeIngredient => {
+      if (recipeIngredient.id === ingredient.id) {
+        status = true;
+      }
+    });
+    return status;
+  }
+
+  return (
+    <IngredientsWrapper>
+      {props.ingredients.map((ingredient) => { // for each ingredient that is passed down from redux/firebase - render an IngredientListItem
+        return (
+          <Ingredient 
+            key={ingredient.id}
+            onClick={() => props.handleSelectedIngredient(ingredient)}
+            selected={handleDisabled(ingredient)}
+            disabled={handleDisabled(ingredient)}
+          >{ingredient.name}</Ingredient>
+        );
+      })} 
+    </IngredientsWrapper>
+  );
+};
 
 
 const AddCocktailPage = (props) => {
@@ -46,8 +76,6 @@ const AddCocktailPage = (props) => {
     const newList = recipeIngredients.filter(ingredient => ingredient.id !== removedIngredient.id);
     setRecipeIngredients(newList);
   }
-
-  
 
   async function handleEditCocktail(id, cocktail) {
     await props.dispatch(startEditCocktail(id, cocktail));
@@ -77,16 +105,17 @@ const AddCocktailPage = (props) => {
       </CocktailFormColumn>
       <InfoColumn>
         <InnerInfoColumn>
-          <SectionHeader> Add ingredients to recipe </SectionHeader>
-          <IngredientListFilters/>
+          <SectionHeader style={{marginBottom: "1rem"}}> Add ingredients to recipe </SectionHeader>
+          <IngredientListFilters />
           <IngredientList 
-            handleSelectIngredient={handleAddRecipeIngredient}
+            handleSelectedIngredient={handleAddRecipeIngredient}
             recipeIngredients={recipeIngredients}
+            ingredients={props.ingredients}
             /> {/* pass down handler that updates this function's state */}
         </InnerInfoColumn>
         <InnerInfoColumn>
           <SectionHeader>Can't find ingredient? </SectionHeader>
-          <SectionSubheader>Add new ingredient to your bar's database...</SectionSubheader>
+          <SectionSubheader style={{marginBottom: "1rem"}}>Add new ingredient to your bar's database...</SectionSubheader>
           <IngredientForm 
             onSubmit={(ingredient) => {
               props.dispatch(startAddIngredient(ingredient));
@@ -98,4 +127,10 @@ const AddCocktailPage = (props) => {
   );
 }
 
-export default connect()(AddCocktailPage);
+const mapStateToProps = (state) => {
+  return {
+    ingredients: selectIngredients(state.ingredients, state.ingredientFilters, true)
+  };
+}
+
+export default connect(mapStateToProps)(AddCocktailPage);

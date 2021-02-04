@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Ingredient = styled.button`
   display: ${({disabled}) => (disabled === true ? "none" : "flex")};
-  outline: none;
   justify-self: flex-start;
   color: ${ ({selected}) => (selected === true ? "#fff" : "rgb(95, 99, 189)")};
   background: ${ ({selected}) => (selected === true ? "rgb(95, 99, 189)" : "#2f2f2f")};

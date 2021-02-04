@@ -26,8 +26,8 @@ const IngredientList = (props) => {
         {props.ingredients.map((ingredient) => { // for each ingredient that is passed down from redux/firebase - render an IngredientListItem
           return (
             <Ingredient 
-              onClick={() => props.handleSelectIngredient(ingredient)}
               key={ingredient.id}
+              onClick={() => props.handleSelectedIngredient(ingredient)}
               disabled={(props.recipeIngredients ? handleDisabled(ingredient) : false)}
               selected={(props.selectedIngredient?.id === ingredient.id)}
             >{ingredient.name}</Ingredient>
@@ -41,12 +41,9 @@ const IngredientList = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    ingredients: selectIngredients(state.ingredients, state.ingredientFilters)
+    ingredients: selectIngredients(state.ingredients, state.ingredientFilters, true)
   };
 }
 
 //HOC
 export default connect(mapStateToProps)(IngredientList); 
-
-// saved ingredients are stored in redux and firebase
-// and passed onto this function as props

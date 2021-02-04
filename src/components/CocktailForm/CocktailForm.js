@@ -121,11 +121,10 @@ const CocktailForm = (props) => {
     <>
       { props.selectedCocktail && 
       <>
-        <div style={{color: '#bbb'}}>{`Last Edited: ${format(lastEdited, 'MM/dd/yyy')}`}</div>
+        <div style={{marginLeft: "5px", color: '#bbb'}}>{`Last Edited: ${format(lastEdited, 'MM/dd/yyy')}`}</div>
         <CancelButton onClick={() => props.setSelectedCocktail()}>Cancel Edit</CancelButton>
         <DeleteButton onClick={props.handleSetDisplayDeleteConfirmation}>Delete Cocktail</DeleteButton>
       </>
-      
       }
       <Form id="cocktail" onSubmit={onSubmit}>
       

@@ -27,6 +27,7 @@ const AdminMyCocktails = () => {
     }
     text-align: center;
     min-width: 200px;
+    margin: 0 0.25rem 1rem 0.25rem;
     @media screen and (max-width: 480px) {
       min-width: none;
     } 
@@ -35,8 +36,6 @@ const AdminMyCocktails = () => {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 1.5rem;
-    margin-bottom: 1rem;
     @media screen and (max-width: 480px) {
       justify-content: center;
     }

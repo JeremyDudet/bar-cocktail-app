@@ -3,6 +3,7 @@ import { Button } from '../../globalStyles';
 import { BsInfoCircle } from 'react-icons/bs';
 
 export const CocktailCard = styled.section`
+  justify-self: center;
   min-width: 100px;
   max-width: 300px;
   border-radius: 0.5rem;
@@ -60,6 +61,7 @@ export const CocktailRecipeIngredients = styled.ul`
   align-items: left;
   gap: 5px;
   line-height: 0.95rem;
+  max-width: 95%;
 `;
 
 export const CocktailRecipeIngredient = styled.li`
@@ -182,7 +184,6 @@ export const CocktailIngredients = styled.div`
   gap: 0.6rem;
   width: 100%;
 `;
-
 export const Ingredient = styled.div`
   background: #2e2e2e;
   border-radius: 0.5rem;
@@ -195,14 +196,17 @@ export const Ingredient = styled.div`
 
 
 export const CocktailInfoLabel = styled.div`
-  color: rgb(245, 163, 57);
+  color: #BB46F0;
   margin: none;
   margin-top: 1em;
   border: none;
 `;
 export const CocktailInfoButton = styled(Button)`
-  background-color: rgb(245, 163, 57);
+  background: #BB46F0;
   opacity: 1;
   margin-top: 1rem;
+  &:hover {
+    background: #CC57F1;
+  }
 `;
 

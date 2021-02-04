@@ -35,6 +35,8 @@ export const NavLogo = styled(Link)`
   text-decoration: none;
   display: table-cell;
   vertical-align: middle;
+  position: relative;
+  top: 2px;
   cursor: pointer;
   @media screen and (max-width: 380px) {
     padding-left: 1rem;
@@ -74,6 +76,7 @@ export const CurrentRestaurant = styled.span`
 export const MobileIcon = styled.div`
   display : none;
   background: transparent;
+  color: white;
 
   @media screen and (max-width: 960px) {
     background: transparent;
@@ -169,7 +172,7 @@ export const NavLinks = styled(NavLink)`
     display: table;
   }
   @media screen and (max-width: 380px) {
-    padding: 0;
+    padding: 3rem;
   }
 `;
 

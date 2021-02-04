@@ -6,8 +6,10 @@ import {
   IngredientName, 
   IngredientAmount, 
   IngredientUnits, 
-  RemoveButton
+  RemoveButtonContainer
 } from './CocktailFormIgredientList.elements';
+import { RiDeleteBack2Line } from 'react-icons/ri';
+
 
 const CocktailFormIngredientListItem = (props) => {
 
@@ -17,6 +19,7 @@ const CocktailFormIngredientListItem = (props) => {
       <InnerContainer>
         <IngredientAmount
           value={props.ingredient.amount}
+          step={1/8}
           onChange={e => {
             const amount = e.target.value;
             props.setRecipe( currentIngredient => currentIngredient.map( x => 
@@ -48,7 +51,7 @@ const CocktailFormIngredientListItem = (props) => {
           <option value="">each</option>
         </IngredientUnits>
 
-        <RemoveButton onClick={() => props.handleRemoveRecipeIngredient(props.ingredient)}>X</RemoveButton>
+        <RemoveButtonContainer onClick={() => props.handleRemoveRecipeIngredient(props.ingredient)}><RiDeleteBack2Line /></RemoveButtonContainer>
       </InnerContainer>
     </Ingredient>
   );

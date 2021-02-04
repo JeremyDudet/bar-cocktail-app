@@ -60,7 +60,7 @@ const LogIn = (props) => {
       console.log(user.user);
       navigateToDashboard();
     } catch {
-      alert(`something went wrong`);
+      console.log(`Log in failed: something went wrong`);
     }
     setLoading(false);
   };

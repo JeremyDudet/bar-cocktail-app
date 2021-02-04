@@ -1,16 +1,45 @@
 import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 import { setIngredientFilterType } from '../../redux/actions/cocktailFilters'
+import { selectIngredients } from '../../selectors/ingredients';
 import IngredientListFilters from '../IngredientListFilters/IngredientListFilters';
-import IngredientPickerList from '../IngredientPickerList/IngredientPickerList';
 import { 
-  IngredientsWrapper, 
   TopLine,
   FilterTypeRadio,
   Label,
   RadioContainer,
-  IngredientPickerContainer
+  IngredientPickerContainer,
+  IngredientsWrapper, 
+  Ingredient
 } from './IngredientPicker.elements';
+
+const IngredientList = (props) => {
+
+  function confirmSelected(ingredient) {
+    let status = false;
+    props.selectedIngredients.forEach( selectedIngredient => {
+      if (selectedIngredient.id === ingredient.id) {
+        status = true;
+      }
+    });
+    return status;
+  }
+
+  return (
+    <IngredientsWrapper>
+      {props.ingredients.map((ingredient) => { 
+        return (
+          <Ingredient
+            key={ingredient.id} 
+            onClick={() => props.handleSelectedIngredient(ingredient)}
+            selected={confirmSelected(ingredient)}
+            disabled={confirmSelected(ingredient)}
+          >{ingredient.name}</Ingredient>
+        );
+      })}
+    </IngredientsWrapper>
+  );
+}
 
 const IngredientPicker = (props) => {
 
@@ -37,11 +66,20 @@ const IngredientPicker = (props) => {
         <Label for="atLeastOne">Show me cocktails that inlcude any of the following...</Label>
       </RadioContainer>
       <TopLine>Available ingredients:</TopLine>
-      <IngredientsWrapper>
-        <IngredientPickerList handleSelectedIngredient={props.handleAddSelectedIngredient} />
-      </IngredientsWrapper> 
+      <IngredientList 
+        handleSelectedIngredient={props.handleAddSelectedIngredient} 
+        ingredients={props.ingredients} 
+        selectedIngredients={props.selectedIngredients} 
+      />
     </IngredientPickerContainer>
   )
 }
 
-export default connect()(IngredientPicker);
+const mapStateToProps = (state) => {
+  return {
+    ingredients: selectIngredients(state.ingredients, state.ingredientFilters, false),
+    cocktailFilters: state.cocktailFilters,
+  };
+};
+
+export default connect(mapStateToProps)(IngredientPicker);

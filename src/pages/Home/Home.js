@@ -5,9 +5,7 @@ import { homeObjectOne } from './Data'
 
 const Home = () => {
   return (
-    <>
       <InfoSection {...homeObjectOne} />
-    </>
   )
 }
 

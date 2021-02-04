@@ -4,7 +4,7 @@ import { Button } from '../../globalStyles'
 export const InfoSec = styled.div`
   color: #0d0d0d;
   margin-top: 2rem;
-  padding: 120px 0;
+  padding: 120px 0 55px 0;
   @media screen and (max-width: 758px) {
     padding: 25px 0;
   }
@@ -23,31 +23,48 @@ export const InfoRow = styled.div`
 `;
 
 export const InfoColumn = styled.div`
+  max-width: 50%;
+  flex-basis: 50%;
   margin-bottom: 15px;
   padding-right: 15px;
   padding-left: 15px;
-  flex: 1;
-  max-width: 50%;
-  flex-basis: 50%;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center; 
   @media screen and (max-width: 758px) {
     max-width: 100%;
     flex-basis: 100%;
-    display: flex;
-    justify-content: center;
   }
 `;
 
 export const TextWrapper = styled.div`
   max-width: 540px;
-  padding-top:0;
   padding-bottom: 60px;
 
   @media screen and (max-width: 768px) {
-    padding-bottom: 65px;
+    padding-bottom: 20px;
   } 
   @media screen and (max-width: 321px) {
     padding-bottom: 10px;
+  }
+`;
+
+export const ImgWrapper = styled.div`
+  justify-self: center;
+  max-width: 555px;
+  height: auto;
+  @media screen and (max-width: 758px) {
+    justify-self: flex-start;
+  }
+`;
+
+export const Img = styled.img`
+  max-width: 100%;
+  height: 300px;
+  @media screen and (max-width: 758px) {
+    max-height: 250px;
   }
 `;
 
@@ -80,20 +97,7 @@ export const Subtitle = styled.p`
   color: ${({lightTextDesc}) => (lightTextDesc ? '#a9b3c1' : '#1c2237')};
 `;
 
-export const ImgWrapper = styled.div`
-  max-width: 555px;
-  display: flex;
-  justify-content: ${({ start }) => ((start === true) ? 'flex-start' : 'flex-end')};
-`;
 
-export const Img = styled.img`
-  padding-right: 0;
-  border: 0;
-  max-width: 100%;
-  vertical-align: middle;
-  display: inline-block;
-  max-height: 500px;
-`;
 
 export const MainButton = styled(Button)`
   @keyframes Gradient {

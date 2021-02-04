@@ -29,8 +29,6 @@ import {
 } from './CocktailListFilters.elements';
 
 
-
-
 const RenderSelectedIngredient = (props) => {
   return(
     <SelectedIngredientsWrapper>
@@ -46,6 +44,7 @@ const RenderSelectedIngredient = (props) => {
 
 
 const CocktailListFilters = (props) => {
+  
   const [ displayIngredientPicker, setDisplayIngredientPicker ] = useState(false); 
   const [ searchIngredientButtonText, setSearchIngredientButtonText ] = useState('Search by ingredient')
   const [ selectedIngredients, setSelectedIngredients ] = useState([]);
@@ -81,6 +80,7 @@ const CocktailListFilters = (props) => {
 
   return (
     <CocktailListFilter>
+
       <Label for="name">Name: </Label>
       <NameInput
         type="text"
@@ -178,23 +178,22 @@ const CocktailListFilters = (props) => {
           {searchIngredientButtonText}
         </SearchByIngredientButton>
       </Label>
-      
-        { 
-          displayIngredientPicker && 
-          <IngredientPicker 
-            handleAddSelectedIngredient={handleAddSelectedIngredient}
-          />
-        }
-        {/* Render Selected Ingredients */}
-        {
-          (selectedIngredients.length > 0) && 
-          <RenderSelectedIngredient 
-          ingredients={selectedIngredients}
-          handleRemoveSelectedIngredient={handleRemoveSelectedIngredient}
-          />
-        }
-     
+      { 
+        displayIngredientPicker && 
+        <IngredientPicker 
+          handleAddSelectedIngredient={handleAddSelectedIngredient}
+          selectedIngredients={selectedIngredients}
+        />
+      }
 
+      {
+        (selectedIngredients.length > 0) && 
+        <RenderSelectedIngredient 
+        ingredients={selectedIngredients}
+        handleRemoveSelectedIngredient={handleRemoveSelectedIngredient}
+        />
+      }
+      
     </CocktailListFilter>
   );
 };
@@ -207,7 +206,6 @@ const CocktailListFilters = (props) => {
 const mapStateToProps = (state) => {
   return {
     cocktailFilters: state.cocktailFilters,
-    ingredients: state.ingredients
   };
 };
 

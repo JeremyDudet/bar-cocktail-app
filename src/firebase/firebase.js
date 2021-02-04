@@ -1,6 +1,5 @@
 import * as firebase from "firebase";
-import "firebase/auth"; 
-import "firebase/analytics";
+import "firebase/auth";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 // this is the code that we use to connect to firebase
@@ -12,14 +11,13 @@ const firebaseConfigDevelopmentApp = {
   storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
+  // measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase
 const app =  firebase.initializeApp(firebaseConfigDevelopmentApp);
 const database = firebase.database();
 const auth = app.auth();
-firebase.analytics();
 
 export { firebase, app, database, auth };
 

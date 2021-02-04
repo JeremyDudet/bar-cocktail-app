@@ -1,13 +1,10 @@
 // core
 import React from 'react';
 
-// date formater
-import { format } from 'date-fns';
-
 // global state management
 import { connect } from 'react-redux';
 import { startEditIngredient } from '../../redux/actions/ingredients';
-import { setNameFilter } from '../../redux/actions/ingredientFilters';
+// import { setNameFilter } from '../../redux/actions/ingredientFilters';
 
 // logic 
 import { selectCocktails } from '../../selectors/cocktails'; // returns filtered cocktail list 
@@ -15,7 +12,6 @@ import { selectIngredients } from '../../selectors/ingredients'; // returns filt
 import { appearancesOf } from '../../cocktailAppearances'; // calculates every ingredient's number of apperances in all cocktails
 
 // functional components
-import { IngredientPickerList } from '../../components';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
@@ -23,7 +19,6 @@ import 'react-circular-progressbar/dist/styles.css';
 import {InfoSec, Container, PageTitle, SectionHeader, SectionSubheader} from '../../globalStyles';
 import { 
   InfoRow,
-  IngredientsWrapper,
   MakeableCocktails,
   MakeableCocktailList,
   CoktailName,
@@ -34,11 +29,28 @@ import {
   MissingIngredient,
   MissingIngredientName,
   MissingIngredientAppearances,
-  MissingIngredientAddIcon,
+  MissingIngredientAddIconContainer,
   CircularProgressBarContainer,
-  Form,
-  NameInput
+  IngredientsWrapper,
+  Ingredient
 } from './Dashboard.elements';
+import { AiOutlinePlusCircle } from 'react-icons/ai';
+
+const IngredientList = (props) => {
+  return (
+    <IngredientsWrapper>
+      {props.ingredients.map((ingredient) => {
+        return (
+          <Ingredient 
+            key={ingredient.id}
+            onClick={() => props.handleSelectedIngredient(ingredient)}
+            selected={(ingredient.available === "true")}
+          >{ingredient.name}</Ingredient>
+        );
+      })} 
+    </IngredientsWrapper>
+  );
+};
 
 
 const Dashboard = (props) => {
@@ -56,32 +68,9 @@ const Dashboard = (props) => {
   return (
     <InfoSec>
       <Container>
-        <PageTitle style={{lineHeight: "1.9rem", marginBottom: "15px"}}>Select ingredients available in your bar</PageTitle>
-        {/* TODO - integrate name search */}
-        {/* <Form>
-          <NameInput
-            id="ingredientName"
-            type="name"
-            value={props.ingredientFilters.name} 
-            onChange={(e) => {
-              props.dispatch(setNameFilter(e.target.value));
-            }}
-            placeholder="Search..."
-          />
-          </Form> */}
-        <IngredientsWrapper>
-          <IngredientPickerList handleSelectedIngredient={handleIngredientAvailability} ingredients={props.ingredients} />
-        </IngredientsWrapper>
+        <PageTitle style={{lineHeight: "1.9rem", marginBottom: "1.3rem"}}>Select ingredients available in your bar</PageTitle>
+        <IngredientList handleSelectedIngredient={handleIngredientAvailability} ingredients={props.ingredients} />
         <InfoRow>
-          <MakeableCocktails>
-            <SectionHeader>Makeable cocktails</SectionHeader>
-            <SectionSubheader>These are the cocktails you can make...</SectionSubheader>
-            <MakeableCocktailList>
-              {
-                props.availableCocktails.map( cocktail => (<CoktailName key={cocktail.id}>{cocktail.name}</CoktailName>))
-              }
-            </MakeableCocktailList>
-          </MakeableCocktails>
           <CocktailGuage>
             <SectionHeader>Cocktail guage</SectionHeader>
             <SectionSubheader>How many cocktails can you make with what's in your bar?</SectionSubheader>
@@ -106,15 +95,26 @@ const Dashboard = (props) => {
                 props.ingredients.map(ingredient => (
                   (ingredient.available === "false") 
                   ? <MissingIngredient>
-                      <MissingIngredientName>{ingredient.name}</MissingIngredientName>
+                      <MissingIngredientAddIconContainer onClick={() => handleIngredientAvailability(ingredient)}>
+                        <AiOutlinePlusCircle />
+                        <MissingIngredientName>{ingredient.name}</MissingIngredientName>
+                      </MissingIngredientAddIconContainer>
                       <MissingIngredientAppearances>{props.appearancesOf[ingredient.id]}</MissingIngredientAppearances> 
-                      <MissingIngredientAddIcon onClick={() => handleIngredientAvailability(ingredient)} />
                     </MissingIngredient>
                   : null 
                 ))
               }
             </MissingIngredientsList>
           </MissingPopularIngredients>
+          <MakeableCocktails>
+            <SectionHeader>Makeable cocktails</SectionHeader>
+            <SectionSubheader>These are cocktails you can make...</SectionSubheader>
+            <MakeableCocktailList>
+              {
+                props.availableCocktails.map( cocktail => (<CoktailName key={cocktail.id}>{cocktail.name}</CoktailName>))
+              }
+            </MakeableCocktailList>
+          </MakeableCocktails>
         </InfoRow>
       </Container>
     </InfoSec>
@@ -124,7 +124,7 @@ const Dashboard = (props) => {
 const mapStateToProps = (state) => {
   return {
     ingredientFilters: state.ingredientFilters,
-    ingredients: state.ingredients,
+    ingredients: selectIngredients(state.ingredients, state.ingredientFilters, true),
     allCocktails: state.cocktails,
     availableCocktails: selectCocktails(state.cocktails, state.cocktailFilters, state.ingredients),
     appearancesOf: appearancesOf(state.ingredients, state.cocktails),

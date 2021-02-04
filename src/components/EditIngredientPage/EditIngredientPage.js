@@ -4,9 +4,10 @@ import React, { useState } from 'react';
 // global state management
 import { connect } from 'react-redux';
 import { startRemoveIngredient, startEditIngredient } from '../../redux/actions/ingredients';
+import { selectIngredients } from "../../selectors/ingredients";
 
 // functional components
-import { IngredientForm, IngredientListFilters, IngredientList, DeleteConfirmation } from '../../components';
+import { IngredientForm, IngredientListFilters, DeleteConfirmation } from '../../components';
 
 // styled components
 import { Container, PageTitle } from '../../globalStyles';
@@ -16,9 +17,31 @@ import {
   InfoColumn,
   InnerInfoColumn,
   IngredientsWrapper,
+  Ingredient,
   CancelButton,
   DeleteButton,
 } from './EditIngredientPage.elements';
+
+
+
+const IngredientList = (props) => {
+
+  return (
+    <IngredientsWrapper>
+      {props.ingredients.map((ingredient) => { // for each ingredient that is passed down from redux/firebase - render an IngredientListItem
+        return (
+          <Ingredient 
+            key={ingredient.id}
+            onClick={() => props.handleSelectedIngredient(ingredient)}
+            selected={(props.selectedIngredient?.id === ingredient.id)}
+            disabled={(props.selectedIngredient?.id === ingredient.id)}
+          >{ingredient.name}</Ingredient>
+        );
+      })} 
+    </IngredientsWrapper>
+  );
+};
+
 
 
 const EditIngredientPage = (props) => {
@@ -35,7 +58,7 @@ const EditIngredientPage = (props) => {
     displayDeleteConfirmation ? setDisplayDeleteConfirmation(false) : setDisplayDeleteConfirmation(true);
   }
   
-  async function handleSetSelectIngredient(ingredient) {
+  async function handleSetSelectedIngredient(ingredient) {
     await setSelectedIngredient();
     setSelectedIngredient(ingredient);
   }
@@ -65,9 +88,7 @@ const EditIngredientPage = (props) => {
           <InfoColumn>
             <PageTitle>Select ingredient you want to edit</PageTitle>
             <IngredientListFilters/>
-            <IngredientsWrapper>
-              <IngredientList handleSelectIngredient={handleSetSelectIngredient} selectedIngredient={selectedIngredient} />
-            </IngredientsWrapper>
+            <IngredientList handleSelectedIngredient={handleSetSelectedIngredient} ingredients={props.ingredients} selectedIngredient={selectedIngredient} />
           </InfoColumn>
           <InfoColumn>
             { selectedIngredient ? 
@@ -94,7 +115,10 @@ const EditIngredientPage = (props) => {
   );
 }
 
-// you grab state from the store and you pass it in as an object property called expense
+const mapStateToProps = (state) => {
+  return {
+    ingredients: selectIngredients(state.ingredients, state.ingredientFilters, true)
+  }
+}
 
-
-export default connect()(EditIngredientPage);
+export default connect(mapStateToProps)(EditIngredientPage);
