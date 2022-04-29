@@ -1,7 +1,6 @@
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import Pacifico from '../../fonts/Pacifico-Regular.ttf'
-
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import Pacifico from '../../fonts/Pacifico-Regular.ttf';
 
 export const FooterContainer = styled.div`
   padding: 3rem 0 2rem 0;
@@ -22,7 +21,8 @@ export const FooterSubscription = styled.section`
 `;
 
 export const FooterSubHeading = styled.p`
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
   margin-bottom: 24px;
   font-size: 24px;
 `;
@@ -85,7 +85,6 @@ export const FooterLinkItem = styled.div`
   width: 160px;
   box-sizing: border-box;
   color: #fff;
-
 `;
 
 export const FooterLinkTitle = styled.h2`
@@ -101,7 +100,7 @@ export const FooterLink = styled(Link)`
     color: #0467fb;
     transition: 0.3s ease-out;
   }
-`;  
+`;
 
 export const SocialMedia = styled.section`
   max-width: 1000px;
@@ -118,7 +117,7 @@ export const SocialMediaWrap = styled.div`
   flex-direction: column;
 `;
 
-export const SocialLogo  = styled(Link)`
+export const SocialLogo = styled(Link)`
   @font-face {
     font-family: Pacifico;
     src: url(${Pacifico}) format('truetype');
@@ -144,7 +143,7 @@ export const SocialIcons = styled.div`
   /* justify-content: space-between; */
   justify-content: center;
   align-items: center;
-  width:  240px;
+  width: 240px;
 `;
 
 export const SocialIconLink = styled.a`

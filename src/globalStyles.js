@@ -1,5 +1,5 @@
-import styled, {createGlobalStyle} from 'styled-components';
-import Poppins from './fonts/Poppins-Regular.ttf'
+import styled, { createGlobalStyle } from 'styled-components';
+import Poppins from './fonts/Poppins-Regular.ttf';
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   html{
-    background: #222;
+    background: #1f1f1f;
   }
 
   * {
@@ -19,10 +19,9 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: 'Poppins';
-    color: #FFFFFF;
+    color: #fff;
   }
 `;
-
 
 export const InfoSec = styled.div`
   margin-top: 4rem;
@@ -56,11 +55,11 @@ export const InfoRow = styled.div`
 `;
 
 export const Button = styled.button`
-  background: ${({primary}) => (primary ? '#BB46F0' : '#4B59F7' ) };
+  background: ${({ primary }) => (primary ? '#BB46F0' : '#4B59F7')};
   white-space: nowrap;
-  padding: ${({big}) => (big ? '12px 64px' : '10px 20px')};
+  padding: ${({ big }) => (big ? '12px 64px' : '10px 20px')};
   color: #000;
-  font-size: ${({fontBig}) => (fontBig ? '20px' : '16px')};
+  font-size: ${({ fontBig }) => (fontBig ? '20px' : '16px')};
   font-weight: bolder;
   border: none;
   cursor: pointer;
@@ -70,12 +69,13 @@ export const Button = styled.button`
   &:hover {
     transform: scale(1.005);
     transition: all 0.2s ease;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+      rgba(0, 0, 0, 0.23) 0px 6px 6px;
   }
 
   @media screen and (max-width: 960px) {
     width: 100%;
-  } 
+  }
 `;
 
 export const PageTitle = styled.h1`

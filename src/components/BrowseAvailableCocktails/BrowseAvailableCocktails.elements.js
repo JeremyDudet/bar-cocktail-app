@@ -1,43 +1,54 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const InfoSec = styled.div`
-  margin-top: 4rem;
-  padding: 25px 0;
+  padding: 5px 40px;
+`;
+
+export const LastUpdated = styled.div`
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+  margin-bottom: 0.15rem;
+  color: #f0ebd8;
+`;
+export const TimeAgo = styled.span`
+  font-size: 1rem;
+  color: #ffc15e;
 `;
 
 export const InfoRow = styled.div`
   display: flex;
-  margin: 0 -15px -15px -15px;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  gap: 1rem;
-  align-items: top;
-  flex-direction: ${({ imgStart }) => (imgStart ? 'row-reverse' : 'row') };
+  overflow: hidden;
+  justify-content: space-between;
+  height: 82vh;
+  width: 100%;
 `;
 
-export const InfoColumn = styled.div`
-  margin-bottom: 15px;
-  max-width: 65%;
-  /* min-width: 40%; */
-  @media screen and (max-width: 790px) {
-    max-width: 100%;
-    flex-basis: 80%;
-    display: flex;
-    justify-content: center;
-  } 
-`;
-
-export const FilterWrapper = styled.div`
-  max-width: 350px;
+export const Filters = styled.div`
+  margin-right: 1rem;
+  width: 320px;
+  max-width: 320px;
+  min-width: 320px;
   padding: 1rem;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   border-radius: 0.5rem;
   background: #2a2a2a;
-  height: auto;
+  height: 100%;
+  overflow: overlay;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+export const Cocktails = styled.div`
+  width: auto;
+  display: flex;
+  overflow: overlay;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const TopLine = styled.div`
-  color: ${({lightTopLine}) => (lightTopLine ? '#a9b3c1' : '#4b59f7')};
+  color: ${({ lightTopLine }) => (lightTopLine ? '#a9b3c1' : '#4b59f7')};
   font-size: 18px;
   line-height: 16px;
   letter-spacing: 1.4px;
@@ -48,7 +59,7 @@ export const Heading = styled.h1`
   margin-bottom: 24px;
   font-size: 48px;
   line-height: 1.1;
-  color: ${({ lightText }) =>(lightText ? '#f7f8fa' : '#1c2237')};
+  color: ${({ lightText }) => (lightText ? '#f7f8fa' : '#1c2237')};
 `;
 
 export const Subtitle = styled.p`
@@ -56,7 +67,7 @@ export const Subtitle = styled.p`
   margin-bottom: 35px;
   font-size: 18px;
   line-height: 24px;
-  color: ${({lightTextDesc}) => (lightTextDesc ? '#a9b3c1' : '#1c2237')};
+  color: ${({ lightTextDesc }) => (lightTextDesc ? '#a9b3c1' : '#1c2237')};
 `;
 
 export const CocktailList = styled.ul`

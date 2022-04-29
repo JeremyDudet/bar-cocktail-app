@@ -50,7 +50,7 @@ export const TextArea = styled.textarea`
 export const MainButton = styled(Button)`
   margin-top: 0.7rem;
   width: 100%;
-  background: #5F5AA2;
+  background: #5f5aa2;
   color: #eee;
   &:hover {
     /* background: #6e6aac; */

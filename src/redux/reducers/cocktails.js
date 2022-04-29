@@ -4,19 +4,15 @@ const cocktailReducerDefaultState = [];
 
 export default (state = cocktailReducerDefaultState, action) => {
   switch (action.type) {
-
     case 'ADD_COCKTAIL':
-      return [
-        ...state,
-        action.cocktail
-      ];
+      return [...state, action.cocktail];
 
     case 'EDIT_COCKTAIL':
       return state.map((cocktail) => {
         if (cocktail.id === action.id) {
           return {
             ...cocktail,
-            ...action.updates
+            ...action.updates,
           };
         } else {
           return cocktail;

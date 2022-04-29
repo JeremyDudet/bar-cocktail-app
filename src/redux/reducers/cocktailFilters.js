@@ -17,48 +17,48 @@ export default (state = filtersReducerDefaultState, action) => {
     case 'SET_COCKTAIL_NAME_FILTER':
       return {
         ...state,
-        name: action.name
+        name: action.name,
       };
     case 'SET_AVAILABLE_FILTER':
       return {
         ...state,
-        available: action.available
+        available: action.available,
       };
     case 'SET_INGREDIENTS_FILTER_TYPE':
-      return{
+      return {
         ...state,
-        filterType: action.filterType
+        filterType: action.filterType,
       };
     case 'SET_INGREDIENTS_FILTER':
-      return{
+      return {
         ...state,
-        ingredients: [...action.ingredients]
+        ingredients: [...action.ingredients],
       };
     case 'SET_CATEGORY_FILTER':
       return {
         ...state,
-        category: action.category
-      }
+        category: action.category,
+      };
     case 'SET_IBA_FILTER':
       return {
         ...state,
-        iba: action.iba
-      }
+        iba: action.iba,
+      };
     case 'SET_TIMING_FILTER':
       return {
         ...state,
-        timing: action.timing
-      }
+        timing: action.timing,
+      };
     case 'SET_ALCOHOLIC_FILTER':
       return {
         ...state,
-        alcoholic: action.alcoholic
-      }
+        alcoholic: action.alcoholic,
+      };
     case 'SET_VEGAN_FILTER':
       return {
         ...state,
-        vegan: action.vegan
-      }
+        vegan: action.vegan,
+      };
     default:
       return state;
   }

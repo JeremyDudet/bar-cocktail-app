@@ -1,20 +1,37 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import {Form,Label, Input,TextArea,FormSelect,MainButton} from './IngredientForm.elements';
+import {
+  Form,
+  Label,
+  Input,
+  TextArea,
+  FormSelect,
+  MainButton,
+} from './IngredientForm.elements';
 
 const IngredientForm = (props) => {
+  const [name, setName] = useState(
+    props.ingredient ? props.ingredient.name : ''
+  );
+  const [description, setDescription] = useState(
+    props.ingredient ? props.ingredient.description : ''
+  );
+  const [category, setCategory] = useState(
+    props.ingredient ? props.ingredient.category : ''
+  );
+  const [abv, setAbv] = useState(props.ingredient ? props.ingredient.abv : 0);
+  const [alcoholic, setAlcoholic] = useState(
+    props.ingredient ? props.ingredient.alcoholic : 'false'
+  );
+  const [vegan, setVegan] = useState(
+    props.ingredient ? props.ingredient.vegan : 'true'
+  );
+  const [available, setAvailable] = useState(
+    props.ingredient ? props.ingredient.available : 'true'
+  );
+  const [error, setError] = useState('');
 
-  const [ name, setName]  = useState(props.ingredient ? props.ingredient.name : '');
-  const [ description, setDescription ] = useState((props.ingredient ? props.ingredient.description : ''));
-  const [ category, setCategory ] = useState(props.ingredient ? props.ingredient.category : '');
-  const [ abv , setAbv ] = useState(props.ingredients ? props.ingredients.abv : 0);
-  const [ alcoholic, setAlcoholic ] = useState(props.ingredient ? props.ingredient.alcoholic : 'false');
-  const [ vegan, setVegan ] = useState(props.ingredients ? props.ingredient.vegan : 'true');
-  const [ available, setAvailable ] = useState(props.ingredient ? props.ingredient.available : 'true');
-  const [ error, setError ] = useState('');
-  
-  useEffect (() => setAlcoholChange())
+  useEffect(() => setAlcoholChange());
 
   function setDefaultState() {
     setName('');
@@ -27,12 +44,12 @@ const IngredientForm = (props) => {
   }
 
   function handleNameChange(e) {
-    const name = e.target.value; 
+    const name = e.target.value;
     setName(name);
   }
 
   function handleDescriptionChange(e) {
-  const description = e.target.value; 
+    const description = e.target.value;
     setDescription(description);
   }
 
@@ -47,7 +64,7 @@ const IngredientForm = (props) => {
   }
 
   function setAlcoholChange() {
-    return (abv >= 1) ? setAlcoholic('true') : setAlcoholic('false');
+    return abv >= 1 ? setAlcoholic('true') : setAlcoholic('false');
   }
 
   function handleVeganChange(e) {
@@ -62,49 +79,57 @@ const IngredientForm = (props) => {
 
   function onSubmit(e) {
     e.preventDefault(); // this prevents the browser window from refreshing when user clicks submit button
-    if (!name || !category ) { // if name is empty or category is empty, set error state to:
+    if (!name || !category) {
+      // if name is empty or category is empty, set error state to:
       setError('Error: Please complete new ingredient form.');
-    }else {
+    } else {
       setError('');
       props.onSubmit({
         name,
         description,
-        category, 
-        abv,  
+        category,
+        abv,
         alcoholic,
         vegan,
-        available
+        available,
       });
       setDefaultState();
     }
-  };
+  }
 
   return (
     <>
-    {error && <p>{error}</p>}
+      {error && <p>{error}</p>}
       <Form onSubmit={onSubmit}>
         <Label for="name">Name:</Label>
-        <Input 
-          type="text" 
-          id="name" 
+        <Input
+          type="text"
+          id="name"
           name="name"
-          value={name} 
-          onChange={handleNameChange} 
+          value={name}
+          onChange={handleNameChange}
           placeholder="Ingredient name..."
           autoComplete="off"
           required
         />
         <Label for="description">Description:</Label>
-        <TextArea  
-          id="description" 
-          name="description" 
-          value={description} 
-          onChange={handleDescriptionChange} 
+        <TextArea
+          id="description"
+          name="description"
+          value={description}
+          onChange={handleDescriptionChange}
           placeholder="Ingredient description (optional)"
           autoComplete="off"
         />
         <Label for="ingredient_category">Category:</Label>
-        <FormSelect id="ingredient_category" name="category" value={category} onChange={handleCategoryChange} size="1" required>
+        <FormSelect
+          id="ingredient_category"
+          name="category"
+          value={category}
+          onChange={handleCategoryChange}
+          size="1"
+          required
+        >
           <option value="">---</option>
           <option value="Spirit">Spirit / Liquor</option>
           <option value="Infused-Spirit">Infused Spirit</option>
@@ -119,32 +144,48 @@ const IngredientForm = (props) => {
           <option value="Savory">Savory Products</option>
           <option value="Mixer">Mixer</option>
         </FormSelect>
-        <Label for="abv">{"ABV (alcohol percentage)"}</Label>
-        <Input 
-          type="number" 
-          id="abv" 
-          name="abv" 
-          value={abv} 
-          onChange={handleAbvChange} 
+        <Label for="abv">ABV (alcohol %)</Label>
+        <Input
+          type="number"
+          step="1"
+          id="abv"
+          name="abv"
+          value={abv}
+          onChange={handleAbvChange}
           placeholder="how much alcohol %"
           required
         />
         {/* remember: honey is not considered vegan */}
         <Label for="vegan">Is ingredient vegan?</Label>
-        <FormSelect id="vegan" name="vegan" value={vegan} onChange={handleVeganChange} required>
-          <option value='true'>Yes</option>
-          <option value='false'>No</option>
+        <FormSelect
+          id="vegan"
+          name="vegan"
+          value={vegan}
+          onChange={handleVeganChange}
+          required
+        >
+          <option value="true" selected>
+            Yes
+          </option>
+          <option value="false">No</option>
         </FormSelect>
         <Label for="available">Ingredient currently stocked?</Label>
-        <FormSelect id="available" name="available" value={available} onChange={handleAvailableChange} required>
-          <option value='true' selected>Stocked</option>
-          <option value='false' >86</option>
+        <FormSelect
+          id="available"
+          name="available"
+          value={available}
+          onChange={handleAvailableChange}
+          required
+        >
+          <option value="true" selected>
+            Stocked
+          </option>
+          <option value="false">86</option>
         </FormSelect>
         <MainButton type="submit">Submit Ingredient</MainButton>
       </Form>
     </>
   );
-
-}
+};
 
 export default IngredientForm;

@@ -1,25 +1,24 @@
-import styled from 'styled-components'
-import { NavLink, Link } from 'react-router-dom'
-import { Container } from '../../globalStyles'
-import Pacifico from '../../fonts/Pacifico-Regular.ttf'
-
+import styled from 'styled-components';
+import { NavLink, Link } from 'react-router-dom';
+import { Container } from '../../globalStyles';
+import Pacifico from '../../fonts/Pacifico-Regular.ttf';
 
 export const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
-  top: 0px;
+  top: -1px;
   height: 80px;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   border-radius: 0.5rem;
-  background: #222;
+  background: #272727;
   z-index: 1;
 `;
 
 export const NavbarContainer = styled(Container)`
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: center;
   background: transparent;
   height: 100%;
@@ -44,7 +43,6 @@ export const NavLogo = styled(Link)`
   @media screen and (max-width: 320px) {
     padding-left: 0;
   }
-  
 `;
 
 export const Crafted = styled.span`
@@ -53,7 +51,7 @@ export const Crafted = styled.span`
     src: url(${Pacifico}) format('truetype');
     font-weight: normal;
     font-style: normal;
-  } 
+  }
   background: transparent;
   font-family: 'Pacifico';
   font-size: 2.25rem;
@@ -69,12 +67,12 @@ export const At = styled.span`
 export const CurrentRestaurant = styled.span`
   background: transparent;
   font-size: 1.25rem;
-  color: #BB46F0;
-  text-shadow: 0 0 4vw #F40A35;
+  color: #bb46f0;
+  text-shadow: 0 0 4vw #f40a35;
 `;
 
 export const MobileIcon = styled.div`
-  display : none;
+  display: none;
   background: transparent;
   color: white;
 
@@ -101,13 +99,13 @@ export const NavMenu = styled.ul`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 95vh;
+    height: 97vh;
     position: absolute;
-    top: 80px;
-    left: ${({click}) => ( click ? 0 : '-100%' )};
+    top: 79px;
+    left: ${({ click }) => (click ? 0 : '-100%')};
     opacity: 0.98;
     transition: all 0.6s ease;
-    background: #222;
+    background: #272727;
   }
 `;
 
@@ -131,14 +129,14 @@ export const NavLogOut = styled.button`
   font-size: 0.9rem;
   background: transparent;
   border: none;
-  color: #FFF;
+  color: #fff;
   display: flex;
   align-items: center;
   text-decoration: none;
   padding: 0.5rem 1rem;
   height: 100%;
   &:hover {
-    color: #F66E73;
+    color: #f66e73;
     transition: all 0.3s ease;
   }
   @media screen and (max-width: 960px) {
@@ -152,17 +150,17 @@ export const NavLogOut = styled.button`
 
 export const NavLinks = styled(NavLink)`
   background: transparent;
-  color: #FFF;
+  color: #fff;
   display: flex;
   align-items: center;
   text-decoration: none;
   padding: 0.5rem 1rem;
   height: 100%;
-  &.active{
-    color: #F66E73;
+  &.active {
+    color: #f66e73;
   }
   &:hover {
-    color: #F66E73;
+    color: #f66e73;
     transition: all 0.3s ease;
   }
   @media screen and (max-width: 960px) {
@@ -184,8 +182,8 @@ export const NavItemBtn = styled.li`
     align-items: center;
     width: 100%;
     height: 120px;
-  } 
-`;  
+  }
+`;
 
 export const NavBtnLink = styled(NavLink)`
   background: transparent;

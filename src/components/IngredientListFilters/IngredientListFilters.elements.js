@@ -1,20 +1,18 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const IngredientListFilter = styled.div`
-  background-color: transparent;  
+  background-color: #232323;
   display: grid;
 `;
 
 export const Label = styled.label`
-  background-color: transparent; 
+  background-color: transparent;
   font-size: 1rem;
   width: 100%;
 `;
 
-
 export const NameInput = styled.input`
-  color: #5F5AA2;
-  background-color: transparent;
+  background-color: #232323;
   border: 1px solid;
   border-radius: 0.25em;
   padding: 0.25em 0.5em;
@@ -27,7 +25,7 @@ export const NameInput = styled.input`
 
 export const FormSelect = styled.select`
   // A reset of styles, including removing the default dropdown arrow
-  background-color: transparent;
+  background-color: #232323;
   border: 1px solid;
   border-radius: 0.25em;
   padding: 0.25em 0.5em;
@@ -37,16 +35,15 @@ export const FormSelect = styled.select`
   font-size: 1.15rem;
   cursor: pointer;
   line-height: 1.05;
-  color: #5F5AA2;
 `;
 
 export const FilterWrapper = styled.div`
-border-top: 2px solid #5F5AA2;
+  border-top: 2px solid #bb46f0;
   max-width: 350px;
   padding-top: 0;
   padding-bottom: 60px;
 
   @media screen and (max-width: 768px) {
     padding-bottom: 0;
-  } 
+  }
 `;

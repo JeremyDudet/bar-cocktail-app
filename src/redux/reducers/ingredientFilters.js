@@ -1,5 +1,3 @@
-
-
 // INGREDIENT FILTERS Reducer
 
 const ingredientFiltersReducerDefaultState = {
@@ -7,7 +5,7 @@ const ingredientFiltersReducerDefaultState = {
   available: 'true',
   category: '',
   alcoholic: '',
-  vegan: ''
+  vegan: '',
 };
 
 export default (state = ingredientFiltersReducerDefaultState, action) => {
@@ -15,28 +13,28 @@ export default (state = ingredientFiltersReducerDefaultState, action) => {
     case 'SET_INGREDIENT_NAME_FILTER':
       return {
         ...state,
-        name: action.name
+        name: action.name,
       };
     case 'SET_INGREDIENT_AVAILABLE_FILTER':
       return {
         ...state,
-        available: action.available
+        available: action.available,
       };
     case 'SET_INGREDIENT_CATEGORY_FILTER':
-      return{
+      return {
         ...state,
-        category: action.category
+        category: action.category,
       };
     case 'SET_INGREDIENT_ALCOHOL_FILTER':
-      return{
+      return {
         ...state,
-        alcoholic: action.alcoholic
+        alcoholic: action.alcoholic,
       };
     case 'SET_INGREDIENT_VEGAN_FILTER':
-      return{
+      return {
         ...state,
-        vegan: action.vegan
-      };  
+        vegan: action.vegan,
+      };
     default:
       return state;
   }

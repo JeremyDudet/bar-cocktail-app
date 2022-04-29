@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Container, Button } from '../../globalStyles';
 
-
 export const InfoSec = styled.div`
   margin-top: 4rem;
   padding: 25px 0;
@@ -76,9 +75,11 @@ export const CocktailsWrapper = styled.div`
 export const Cocktail = styled.button`
   display: flex;
   justify-self: flex-start;
-  color: ${ ({selected}) => (selected ? "#fff" : "rgb(88, 183, 146)")};
-  background: ${ ({selected}) => (selected ? "rgb(88, 183, 146)" : "transparent")};
-  border: ${ ({selected}) => (selected ? "1px solid rgb(88, 183, 146)" : "1px solid rgb(88, 183, 146)")};
+  color: ${({ selected }) => (selected ? '#fff' : 'rgb(88, 183, 146)')};
+  background: ${({ selected }) =>
+    selected ? 'rgb(88, 183, 146)' : 'transparent'};
+  border: ${({ selected }) =>
+    selected ? '1px solid rgb(88, 183, 146)' : '1px solid rgb(88, 183, 146)'};
   border-radius: 1.5em;
   outline: none;
   padding: 0.25em 0.5em;
@@ -86,16 +87,18 @@ export const Cocktail = styled.button`
   font-family: inherit;
   font-size: 0.75rem;
   cursor: pointer;
-  :disabled{
+  :disabled {
     display: none;
   }
   &:hover {
     cursor: pointer;
-    background: ${ ({selected}) => (selected ? "rgb(88, 183, 146)" : "#2f2f2f")};
+    background: ${({ selected }) =>
+      selected ? 'rgb(88, 183, 146)' : '#2f2f2f'};
     border: 1px solid rgb(88, 183, 146);
     transform: scale(1.01);
     transition: all 0.2s ease;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+      rgba(0, 0, 0, 0.23) 0px 6px 6px;
   }
 `;
 
@@ -126,7 +129,7 @@ export const NameInput = styled.input`
   @media screen and (max-width: 480px) {
     min-width: none;
     max-width: none;
-  } 
+  }
 `;
 
 export const DeleteConfirmation = styled.div`
@@ -139,10 +142,10 @@ export const DeleteConfirmation = styled.div`
   right: 0;
   width: 100vw;
   height: 120vh;
-  z-index: ${({displayInfo}) => ( displayInfo ? 1000 : -1 )};
+  z-index: ${({ displayInfo }) => (displayInfo ? 1000 : -1)};
   transition: all 0.8s ease;
   background: #222;
-  opacity: 0.90;
+  opacity: 0.9;
   z-index: 1000;
 `;
 export const DeleteConfirmationCard = styled.div`
@@ -165,10 +168,10 @@ export const DeleteConfirmationCard = styled.div`
     padding: 1em;
     width: 80%;
     left: 35%;
-    gap: 1rem; 
+    gap: 1rem;
   }
-  `;
-  export const WarningDescription = styled.div`
+`;
+export const WarningDescription = styled.div`
   background: transparent;
   margin: none;
   border: none;
@@ -179,14 +182,14 @@ export const CancelDeleteButton = styled(Button)`
   width: 80%;
   margin-bottom: 1rem;
   &:hover {
-    background: #555; 
+    background: #555;
   }
 `;
 export const ConfirmDeleteButton = styled(Button)`
-  background: #FF4d51;
+  background: #ff4d51;
   color: white;
   width: 80%;
   &:hover {
-    background: #FF4d51; 
+    background: #ff4d51;
   }
 `;

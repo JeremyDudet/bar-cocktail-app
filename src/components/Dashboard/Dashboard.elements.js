@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const InfoSec = styled.div`
   margin-top: 4rem;
   padding: 25px 0;
@@ -19,17 +18,15 @@ export const InfoRow = styled.div`
   }
 `;
 
-
-
 export const MakeableCocktails = styled.div``;
 export const MakeableCocktailList = styled.div`
   margin-top: 0.5rem;
   display: grid;
   gap: 0.5rem;
-  grid-template-columns: repeat(1, 1fr); 
+  grid-template-columns: repeat(1, 1fr);
   @media screen and (max-width: 890px) {
     grid-template-columns: repeat(2, 1fr);
-  } 
+  }
   @media screen and (max-width: 784px) {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -56,20 +53,18 @@ export const CoktailName = styled.div`
   }
 `;
 
-
 export const CocktailGuage = styled.div`
   display: grid;
-  max-height: 100%;
+  max-height: 350px;
 `;
 export const CircularProgressBarContainer = styled.div`
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  max-width: 330px;
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  padding: 1rem 2rem 2rem 2rem;
   justify-content: center;
   align-items: center;
-  margin-bottom: 0.5rem;
 `;
 
 export const MissingPopularIngredients = styled.div``;
@@ -80,7 +75,7 @@ export const MissingIngredientsList = styled.div`
   contain: content;
 `;
 export const MissingIngredientTableHeader = styled.div`
-margin-bottom: 5px;
+  margin-bottom: 5px;
 `;
 export const MissingIngredient = styled.div`
   line-height: 1.6rem;
@@ -120,9 +115,13 @@ export const IngredientsWrapper = styled.div`
 
 export const Ingredient = styled.button`
   justify-self: flex-start;
-  color: ${ ({selected}) => (selected === true ? "#fff" : "rgb(95, 99, 189)")};
-  background: ${ ({selected}) => (selected === true ? "rgb(95, 99, 189)" : "#2f2f2f")};
-  border: ${ ({selected}) => (selected === true ? "1px solid rgb(95, 99, 189)" : "1px solid rgb(95, 99, 189)")};
+  color: ${({ selected }) => (selected === true ? '#fff' : 'rgb(95, 99, 189)')};
+  background: ${({ selected }) =>
+    selected === true ? 'rgb(95, 99, 189)' : '#2f2f2f'};
+  border: ${({ selected }) =>
+    selected === true
+      ? '1px solid rgb(95, 99, 189)'
+      : '1px solid rgb(95, 99, 189)'};
   border-radius: 1.5em;
   padding: 0.25em 0.5em;
   margin: 0 0.35rem 0.35rem 0;
@@ -131,9 +130,11 @@ export const Ingredient = styled.button`
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   cursor: pointer;
   &:hover {
-    background: ${ ({selected}) => (selected === true ? "rgb(95, 99, 189)" : "#333")};;
+    background: ${({ selected }) =>
+      selected === true ? 'rgb(95, 99, 189)' : '#333'};
     transform: scale(1.05);
     transition: transform 0.2s;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+      rgba(0, 0, 0, 0.23) 0px 6px 6px;
   }
 `;

@@ -3,7 +3,7 @@ import { database } from '../../firebase/firebase';
 // ADD_COCKTAIL action generator
 export const addCocktail = (cocktail) => ({
   type: 'ADD_COCKTAIL',
-  cocktail
+  cocktail,
 });
 
 export const startAddCocktail = (cocktailData = {}) => {
@@ -20,29 +20,52 @@ export const startAddCocktail = (cocktailData = {}) => {
       alcoholic,
       vegan,
       createdAt,
-      lastEdited
+      lastEdited,
     } = cocktailData;
-    const cocktail = { name, description, timing, category, recipe, instructions, iba, note, alcoholic, vegan, createdAt, lastEdited};
+    const cocktail = {
+      name,
+      description,
+      timing,
+      category,
+      recipe,
+      instructions,
+      iba,
+      note,
+      alcoholic,
+      vegan,
+      createdAt,
+      lastEdited,
+    };
 
-    database.ref('cocktails').push(cocktail).then((ref) => { // first we add to the database
-      dispatch(addCocktail({ // then we add to redux
-        id: ref.key, // we use the id that was provided by firebase
-        ...cocktail
-      }));
-    });
+    database
+      .ref('cocktails')
+      .push(cocktail)
+      .then((ref) => {
+        // first we add to the database
+        dispatch(
+          addCocktail({
+            // then we add to redux
+            id: ref.key, // we use the id that was provided by firebase
+            ...cocktail,
+          })
+        );
+      });
   };
 };
 
-export const removeCocktail = ({id} = {}) => ({
+export const removeCocktail = ({ id } = {}) => ({
   type: 'REMOVE_COCKTAIL',
-  id
+  id,
 });
 
 export const startRemoveCocktail = ({ id } = {}) => {
   return (dispatch) => {
-    return database.ref(`/cocktails/${id}`).remove().then(() => {
-      dispatch(removeCocktail({ id }));
-    });
+    return database
+      .ref(`/cocktails/${id}`)
+      .remove()
+      .then(() => {
+        dispatch(removeCocktail({ id }));
+      });
   };
 };
 
@@ -50,14 +73,17 @@ export const startRemoveCocktail = ({ id } = {}) => {
 export const editCocktail = (id, updates) => ({
   type: 'EDIT_COCKTAIL',
   id,
-  updates
+  updates,
 });
 
 export const startEditCocktail = (id, updates) => {
   return (dispatch) => {
-    return database.ref(`/cocktails/${id}`).update(updates).then(() => {
-      dispatch(editCocktail(id, updates));
-    });
+    return database
+      .ref(`/cocktails/${id}`)
+      .update(updates)
+      .then(() => {
+        dispatch(editCocktail(id, updates));
+      });
   };
 };
 
@@ -71,17 +97,20 @@ export const setCocktails = (cocktails) => ({
 // will fetch the data, and then dispatch setCocktails
 export const startSetCocktails = () => {
   return (dispatch) => {
-    return database.ref('cocktails').once('value').then((snapshot) => {
-      const cocktails = [];
+    return database
+      .ref('cocktails')
+      .once('value')
+      .then((snapshot) => {
+        const cocktails = [];
 
-      snapshot.forEach((childSnapshot) => {
-        cocktails.push({
-          id: childSnapshot.key,
-          ...childSnapshot.val()
+        snapshot.forEach((childSnapshot) => {
+          cocktails.push({
+            id: childSnapshot.key,
+            ...childSnapshot.val(),
+          });
         });
-      });
 
-      dispatch(setCocktails(cocktails))
-    });
+        dispatch(setCocktails(cocktails));
+      });
   };
 };

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { auth } from '../../firebase/firebase';
 import { connect } from 'react-redux';
-import { login } from '../../redux/actions/auth'; 
+import { login } from '../../redux/actions/auth';
 import { useHistory } from 'react-router-dom';
-import {Container, Button} from '../../globalStyles';
-import { 
+import { Container, Button } from '../../globalStyles';
+import {
   LogInSection,
   LogInRow,
   LogInColumn,
@@ -14,16 +14,15 @@ import {
   EmailInput,
   PasswordInput,
   SignUpText,
-  SignUpLink,
-  Error 
+  // SignUpLink,
+  Error,
 } from './LogIn.elements';
 
 const LogIn = (props) => {
-
-  const [ email, setEmail ] = useState('');
-  const [ password, setPassword ] = useState('');
-  const [ error, setError ] = useState('');
-  const [ loading, setLoading ] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const history = useHistory();
 
   // useEffect(() => {
@@ -34,22 +33,24 @@ const LogIn = (props) => {
   //   return unsubscribe;
   // }, []);
 
-  function handleSetEmail(e){
+  function handleSetEmail(e) {
     const email = e.target.value;
     setEmail(email);
-  };
-  function handleSetPassword(e){
+  }
+  function handleSetPassword(e) {
     const password = e.target.value;
     setPassword(password);
-  };
+  }
 
   function logIn(email, password) {
-    return auth.signInWithEmailAndPassword(email, password).catch((error) => (setError(error.message)));
-  };
+    return auth
+      .signInWithEmailAndPassword(email, password)
+      .catch((error) => setError(error.message));
+  }
 
   function navigateToDashboard() {
-    return history.push('/dashboard'); 
-  };
+    return history.push('/dashboard');
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -60,11 +61,11 @@ const LogIn = (props) => {
       console.log(user.user);
       navigateToDashboard();
     } catch {
-      console.log(`Log in failed: something went wrong`);
+      console.log('Log in failed: something went wrong');
     }
     setLoading(false);
-  };
-  
+  }
+
   return (
     <LogInSection>
       <Container>
@@ -74,11 +75,29 @@ const LogIn = (props) => {
               <LogInForm onSubmit={handleSubmit}>
                 <Heading>Log In</Heading>
                 {error && <Error>{error}</Error>}
-                <EmailInput value={email} onChange={handleSetEmail} type="email" placeholder="Email"  required autoComplete="username" />
-                <PasswordInput value={password} onChange={handleSetPassword} type="password"  placeholder="Password" required autoComplete="current-password" />
-                <Button type="submit" disabled={loading} primary>Log In</Button>
+                <EmailInput
+                  value={email}
+                  onChange={handleSetEmail}
+                  type="email"
+                  placeholder="Email"
+                  required
+                  autoComplete="username"
+                />
+                <PasswordInput
+                  value={password}
+                  onChange={handleSetPassword}
+                  type="password"
+                  placeholder="Password"
+                  required
+                  autoComplete="current-password"
+                />
+                <Button type="submit" disabled={loading} primary>
+                  Log In
+                </Button>
               </LogInForm>
-              <SignUpText>Don't have an account?<SignUpLink to="/signup" disabled>Sign Up</SignUpLink></SignUpText>
+              <SignUpText>
+                Don't have an account? Contact Jeremy to sign-up
+              </SignUpText>
             </TextWrapper>
           </LogInColumn>
         </LogInRow>

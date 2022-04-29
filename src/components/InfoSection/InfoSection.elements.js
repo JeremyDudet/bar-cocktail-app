@@ -1,10 +1,10 @@
-import styled from 'styled-components'
-import { Button } from '../../globalStyles'
+import styled from 'styled-components';
+import { Button } from '../../globalStyles';
 
 export const InfoSec = styled.div`
   color: #0d0d0d;
   margin-top: 2rem;
-  padding: 120px 0 55px 0;
+  padding: 70px 0 45px 0;
   @media screen and (max-width: 758px) {
     padding: 25px 0;
   }
@@ -32,7 +32,7 @@ export const InfoColumn = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center; 
+  align-items: center;
   @media screen and (max-width: 758px) {
     max-width: 100%;
     flex-basis: 100%;
@@ -45,7 +45,7 @@ export const TextWrapper = styled.div`
 
   @media screen and (max-width: 768px) {
     padding-bottom: 20px;
-  } 
+  }
   @media screen and (max-width: 321px) {
     padding-bottom: 10px;
   }
@@ -69,8 +69,9 @@ export const Img = styled.img`
 `;
 
 export const TopLine = styled.div`
-  color: ${({lightTopLine}) => (lightTopLine ? '#a9b3c1' : '#4b59f7')};
+  color: ${({ lightTopLine }) => (lightTopLine ? '#a9b3c1' : '#4b59f7')};
   font-size: 18px;
+  text-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   line-height: 16px;
   letter-spacing: 1.4px;
   margin-bottom: 16px;
@@ -80,10 +81,12 @@ export const TopLine = styled.div`
 `;
 
 export const Heading = styled.h1`
+  text-shadow: 1px;
   margin-bottom: 24px;
   font-size: 48px;
+  text-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   line-height: 1.1;
-  color: ${({ lightText }) =>(lightText ? '#f7f8fa' : '#1c2237')};
+  color: ${({ lightText }) => (lightText ? '#f7f8fa' : '#1c2237')};
   @media screen and (max-width: 321px) {
     line-height: 0.9;
   }
@@ -94,19 +97,25 @@ export const Subtitle = styled.p`
   margin-bottom: 35px;
   font-size: 18px;
   line-height: 24px;
-  color: ${({lightTextDesc}) => (lightTextDesc ? '#a9b3c1' : '#1c2237')};
+  color: ${({ lightTextDesc }) => (lightTextDesc ? '#a9b3c1' : '#1c2237')};
 `;
-
-
 
 export const MainButton = styled(Button)`
   @keyframes Gradient {
-    0%{background-position:0% 92%}
-    50%{background-position:100% 9%}
-    100%{background-position:0% 92%}
+    0% {
+      background-position: 0% 92%;
+    }
+    50% {
+      background-position: 100% 9%;
+    }
+    100% {
+      background-position: 0% 92%;
+    }
   }
+  font-size: 1.5rem;
+  font-weight: bold;
   width: 100%;
-  background: linear-gradient(#5D7AE5, #9B5DE5, #E55DD5);
+  background: linear-gradient(#5d7ae5, #9b5de5, #e55dd5);
   background-size: 600% 600%;
   animation: Gradient 5s ease infinite;
 `;

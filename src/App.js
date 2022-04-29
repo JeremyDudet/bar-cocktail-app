@@ -1,18 +1,18 @@
 import React from 'react';
-import GlobalStyle from './globalStyles';
-import  { BrowserRouter as Router } from 'react-router-dom';
-import { Navbar, Footer } from './components/';
+import { BrowserRouter as Router } from 'react-router-dom';
 import AppRouter from './routers/AppRouter';
+import GlobalStyle from './globalStyles';
+import { Navbar, Footer } from './components';
 
-
-export function App() {
+function App() {
   return (
     <Router>
       <GlobalStyle />
       <Navbar />
-      <AppRouter/>
+      <AppRouter />
       <Footer />
     </Router>
   );
-};
+}
 
+export default App;

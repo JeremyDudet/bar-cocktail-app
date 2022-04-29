@@ -1,16 +1,13 @@
-import React from 'react'
+import React from 'react';
 import { BrowseAvailableCocktails } from '../../components';
-import { homeObjectOne } from './Data'
+import { homeObjectOne } from './Data';
 
 const UserBrowseCoktails = () => {
-
- 
-
   return (
     <>
-      <BrowseAvailableCocktails {...homeObjectOne}/>
+      <BrowseAvailableCocktails {...homeObjectOne} />
     </>
-  )
-}
+  );
+};
 
-export default UserBrowseCoktails
+export default UserBrowseCoktails;

@@ -4,19 +4,15 @@ const ingredientReducerDefaultState = [];
 
 export default (state = ingredientReducerDefaultState, action) => {
   switch (action.type) {
-
     case 'ADD_INGREDIENT':
-      return [
-        ...state,
-        action.ingredient
-      ];
+      return [...state, action.ingredient];
 
     case 'EDIT_INGREDIENT':
       return state.map((ingredient) => {
         if (ingredient.id === action.id) {
           return {
             ...ingredient,
-            ...action.updates
+            ...action.updates,
           };
         } else {
           return ingredient;
@@ -27,7 +23,7 @@ export default (state = ingredientReducerDefaultState, action) => {
       return state.filter(({ id }) => id !== action.id);
 
     case 'SET_INGREDIENTS':
-      return action.ingredients; 
+      return action.ingredients;
 
     default:
       return state;

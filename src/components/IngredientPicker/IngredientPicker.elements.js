@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 
 export const IngredientPickerContainer = styled.div`
+  z-index: 100;
+  background-color: #232323;
   margin-top: 0.5rem;
   padding: 0.5rem;
-  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px inset, rgba(0, 0, 0, 0.23) 0px 6px 6px inset;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px inset,
+    rgba(0, 0, 0, 0.23) 0px 6px 6px inset;
   border-radius: 0.5rem;
   height: auto;
 `;
@@ -15,37 +18,45 @@ export const FilterWrapper = styled.div`
 `;
 
 export const TopLine = styled.div`
-  color: #BFC0C0;
+  color: #bb46f0;
   font-size: 18px;
   line-height: 16px;
   letter-spacing: 1.4px;
   margin: 0.8em 0;
 `;
 
-
 export const FilterTypeRadio = styled.input`
   display: none;
-  
+  opacity: 0.8;
   &:hover + label {
     cursor: pointer;
     background: #333;
-    /* border: 2px solid #5F5AA2; */
     transform: scale(1.01);
     transition: all 0.2s ease;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+      rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    opacity: 1;
   }
   &:checked + label {
-    color: #0D0D0D;
-    background-color: #5F5AA2;
+    color: #222;
+    background: rgb(255, 193, 94);
+    background: linear-gradient(
+      167deg,
+      rgba(255, 193, 94, 1) 0%,
+      rgba(255, 193, 94, 1) 31%,
+      rgba(221, 176, 60, 1) 97%
+    );
+    opacity: 0.8;
     &:hover {
-      background-color: #6F6AB2;
+      background-color: #ffc36f;
+      opacity: 1;
     }
   }
 `;
 
-export const Label = styled.label`
-  color: #5F5AA2;
-  background: #2f2f2f;
+export const RadioLabel = styled.label`
+  color: #ffc15e;
+  background: #2a2a2a;
   padding: 0.75em;
   /* border: 2px solid #5F5AA2; */
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -58,7 +69,6 @@ export const RadioContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0;
   margin-top: 1em;
   padding: 0;
 `;
@@ -75,9 +85,10 @@ export const IngredientsWrapper = styled.div`
 
 export const Ingredient = styled.button`
   justify-self: flex-start;
-  color: ${ ({selected}) => (selected === true ? "#fff" : "rgb(95, 99, 189)")};
-  background: ${ ({selected}) => (selected === true ? "rgb(95, 99, 189)" : "#2f2f2f")};
-  border: ${ ({selected}) => (selected === true ? "1px solid rgb(95, 99, 189)" : "1px solid rgb(95, 99, 189)")};
+  color: ${({ selected }) => (selected === true ? '#fff' : '#BB46F0')};
+  background: ${({ selected }) => (selected === true ? '#BB46F0' : '#232323')};
+  border: ${({ selected }) =>
+    selected === true ? '1px solid #BB46F0' : '1px solid #BB46F0'};
   border-radius: 1.5em;
   padding: 0.25em 0.5em;
   margin: 0 0.35rem 0.35rem 0;
@@ -86,9 +97,11 @@ export const Ingredient = styled.button`
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   cursor: pointer;
   &:hover {
-    background: ${ ({selected}) => (selected === true ? "rgb(95, 99, 189)" : "#333")};;
+    background: ${({ selected }) =>
+      selected === true ? '#BB46F0' : '#232323'};
     transform: scale(1.05);
     transition: transform 0.2s;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+      rgba(0, 0, 0, 0.23) 0px 6px 6px;
   }
 `;

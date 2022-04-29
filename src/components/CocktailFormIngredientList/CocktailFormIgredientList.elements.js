@@ -1,10 +1,10 @@
-import styled from "styled-components";
-
+import styled from 'styled-components';
 
 export const SelectedIngredientsContainer = styled.div`
   background-color: #2a2a2a;
   border-radius: 0.5rem;
-  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px inset, rgba(0, 0, 0, 0.23) 0px 6px 6px inset;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px inset,
+    rgba(0, 0, 0, 0.23) 0px 6px 6px inset;
   display: grid;
   padding: 1rem;
   gap: 0.6rem;
@@ -49,8 +49,8 @@ export const RemoveButtonContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 2.5rem;
-  transform: scale(1.2); 
+  transform: scale(1.2);
   &:hover {
-    transform: scale(1.3); 
+    transform: scale(1.3);
   }
 `;

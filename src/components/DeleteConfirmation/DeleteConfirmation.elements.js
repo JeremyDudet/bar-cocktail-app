@@ -30,7 +30,7 @@ export const DeleteConfirmationSection = styled.div`
   right: 0;
   width: 100vw;
   height: 120vh;
-  z-index: ${({displayInfo}) => ( displayInfo ? 1000 : -1 )};
+  z-index: ${({ displayInfo }) => (displayInfo ? 1000 : -1)};
   transition: all 0.8s ease;
   background: #222;
   opacity: 0.95;
@@ -48,10 +48,10 @@ export const DeleteConfirmationCard = styled.div`
     padding: 1em;
     width: 80%;
     left: 35%;
-    gap: 1rem; 
+    gap: 1rem;
   }
-  `;
-  export const WarningDescription = styled.div`
+`;
+export const WarningDescription = styled.div`
   background: transparent;
   margin: none;
   border: none;
@@ -62,14 +62,14 @@ export const CancelDeleteButton = styled(Button)`
   width: 80%;
   margin-bottom: 1rem;
   &:hover {
-    background: #555; 
+    background: #555;
   }
 `;
 export const ConfirmDeleteButton = styled(Button)`
-  background: #FF4d51;
+  background: #ff4d51;
   color: white;
   width: 80%;
   &:hover {
-    background: #FF4d51; 
+    background: #ff4d51;
   }
 `;

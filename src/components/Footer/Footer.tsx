@@ -1,16 +1,16 @@
-import React from 'react'
-import { 
-  FaFacebook, 
-  FaInstagram, 
-  FaGithub, 
-  FaTwitter, 
-  FaLinkedin 
-} from 'react-icons/fa'
-import { Button } from '../../globalStyles'
+import React from 'react';
 import {
-  FooterContainer, 
-  FooterSubscription, 
-  FooterSubHeading, 
+  FaFacebook,
+  FaInstagram,
+  FaGithub,
+  FaTwitter,
+  FaLinkedin,
+} from 'react-icons/fa';
+import { Button } from '../../globalStyles';
+import {
+  FooterContainer,
+  FooterSubscription,
+  FooterSubHeading,
   FooterSubText,
   Form,
   FormInput,
@@ -18,23 +18,21 @@ import {
   FooterLinksWrapper,
   FooterLinkItem,
   FooterLinkTitle,
-  FooterLink, 
+  FooterLink,
   SocialMedia,
   SocialMediaWrap,
   SocialLogo,
   WebsiteRights,
   SocialIcons,
   SocialIconLink,
- } from './Footer.elements'
+} from './Footer.elements';
 
 const Footer = () => {
   return (
     <FooterContainer>
       <SocialMedia>
         <SocialMediaWrap>
-          <SocialLogo to='/'>
-            crafted
-          </SocialLogo>
+          <SocialLogo to="/">crafted</SocialLogo>
           <WebsiteRights>jeremy dudet - developer © 2021</WebsiteRights>
           <SocialIcons>
             {/* <SocialIconLink href='/' target="_blank" aria-label="Facebook">
@@ -43,7 +41,11 @@ const Footer = () => {
             {/* <SocialIconLink href='/' target="_blank" aria-label="Instagram">
               <FaInstagram />
             </SocialIconLink> */}
-            <SocialIconLink href='https://github.com/JeremyDudet' target="_blank" aria-label="GitHub">
+            <SocialIconLink
+              href="https://github.com/JeremyDudet"
+              target="_blank"
+              aria-label="GitHub"
+            >
               <FaGithub />
             </SocialIconLink>
             {/* <SocialIconLink href='/' target="_blank" aria-label="Twitter">
@@ -59,4 +61,4 @@ const Footer = () => {
   );
 };
 
-export default Footer
+export default Footer;

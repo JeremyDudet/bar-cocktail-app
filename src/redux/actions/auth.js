@@ -1,14 +1,13 @@
 import { firebase } from '../../firebase/firebase';
 
-
 export const login = (user) => ({
   type: 'LOGIN',
-  user
+  user,
 });
 
 export const logout = () => ({
   type: 'LOGOUT',
-  user: ''
+  user: '',
 });
 
 export const startLogout = () => {
@@ -17,4 +16,3 @@ export const startLogout = () => {
     dispatch(logout());
   };
 };
-

@@ -10,7 +10,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export default () => {
   // Store Creation
-  const store = createStore( 
+  const store = createStore(
     combineReducers({
       cocktails: cocktailsReducer,
       ingredientFilters: ingredientFiltersReducer,
@@ -20,6 +20,6 @@ export default () => {
     }),
     composeEnhancers(applyMiddleware(thunk))
   );
-  
+
   return store;
-}
+};

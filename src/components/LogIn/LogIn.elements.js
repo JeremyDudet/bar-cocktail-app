@@ -26,14 +26,14 @@ export const LogInColumn = styled.div`
 export const TextWrapper = styled.div`
   width: 100%;
   max-width: 355px;
-  padding-top:0;
+  padding-top: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
 
   @media screen and (max-width: 768px) {
     padding-bottom: 65px;
-  } 
+  }
 `;
 
 export const LogInForm = styled.form`
@@ -94,7 +94,7 @@ export const Error = styled.div`
   max-width: 355px;
   margin: 5% auto;
   padding: 1%;
-  color: #CD5C5C;
-  border: 2px solid #CD5C5C;
+  color: #cd5c5c;
+  border: 2px solid #cd5c5c;
   justify-content: center;
 `;
